@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Achref Lajmi - Software Engineering Student & AI Developer</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Achref Lajmi | Full-Stack & GenAI Software Engineer (Internship Feb 2026)</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Achref Lajmi — Final-year Software Engineering student (ESPRIT) on exchange in Germany. Full-stack (Java/Spring Boot, TypeScript, Node/NestJS, React) + applied GenAI (LLMs, RAG). Seeking internship from Feb 2026 (6 months)."
+    />
+    <meta name="robots" content="index,follow" />
 
     <!-- Fonts & CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/icomoon.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
-    <!-- Page-specific styles (moved into <head>) -->
+    <!-- Page-specific styles -->
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -61,14 +68,19 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid #2a2a2a;
       }
-      .project-card:hover { transform: translateY(-8px); border-color: #333333; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+      .project-card:hover {
+        transform: translateY(-8px);
+        border-color: #333333;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
       .project-card.featured { grid-row: span 1; }
 
       .project-image {
         height: 200px;
         background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
         position: relative;
-        background-size: cover; background-position: center;
+        background-size: cover;
+        background-position: center;
       }
       .project-card.featured .project-image { height: 280px; }
 
@@ -79,11 +91,31 @@
       .project-card.featured .project-description { font-size: 16px; }
 
       .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-      .tech-tag { padding: 6px 12px; font-size: 12px; font-weight: 500; border-radius: 20px; background: #2a2a2a; color: #ffffff; border: 1px solid #3a3a3a; }
+      .tech-tag {
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 20px;
+        background: #2a2a2a;
+        color: #ffffff;
+        border: 1px solid #3a3a3a;
+      }
       .project-date { font-size: 13px; color: #888888; font-weight: 500; margin-bottom: 20px; }
       .project-links { display: flex; flex-wrap: wrap; gap: 12px; }
 
-      .btn { padding: 10px 20px; font-size: 14px; font-weight: 500; border-radius: 25px; text-decoration: none; transition: all 0.2s ease; border: none; cursor: pointer; display: inline-flex; align-items: center; letter-spacing: 0.01em; }
+      .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        letter-spacing: 0.01em;
+      }
       .btn-primary { background: #fbbf24; color: #000000; }
       .btn-primary:hover { background: #f59e0b; transform: translateY(-1px); }
       .btn-secondary { background: transparent; color: #888888; border: 1px solid #3a3a3a; }
@@ -98,22 +130,44 @@
       }
 
       /* Modal */
-      .custom-modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); }
+      .custom-modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
       .custom-modal-content {
-        margin: 5% auto; padding: 20px; background-color: #1a1a1a; border-radius: 8px;
-        width: 90%; max-width: 800px; color: #fff; box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+        margin: 5% auto;
+        padding: 20px;
+        background-color: #1a1a1a;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 800px;
+        color: #fff;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
       }
       .custom-close { color: #aaa; float: right; font-size: 30px; font-weight: bold; cursor: pointer; }
       .custom-close:hover { color: #fff; }
-
-      /* Old video-size classes kept (not used by iframe, harmless) */
-      .modal-video-vertical { max-height: 90vh; max-width: 40vw; display: block; margin: 0 auto; border-radius: 16px; }
-      .modal-video-landscape { max-height: 80vh; max-width: 90vw; width: 100%; display: block; margin: 0 auto; border-radius: 16px; }
 
       /* Responsive YouTube embeds */
       .video-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 0 auto; }
       .video-wrapper.vertical { aspect-ratio: 9 / 16; max-width: 420px; }
       .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 16px; }
+
+      /* CV Buttons */
+      .cv-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      @media (max-width: 768px) {
+        .cv-buttons { justify-content: center; }
+      }
     </style>
   </head>
 
@@ -121,7 +175,15 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">Achref Lajmi</a>
-        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="oi oi-menu"></span> Menu
         </button>
 
@@ -130,33 +192,39 @@
             <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
             <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
             <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-            <li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>
+            <li class="nav-item"><a href="#services-section" class="nav-link"><span>Focus</span></a></li>
             <li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
             <li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
-            <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
+            <li class="nav-item"><a href="#blog-section" class="nav-link"><span>Blog</span></a></li>
             <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
           </ul>
         </div>
       </div>
     </nav>
 
+    <!-- HERO -->
     <section id="home-section" class="hero">
       <div class="home-slider owl-carousel">
         <div class="slider-item">
           <div class="overlay"></div>
           <div class="container">
             <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-              <div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1.png);">
+              <div class="one-third js-fullheight order-md-last img" style="background-image: url(images/bg_1.png);">
                 <div class="overlay"></div>
               </div>
               <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                 <div class="text">
                   <span class="subheading">Hello!</span>
                   <h1 class="mb-4 mt-3">I'm <span>Achref Lajmi</span></h1>
-                  <h2 class="mb-4">Software Engineering Student & AI Developer</h2>
+                  <h2 class="mb-4">Full-Stack Developer & Applied GenAI Builder</h2>
+                  <p class="mb-4" style="max-width: 520px; color: #ddd;">
+                    Final-year Software Engineering student (ESPRIT), currently in Germany. I build end-to-end products
+                    with Java/Spring Boot, TypeScript/Node/NestJS, React — and integrate LLMs & RAG for real user value.
+                    Seeking a 6-month internship starting <strong>Feb 2026</strong>.
+                  </p>
                   <p>
-                    <a href="#contact-section" class="btn btn-primary py-3 px-4">Hire me</a>
-                    <a href="#projects-section" class="btn btn-white btn-outline-white py-3 px-4">My works</a>
+                    <a href="#contact-section" class="btn btn-primary py-3 px-4">Contact</a>
+                    <a href="#projects-section" class="btn btn-white btn-outline-white py-3 px-4">See Projects</a>
                   </p>
                 </div>
               </div>
@@ -168,32 +236,43 @@
           <div class="overlay"></div>
           <div class="container">
             <div class="row d-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-              <div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_2.png);">
+              <div class="one-third js-fullheight order-md-last img" style="background-image: url(images/bg_2.png);">
                 <div class="overlay"></div>
               </div>
               <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                 <div class="text">
-                  <span class="subheading">Hello!</span>
-                  <h1 class="mb-4 mt-3">I'm an <span>AI-Powered Developer</span> based in Tunisia</h1>
-                  <p>
-                    <a href="#contact-section" class="btn btn-primary py-3 px-4">Hire me</a>
-                    <a href="#projects-section" class="btn btn-white btn-outline-white py-3 px-4">My works</a>
+                  <span class="subheading">Internship Availability</span>
+                  <h1 class="mb-4 mt-3">Starting <span>Feb 2026</span></h1>
+                  <h2 class="mb-4">6 months • Mandatory PFE</h2>
+                  <p class="mb-4" style="max-width: 520px; color: #ddd;">
+                    Open to roles in Full-Stack Engineering, Backend, and Applied GenAI (LLMs/RAG). Comfortable relocating
+                    (Berlin/Munich/Frankfurt or remote in Germany/EU depending on role).
                   </p>
+
+                  <!-- CV BUTTONS (Hero Slide 2) -->
+                  <div class="cv-buttons">
+                    <a href="cv/Achref_Lajmi_FullStack.pdf" target="_blank" class="btn btn-primary py-3 px-4" rel="noopener">Full-Stack CV</a>
+                    <a href="cv/Achref_Lajmi_Backend.pdf" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Backend CV</a>
+                    <a href="cv/Achref_Lajmi_GenAI.pdf" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">GenAI CV</a>
+                    <a href="#contact-section" class="btn btn-white btn-outline-white py-3 px-4">Message Me</a>
+                  </div>
+                  <!-- /CV BUTTONS -->
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
       <div class="container">
         <div class="row d-flex">
           <div class="col-md-6 col-lg-5 d-flex">
             <div class="img-about img d-flex align-items-stretch">
               <div class="overlay"></div>
-              <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/bg_1.png);"></div>
+              <div class="img d-flex align-self-stretch align-items-center" style="background-image: url(images/bg_1.png);"></div>
             </div>
           </div>
           <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
@@ -201,24 +280,37 @@
               <div class="col-md-12 heading-section ftco-animate">
                 <h1 class="big">About</h1>
                 <h2 class="mb-4">About Me</h2>
-                <p>I'm a software engineering student passionate about building smart, impactful applications. I specialize in mobile development and full-stack engineering, with real-world experience using Java, Spring Boot, Angular, and Flutter.</p>
+                <p>
+                  I’m a final-year Software Engineering student at ESPRIT, currently based in Germany. I build scalable web apps,
+                  backend services, and AI-enhanced products. My strength is shipping end-to-end features: clean APIs, reliable data models,
+                  and user-facing dashboards — with LLM/RAG integration when it improves the user experience.
+                </p>
                 <ul class="about-info mt-4 px-md-0 px-2">
                   <li class="d-flex"><span>Name:</span> <span>Achref Lajmi</span></li>
-                  <li class="d-flex"><span>Specialization:</span> <span>AI & Mobile Development</span></li>
-                  <li class="d-flex"><span>Location:</span> <span>Tunisia</span></li>
-                  <li class="d-flex"><span>Exchange Program:</span> <span>Philipps-Universität Marburg (Oct 2025)</span></li>
-                  <li class="d-flex"><span>Email:</span> <span>achreflajmi1@gmail.com</span></li>
-                  <li class="d-flex"><span>Focus:</span> <span>AI-Powered Mobile Apps</span></li>
+                  <li class="d-flex"><span>Focus:</span> <span>Full-Stack + Applied GenAI (LLMs/RAG)</span></li>
+                  <li class="d-flex"><span>Location:</span> <span>Germany (Kirchhain / Marburg area)</span></li>
+                  <li class="d-flex"><span>Availability:</span> <span>Internship — Feb 2026 (6 months, mandatory PFE)</span></li>
+                  <li class="d-flex"><span>Email:</span> <span><a href="mailto:achreflajmi1@gmail.com">achreflajmi1@gmail.com</a></span></li>
+                  <li class="d-flex"><span>Phone:</span> <span><a href="tel:+4915565848284">+49 15565848284</a></span></li>
                 </ul>
               </div>
             </div>
+
             <div class="counter-wrap ftco-animate d-flex mt-md-3">
               <div class="text">
                 <p class="mb-4">
-                  <span class="number" data-number="5">0</span>
-                  <span>Major Projects Completed</span>
+                  <span class="number" data-number="8">0</span>
+                  <span>Projects Shipped (Academic + Internship)</span>
                 </p>
-                <p><a href="images/CV.pdf" target="_blank" class="btn btn-primary py-3 px-3">Download CV</a></p>
+
+                <!-- CV BUTTONS (About section) -->
+                <div class="cv-buttons" style="margin-bottom: 12px;">
+                  <a href="cv/Achref_Lajmi_FullStack.pdf" target="_blank" class="btn btn-primary py-3 px-3" rel="noopener">Full-Stack CV</a>
+                  <a href="cv/Achref_Lajmi_Backend.pdf" target="_blank" class="btn btn-white btn-outline-white py-3 px-3" rel="noopener">Backend CV</a>
+                  <a href="cv/Achref_Lajmi_GenAI.pdf" target="_blank" class="btn btn-white btn-outline-white py-3 px-3" rel="noopener">GenAI CV</a>
+                  <a href="https://github.com/achreflajmi" target="_blank" class="btn btn-white btn-outline-white py-3 px-3" rel="noopener">GitHub</a>
+                </div>
+                <!-- /CV BUTTONS -->
               </div>
             </div>
           </div>
@@ -226,136 +318,149 @@
       </div>
     </section>
 
+    <!-- RESUME -->
     <section class="ftco-section ftco-no-pb" id="resume-section">
       <div class="container">
         <div class="row justify-content-center pb-5">
           <div class="col-md-10 heading-section text-center ftco-animate">
             <h1 class="big big-2">Resume</h1>
             <h2 class="mb-4">My Journey</h2>
-            <p>From curious beginner to AI-powered developer, here's my evolution in software engineering and innovation.</p>
+            <p>From web/mobile foundations to full-stack systems and applied GenAI integrations.</p>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-6">
             <div class="resume-wrap ftco-animate">
-              <span class="date">2020</span>
-              <h2>Just Curious 🌱</h2>
-              <span class="position">Self-Learning Journey</span>
-              <p class="mt-4">Started my coding journey with HTML & CSS, building simple websites and falling in love with creating digital experiences.</p>
+              <span class="date">2021 – 2026</span>
+              <h2>Engineering Degree (ESPRIT)</h2>
+              <span class="position">Software Engineering — Web & Mobile</span>
+              <p class="mt-4">Focused on full-stack development, API design, databases, and production-ready applications.</p>
             </div>
+
             <div class="resume-wrap ftco-animate">
-              <span class="date">2021</span>
-              <h2>Student Dev 📚</h2>
-              <span class="position">Backend & Frontend Focus</span>
-              <p class="mt-4">Dived into Java, Spring Boot, and backend development while sharpening my frontend skills with Angular.</p>
-            </div>
-            <div class="resume-wrap ftco-animate">
-              <span class="date">2024</span>
+              <span class="date">Jun – Jul 2024</span>
               <h2>FinConnect Internship</h2>
               <span class="position">Full-Stack Developer Intern</span>
-              <p class="mt-4">Developed enterprise-grade ticket management system handling 300+ daily tickets with Angular frontend and Spring Boot backend.</p>
+              <p class="mt-4">
+                Built a secure ticketing platform with JWT authentication, role-based access, chat features, and PDF export using Angular + Spring Boot.
+              </p>
+            </div>
+
+            <div class="resume-wrap ftco-animate">
+              <span class="date">Jul – Sep 2025</span>
+              <h2>ESPRIT Tech Internship</h2>
+              <span class="position">AI Software Developer</span>
+              <p class="mt-4">
+                Developed an AI-driven media automation platform: real-time ingestion, content processing, and dashboards using NestJS + React + MongoDB.
+              </p>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="resume-wrap ftco-animate">
-              <span class="date">2024</span>
-              <h2>Mobile Explorer 📱</h2>
-              <span class="position">Flutter Specialization</span>
-              <p class="mt-4">Specialized in mobile app development with Flutter and began exploring AI integrations and APIs.</p>
-            </div>
-            <div class="resume-wrap ftco-animate">
-              <span class="date">2025</span>
-              <h2>AI-Powered Developer 🧠</h2>
-              <span class="position">Machine Learning Integration</span>
-              <p class="mt-4">Built AI-powered mobile apps and web platforms integrating GPT-based models, Coqui XTTS, and custom machine learning solutions.</p>
-            </div>
-            <div class="resume-wrap ftco-animate">
-              <span class="date">2025</span>
-              <h2>Exchange Student at Marburg 🌍</h2>
+              <span class="date">Oct 2025 – Mar 2026</span>
+              <h2>Exchange Semester (Germany)</h2>
               <span class="position">Philipps-Universität Marburg</span>
-              <p class="mt-4">Beginning exchange semester in October 2025 to broaden academic and global perspective while continuing AI innovation.</p>
+              <p class="mt-4">Continuing academic work in Germany while building projects and preparing for a Feb 2026 internship.</p>
+            </div>
+
+            <div class="resume-wrap ftco-animate">
+              <span class="date">2025</span>
+              <h2>KiddoAI (Academic MVP)</h2>
+              <span class="position">Full-Stack + Applied GenAI</span>
+              <p class="mt-4">
+                Built an AI learning companion using RAG over curriculum PDFs and voice interaction to support personalized learning flows.
+              </p>
+            </div>
+
+            <div class="resume-wrap ftco-animate">
+              <span class="date">Feb 2026</span>
+              <h2>Next Step</h2>
+              <span class="position">Internship (6 months, mandatory PFE)</span>
+              <p class="mt-4">Seeking a role where I can ship product features fast, learn from strong engineers, and grow in a challenging environment.</p>
             </div>
           </div>
         </div>
 
         <div class="row justify-content-center mt-5">
-          <div class="col-md-6 text-center ftco-animate">
-            <p>
-              <a href="images/CV.pdf" target="_blank" class="btn btn-primary py-4 px-5">Download CV</a>
-            </p>
+          <div class="col-md-8 text-center ftco-animate">
+            <!-- CV BUTTONS (Resume CTA) -->
+            <div class="cv-buttons" style="justify-content:center;">
+              <a href="cv/Achref_Lajmi_FullStack.pdf" target="_blank" class="btn btn-primary py-4 px-5" rel="noopener">Full-Stack CV</a>
+              <a href="cv/Achref_Lajmi_Backend.pdf" target="_blank" class="btn btn-white btn-outline-white py-4 px-5" rel="noopener">Backend CV</a>
+              <a href="cv/Achref_Lajmi_GenAI.pdf" target="_blank" class="btn btn-white btn-outline-white py-4 px-5" rel="noopener">GenAI CV</a>
+            </div>
+            <!-- /CV BUTTONS -->
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SERVICES / FOCUS -->
     <section class="ftco-section" id="services-section">
       <div class="container">
         <div class="row justify-content-center py-5 mt-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Services</h1>
-            <h2 class="mb-4">What I Do</h2>
-            <p>Specialized in AI-powered applications, mobile development, and full-stack solutions</p>
+            <h1 class="big big-2">Focus</h1>
+            <h2 class="mb-4">What I Build</h2>
+            <p>Product-oriented engineering: reliable backend services, clean UIs, and AI when it creates real value.</p>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="#" class="services-1">
+            <a href="#projects-section" class="services-1">
               <span class="icon"><i class="flaticon-analysis"></i></span>
-              <div class="desc"><h3 class="mb-5">Mobile App Development</h3></div>
+              <div class="desc"><h3 class="mb-5">Full-Stack Features</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="#" class="services-1">
-              <span class="icon"><i class="flaticon-flasks"></i></span>
-              <div class="desc"><h3 class="mb-5">AI Integration</h3></div>
-            </a>
-          </div>
-          <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="#" class="services-1">
+            <a href="#projects-section" class="services-1">
               <span class="icon"><i class="flaticon-ideas"></i></span>
-              <div class="desc"><h3 class="mb-5">Full-Stack Development</h3></div>
+              <div class="desc"><h3 class="mb-5">Backend APIs</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="#" class="services-1">
+            <a href="#projects-section" class="services-1">
+              <span class="icon"><i class="flaticon-flasks"></i></span>
+              <div class="desc"><h3 class="mb-5">Applied GenAI (LLM/RAG)</h3></div>
+            </a>
+          </div>
+          <div class="col-md-4 text-center d-flex ftco-animate">
+            <a href="#projects-section" class="services-1">
               <span class="icon"><i class="flaticon-analysis"></i></span>
-              <div class="desc"><h3 class="mb-5">Backend Systems</h3></div>
+              <div class="desc"><h3 class="mb-5">Dashboards & Admin Tools</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="#" class="services-1">
+            <a href="#projects-section" class="services-1">
               <span class="icon"><i class="flaticon-flasks"></i></span>
-              <div class="desc"><h3 class="mb-5">Voice Technology</h3></div>
+              <div class="desc"><h3 class="mb-5">Voice & Multimodal UX</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="#" class="services-1">
+            <a href="#projects-section" class="services-1">
               <span class="icon"><i class="flaticon-ideas"></i></span>
-              <div class="desc"><h3 class="mb-5">Educational Tech</h3></div>
+              <div class="desc"><h3 class="mb-5">Education & Productivity</h3></div>
             </a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section class="ftco-section" id="skills-section">
       <div class="container">
         <div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
             <h1 class="big big-2">Skills</h1>
-            <h2 class="mb-4">My Technical Skills</h2>
-            <p>Proficient in modern development stacks, AI integration, and cross-platform engineering</p>
+            <h2 class="mb-4">Technical Skills</h2>
+            <p>Full-stack engineering plus applied AI integration for real-world products.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3 class="d-flex justify-content-between"><span>Flutter & FlutterFlow (Mobile)</span><span>90%</span></h3>
-              <div class="progress"><div class="progress-bar color-1" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%"></div></div>
-            </div>
-          </div>
 
+        <div class="row">
           <div class="col-md-6 animate-box">
             <div class="progress-wrap ftco-animate">
               <h3 class="d-flex justify-content-between"><span>Java & Spring Boot (Backend)</span><span>85%</span></h3>
@@ -365,99 +470,106 @@
 
           <div class="col-md-6 animate-box">
             <div class="progress-wrap ftco-animate">
-              <h3 class="d-flex justify-content-between"><span>AI & LLM Integration (OpenAI, Gemini, RAG)</span><span>80%</span></h3>
+              <h3 class="d-flex justify-content-between"><span>TypeScript / Node / NestJS</span><span>80%</span></h3>
+              <div class="progress"><div class="progress-bar color-4" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"></div></div>
+            </div>
+          </div>
+
+          <div class="col-md-6 animate-box">
+            <div class="progress-wrap ftco-animate">
+              <h3 class="d-flex justify-content-between"><span>React / Angular</span><span>75%</span></h3>
+              <div class="progress"><div class="progress-bar color-1" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%"></div></div>
+            </div>
+          </div>
+
+          <div class="col-md-6 animate-box">
+            <div class="progress-wrap ftco-animate">
+              <h3 class="d-flex justify-content-between"><span>Databases (PostgreSQL / MongoDB)</span><span>75%</span></h3>
+              <div class="progress"><div class="progress-bar color-6" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%"></div></div>
+            </div>
+          </div>
+
+          <div class="col-md-6 animate-box">
+            <div class="progress-wrap ftco-animate">
+              <h3 class="d-flex justify-content-between"><span>Applied GenAI (LLMs, RAG, APIs)</span><span>80%</span></h3>
               <div class="progress"><div class="progress-bar color-3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"></div></div>
             </div>
           </div>
 
           <div class="col-md-6 animate-box">
             <div class="progress-wrap ftco-animate">
-              <h3 class="d-flex justify-content-between"><span>NestJS & MongoDB (APIs)</span><span>75%</span></h3>
-              <div class="progress"><div class="progress-bar color-4" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%"></div></div>
-            </div>
-          </div>
-
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3 class="d-flex justify-content-between"><span>Speech AI (Whisper, XTTS, TTS Engines)</span><span>70%</span></h3>
+              <h3 class="d-flex justify-content-between"><span>DevOps & Tools (Docker, Git, CI basics)</span><span>70%</span></h3>
               <div class="progress"><div class="progress-bar color-5" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"></div></div>
-            </div>
-          </div>
-
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3 class="d-flex justify-content-between"><span>DevOps & Tools (Docker, GitHub, JWT)</span><span>70%</span></h3>
-              <div class="progress"><div class="progress-bar color-6" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"></div></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- PROJECTS -->
     <section class="ftco-section" id="projects-section">
       <div class="container">
         <div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
             <h2 class="big big-2">Projects</h2>
-            <p class="mb-4">Explore my latest work in AI, mobile development, and web applications</p>
+            <p class="mb-4">Selected work in Full-Stack engineering and applied GenAI.</p>
           </div>
         </div>
 
         <div class="projects-grid">
           <!-- MASMEDIA AIDITOR -->
           <div class="project-card featured">
-  <div class="project-image" style="background-image: url('images/massmedia.jpg');"></div>
-  <div class="project-content">
-    <h3 class="project-title">MASMEDIA AIDITOR</h3>
-    <div class="project-subtitle">AI-Powered Media Automation Platform</div>
-    <p class="project-description">
-      Intelligent media automation platform revolutionizing tech journalism through AI-driven livestream coverage and content curation. Built during ESPRIT Startup internship, delivering zero-to-published pipeline in 60 seconds.
-    </p>
-    <div class="project-tech">
-      <span class="tech-tag">NestJS</span><span class="tech-tag">RxJS</span><span class="tech-tag">MongoDB</span>
-      <span class="tech-tag">OpenAI</span><span class="tech-tag">AssemblyAI</span><span class="tech-tag">ElevenLabs</span>
-      <span class="tech-tag">Docker</span><span class="tech-tag">FFmpeg</span><span class="tech-tag">SSE</span>
-    </div>
-    <div class="project-date">Jun 2025 – Sep 2025</div>
-    <div class="project-links">
-      <button class="btn btn-primary py-3 px-4" onclick="openModal('masmedia-modal')">Live Demo</button>
-      <a href="https://github.com/gachitazied/MASMEDIA-AIDITOR-Front.git" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Frontend</a>
-      <a href="https://github.com/GaayaAziz/MASMEDIA-AIDITOR.git" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Backend</a>
-    </div>
-  </div>
-</div>
+            <div class="project-image" style="background-image: url('images/massmedia.jpg');"></div>
+            <div class="project-content">
+              <h3 class="project-title">MASMEDIA AIDITOR</h3>
+              <div class="project-subtitle">AI-powered media automation platform</div>
+              <p class="project-description">
+                Built during the ESPRIT Startup internship: real-time ingestion + processing pipelines and a dashboard to validate and publish content faster.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">NestJS</span><span class="tech-tag">RxJS</span><span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">OpenAI</span><span class="tech-tag">Docker</span><span class="tech-tag">FFmpeg</span><span class="tech-tag">SSE</span>
+              </div>
+              <div class="project-date">Jul 2025 – Sep 2025</div>
+              <div class="project-links">
+                <button class="btn btn-primary py-3 px-4" onclick="openModal('masmedia-modal')">Watch Demo</button>
+                <a href="https://github.com/gachitazied/MASMEDIA-AIDITOR-Front.git" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Frontend</a>
+                <a href="https://github.com/GaayaAziz/MASMEDIA-AIDITOR.git" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Backend</a>
+              </div>
+            </div>
+          </div>
 
-<!-- Modal for MASMEDIA AIDITOR -->
-<div id="masmedia-modal" class="custom-modal">
-  <div class="custom-modal-content">
-    <span class="custom-close" onclick="closeModal('masmedia-modal')">&times;</span>
-    <div class="video-wrapper">
-      <iframe
-        id="masmedia-yt"
-        title="MASMEDIA AIDITOR Demo"
-        data-src="https://www.youtube-nocookie.com/embed/aoA7SMIzSG4?rel=0&modestbranding=1&playsinline=1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </div>
-  </div>
-</div>
+          <!-- Modal for MASMEDIA -->
+          <div id="masmedia-modal" class="custom-modal">
+            <div class="custom-modal-content">
+              <span class="custom-close" onclick="closeModal('masmedia-modal')">&times;</span>
+              <div class="video-wrapper">
+                <iframe
+                  title="MASMEDIA AIDITOR Demo"
+                  data-src="https://www.youtube-nocookie.com/embed/aoA7SMIzSG4?rel=0&modestbranding=1&playsinline=1"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
           <!-- KiddoAI -->
           <div class="project-card featured">
             <div class="project-image" style="background-image: url('images/kiddoai.jpg');"></div>
             <div class="project-content">
               <h3 class="project-title">KiddoAI</h3>
-              <div class="project-subtitle">AI-powered Educational Assistant for Tunisian Kids</div>
+              <div class="project-subtitle">AI learning companion (Academic MVP)</div>
               <p class="project-description">
-                Emotionally intelligent learning app using AI to support 6-year-olds in Tunisia. Features IQ profiling, voice interaction with Coqui XTTS, and Socratic tutoring using Gemini and RAG.
+                Personalized learning flows using RAG over curriculum PDFs, voice interaction, and conversational tutoring to support young learners.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">Flutter</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">Gemini API</span>
-                <span class="tech-tag">Coqui XTTS</span><span class="tech-tag">RAG</span><span class="tech-tag">Hugging Face</span>
+                <span class="tech-tag">Flutter</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">RAG</span>
+                <span class="tech-tag">LLM APIs</span><span class="tech-tag">TTS</span>
               </div>
               <div class="project-date">Jan 2025 – May 2025</div>
               <div class="project-links">
-                <button class="btn btn-primary py-3 px-4" onclick="openModal('kiddoai-modal')">Live Demo</button>
+                <button class="btn btn-primary py-3 px-4" onclick="openModal('kiddoai-modal')">Watch Demo</button>
                 <a href="https://github.com/achreflajmi/KiddoAI-Front" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Frontend</a>
                 <a href="https://github.com/achreflajmi/KiddoAI-Backend" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Backend</a>
               </div>
@@ -470,11 +582,11 @@
               <span class="custom-close" onclick="closeModal('kiddoai-modal')">&times;</span>
               <div class="video-wrapper">
                 <iframe
-                  id="kiddoai-yt"
                   title="KiddoAI Demo"
                   data-src="https://www.youtube-nocookie.com/embed/NfDOhjPF7VM?rel=0&modestbranding=1&playsinline=1"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen></iframe>
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
           </div>
@@ -484,17 +596,16 @@
             <div class="project-image" style="background-image: url('images/sufess.jpg');"></div>
             <div class="project-content">
               <h3 class="project-title">SUF'ESS</h3>
-              <div class="project-subtitle">24h Hackathon-winning cultural app</div>
+              <div class="project-subtitle">Hackathon MVP (24h)</div>
               <p class="project-description">
-                A location-based mobile app that guides visitors through historical sites like Sbiba with 3D models, AI-powered tours, and multilingual support.
+                Location-based cultural exploration app with interactive storytelling and prototype AI features for guided tours.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">FlutterFlow</span><span class="tech-tag">RAG</span><span class="tech-tag">3D Modeling</span>
-                <span class="tech-tag">Geolocation</span><span class="tech-tag">Computer Vision</span>
+                <span class="tech-tag">FlutterFlow</span><span class="tech-tag">RAG</span><span class="tech-tag">3D</span><span class="tech-tag">Geo</span>
               </div>
               <div class="project-date">Feb 2025</div>
               <div class="project-links">
-                <button class="btn btn-primary py-3 px-4" onclick="openModal('sufess-modal')">Live Demo</button>
+                <button class="btn btn-primary py-3 px-4" onclick="openModal('sufess-modal')">Watch Demo</button>
                 <a href="https://github.com/achreflajmi/SUF-ESS-Mobile" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Mobile</a>
                 <a href="https://github.com/achreflajmi/SUF-ESS-Backend" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Backend</a>
               </div>
@@ -507,11 +618,11 @@
               <span class="custom-close" onclick="closeModal('sufess-modal')">&times;</span>
               <div class="video-wrapper">
                 <iframe
-                  id="sufess-yt"
                   title="SUF'ESS Demo"
                   data-src="https://www.youtube-nocookie.com/embed/NwJ0WE14vEM?rel=0&modestbranding=1&playsinline=1"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen></iframe>
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
           </div>
@@ -521,16 +632,16 @@
             <div class="project-image" style="background-image: url('images/Mood.png');"></div>
             <div class="project-content">
               <h3 class="project-title">MoodyMap</h3>
-              <div class="project-subtitle">AI mood & planner app for students</div>
+              <div class="project-subtitle">Mood & study planning (iOS)</div>
               <p class="project-description">
-                iOS app combining emotion recognition via camera with AI-powered academic planning and OpenAI suggestions.
+                iOS app with a backend that supports mood-based planning and recommendations.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">Swift</span><span class="tech-tag">NestJS</span><span class="tech-tag">MongoDB</span><span class="tech-tag">OpenAI</span>
+                <span class="tech-tag">Swift</span><span class="tech-tag">NestJS</span><span class="tech-tag">MongoDB</span>
               </div>
               <div class="project-date">Oct 2024 – Dec 2024</div>
               <div class="project-links">
-                <button class="btn btn-primary py-3 px-4" onclick="openModal('moodymap-modal')">Live Demo</button>
+                <button class="btn btn-primary py-3 px-4" onclick="openModal('moodymap-modal')">Watch Demo</button>
                 <a href="https://github.com/achreflajmi/FrontIOSMoodyMap" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">iOS</a>
                 <a href="https://github.com/Vfiras/MoodyMapBackend" target="_blank" class="btn btn-white btn-outline-white py-3 px-4" rel="noopener">Backend</a>
               </div>
@@ -543,11 +654,11 @@
               <span class="custom-close" onclick="closeModal('moodymap-modal')">&times;</span>
               <div class="video-wrapper vertical">
                 <iframe
-                  id="moodymap-yt"
                   title="MoodyMap Demo"
                   data-src="https://www.youtube-nocookie.com/embed/S_biZwKb0QQ?rel=0&modestbranding=1&playsinline=1"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen></iframe>
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
           </div>
@@ -557,14 +668,16 @@
             <div class="project-image" style="background-image: url('images/finnconnect.png');"></div>
             <div class="project-content">
               <h3 class="project-title">FinConnect</h3>
-              <div class="project-subtitle">Enterprise ticketing system</div>
-              <p class="project-description">Ticket platform for financial institutions, supporting 300+ daily tickets with real-time messaging and priority control.</p>
+              <div class="project-subtitle">Ticketing system (internship)</div>
+              <p class="project-description">
+                Enterprise ticket platform with role-based access, chat, filtering, and PDF export (private repo).
+              </p>
               <div class="project-tech">
                 <span class="tech-tag">Angular</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">JWT</span><span class="tech-tag">PDF</span>
               </div>
               <div class="project-date">Jun 2024 – Jul 2024</div>
               <div class="project-links">
-                <span class="btn btn-private" title="This project is not publicly available">🔒 Private Project</span>
+                <span class="btn btn-private" title="Private company project">🔒 Private Project</span>
               </div>
             </div>
           </div>
@@ -574,9 +687,9 @@
             <div class="project-image" style="background-image: url('images/bourlafourm.png');"></div>
             <div class="project-content">
               <h3 class="project-title">Bourlafourm</h3>
-              <div class="project-subtitle">Fitness ecosystem across web and desktop</div>
+              <div class="project-subtitle">Web + desktop fitness ecosystem</div>
               <p class="project-description">
-                Full-stack project combining Symfony web with JavaFX desktop modules for fitness tracking and e-commerce features.
+                Full-stack project: Symfony web + JavaFX desktop modules for fitness tracking and e-commerce features.
               </p>
               <div class="project-tech">
                 <span class="tech-tag">Symfony</span><span class="tech-tag">JavaFX</span><span class="tech-tag">MySQL</span><span class="tech-tag">PHP</span>
@@ -592,49 +705,56 @@
       </div>
     </section>
 
+    <!-- BLOG -->
     <section class="ftco-section" id="blog-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
             <h1 class="big big-2">Blog</h1>
             <h2 class="mb-4">Latest Insights</h2>
-            <p>Sharing thoughts on AI, mobile development, and the future of technology</p>
+            <p>Short, practical posts about shipping products, engineering decisions, and applied AI.</p>
           </div>
         </div>
+
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry justify-content-end">
               <a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');"></a>
               <div class="text mt-3 float-right d-block">
                 <div class="d-flex align-items-center mb-3 meta">
-                  <p class="mb-0"><span class="mr-2">March 15, 2025</span><a href="#" class="mr-2">Achref</a><a href="#" class="meta-chat"><span class="icon-chat"></span> 12</a></p>
+                  <p class="mb-0">
+                    <span class="mr-2">Mar 15, 2025</span>
+                    <a href="#" class="mr-2">Achref</a>
+                  </p>
                 </div>
-                <h3 class="heading"><a href="single.html">Building AI-Powered Educational Apps for Tunisia</a></h3>
-                <p>Exploring how artificial intelligence can revolutionize education in developing countries through localized, culturally-aware applications.</p>
+                <h3 class="heading"><a href="single.html">KiddoAI: Building a RAG-based Learning Companion</a></h3>
+                <p>How we structured curriculum ingestion, retrieval, and safe tutoring flows for personalized learning.</p>
               </div>
             </div>
           </div>
+
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry justify-content-end">
               <a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');"></a>
               <div class="text mt-3 float-right d-block">
                 <div class="d-flex align-items-center mb-3 meta">
-                  <p class="mb-0"><span class="mr-2">February 20, 2025</span><a href="#" class="mr-2">Achref</a><a href="#" class="meta-chat"><span class="icon-chat"></span> 8</a></p>
+                  <p class="mb-0"><span class="mr-2">Feb 20, 2025</span><a href="#" class="mr-2">Achref</a></p>
                 </div>
-                <h3 class="heading"><a href="single.html">Flutter vs React Native: A Developer's Perspective</a></h3>
-                <p>My experience building cross-platform mobile applications and why Flutter became my framework of choice for AI integration.</p>
+                <h3 class="heading"><a href="single.html">From API to UI: Shipping Full-Stack Features Fast</a></h3>
+                <p>My checklist for delivering production-ready features: contracts, tests, logs, and UX.</p>
               </div>
             </div>
           </div>
+
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry">
               <a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');"></a>
               <div class="text mt-3 float-right d-block">
                 <div class="d-flex align-items-center mb-3 meta">
-                  <p class="mb-0"><span class="mr-2">January 10, 2025</span><a href="#" class="mr-2">Achref</a><a href="#" class="meta-chat"><span class="icon-chat"></span> 15</a></p>
+                  <p class="mb-0"><span class="mr-2">Jan 10, 2025</span><a href="#" class="mr-2">Achref</a></p>
                 </div>
-                <h3 class="heading"><a href="single.html">Winning a Hackathon in 24 Hours: Lessons Learned</a></h3>
-                <p>The story behind SUF'ESS and how rapid prototyping with FlutterFlow can lead to innovative cultural preservation solutions.</p>
+                <h3 class="heading"><a href="single.html">Hackathon in 24h: What I’d Do Again</a></h3>
+                <p>Rapid prototyping, smart scope control, and how to demo something that feels “real”.</p>
               </div>
             </div>
           </div>
@@ -642,6 +762,7 @@
       </div>
     </section>
 
+    <!-- COUNTERS -->
     <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
       <div class="container">
         <div class="row d-md-flex align-items-center">
@@ -649,31 +770,31 @@
             <div class="block-18">
               <div class="text">
                 <strong class="number" data-number="2">0</strong>
-                <span>Hackathon Wins</span>
+                <span>Hackathon Projects</span>
               </div>
             </div>
           </div>
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="5">0</strong>
-                <span>Major Projects</span>
+                <strong class="number" data-number="8">0</strong>
+                <span>Projects Shipped</span>
               </div>
             </div>
           </div>
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="6">0</strong>
-                <span>Technologies Mastered</span>
+                <strong class="number" data-number="15">0</strong>
+                <span>Core Technologies</span>
               </div>
             </div>
           </div>
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="1000">0</strong>
-                <span>Lines of Code</span>
+                <strong class="number" data-number="50000">0</strong>
+                <span>Lines of Code (approx.)</span>
               </div>
             </div>
           </div>
@@ -681,25 +802,27 @@
       </div>
     </section>
 
+    <!-- HIRE ME -->
     <section class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 ftco-animate text-center">
-            <h2>I'm <span>Available</span> for AI & Mobile Projects</h2>
-            <p>Ready to bring your innovative ideas to life with cutting-edge AI integration and mobile development expertise.</p>
-            <p class="mb-0"><a href="#contact-section" class="btn btn-primary py-3 px-5">Let's Work Together</a></p>
+            <h2>Available for <span>Internship</span> from Feb 2026</h2>
+            <p>Looking for a strong environment to learn fast, ship real product work, and grow as an engineer.</p>
+            <p class="mb-0"><a href="#contact-section" class="btn btn-primary py-3 px-5">Let’s Connect</a></p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
             <h1 class="big big-2">Contact</h1>
             <h2 class="mb-4">Get In Touch</h2>
-            <p>Interested in AI-powered solutions, mobile development, or innovative tech projects? Let's connect!</p>
+            <p>For internship roles (Full-Stack, Backend, Applied GenAI) — I respond quickly.</p>
           </div>
         </div>
 
@@ -708,23 +831,26 @@
             <div class="align-self-stretch box p-4 text-center">
               <div class="icon d-flex align-items-center justify-content-center"><span class="icon-map-signs"></span></div>
               <h3 class="mb-4">Location</h3>
-              <p>Tunisia<br>Exchange: Marburg, Germany (Oct 2025)</p>
+              <p>Germany (Kirchhain / Marburg)<br />Open to Berlin / Munich</p>
             </div>
           </div>
+
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
             <div class="align-self-stretch box p-4 text-center">
               <div class="icon d-flex align-items-center justify-content-center"><span class="icon-phone2"></span></div>
-              <h3 class="mb-4">Contact Number</h3>
-              <p><a href="tel://+21656809401">+216 56 809 401</a></p>
+              <h3 class="mb-4">Phone</h3>
+              <p><a href="tel:+4915565848284">+49 15565848284</a></p>
             </div>
           </div>
+
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
             <div class="align-self-stretch box p-4 text-center">
               <div class="icon d-flex align-items-center justify-content-center"><span class="icon-paper-plane"></span></div>
-              <h3 class="mb-4">Email Address</h3>
+              <h3 class="mb-4">Email</h3>
               <p><a href="mailto:achreflajmi1@gmail.com">achreflajmi1@gmail.com</a></p>
             </div>
           </div>
+
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
             <div class="align-self-stretch box p-4 text-center">
               <div class="icon d-flex align-items-center justify-content-center"><span class="icon-globe"></span></div>
@@ -740,66 +866,70 @@
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="ftco-footer ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">About</h2>
-              <p>Software engineering student specializing in AI-powered mobile applications and full-stack development. Building innovative solutions that bridge technology and real-world impact.</p>
+              <p>
+                Final-year Software Engineering student shipping full-stack products and applied GenAI features (LLMs/RAG).
+                Seeking internship from Feb 2026 (6 months).
+              </p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="https://twitter.com/achref_lajmi" target="_blank" rel="noopener"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="https://linkedin.com/in/achref-lajmi" target="_blank" rel="noopener"><span class="icon-linkedin"></span></a></li>
                 <li class="ftco-animate"><a href="https://github.com/achreflajmi" target="_blank" rel="noopener"><span class="icon-github"></span></a></li>
               </ul>
             </div>
           </div>
+
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-4">
               <h2 class="ftco-heading-2">Links</h2>
               <ul class="list-unstyled">
                 <li><a href="#home-section"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
                 <li><a href="#about-section"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
-                <li><a href="#services-section"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
+                <li><a href="#services-section"><span class="icon-long-arrow-right mr-2"></span>Focus</a></li>
                 <li><a href="#projects-section"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li>
                 <li><a href="#contact-section"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
               </ul>
             </div>
           </div>
+
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Specializations</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>AI Integration</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Mobile Development</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Voice Technology</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Full-Stack Solutions</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Educational Tech</a></li>
+                <li><a href="#projects-section"><span class="icon-long-arrow-right mr-2"></span>Full-Stack Engineering</a></li>
+                <li><a href="#projects-section"><span class="icon-long-arrow-right mr-2"></span>Backend APIs</a></li>
+                <li><a href="#projects-section"><span class="icon-long-arrow-right mr-2"></span>LLM / RAG Integration</a></li>
+                <li><a href="#projects-section"><span class="icon-long-arrow-right mr-2"></span>Dashboards</a></li>
               </ul>
             </div>
           </div>
+
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Have Questions?</h2>
+              <h2 class="ftco-heading-2">Contact</h2>
               <div class="block-23 mb-3">
                 <ul>
-                  <li><span class="icon icon-map-marker"></span><span class="text">Tunisia • Marburg, Germany (Oct 2025)</span></li>
-                  <li><a href="tel:+21656809401"><span class="icon icon-phone"></span><span class="text">+216 56 809 401</span></a></li>
+                  <li><span class="icon icon-map-marker"></span><span class="text">Germany (Kirchhain / Marburg)</span></li>
+                  <li><a href="tel:+4915565848284"><span class="icon icon-phone"></span><span class="text">+49 15565848284</span></a></li>
                   <li><a href="mailto:achreflajmi1@gmail.com"><span class="icon icon-envelope"></span><span class="text">achreflajmi1@gmail.com</span></a></li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </footer>
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
       <svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
       </svg>
     </div>
 
@@ -822,22 +952,22 @@
     <script>
       function openModal(id) {
         const modal = document.getElementById(id);
+        if (!modal) return;
         modal.style.display = 'block';
 
         const iframe = modal.querySelector('iframe[data-src]');
         if (iframe) {
-          const base = iframe.dataset.src; // without autoplay
+          const base = iframe.dataset.src;
           const sep = base.includes('?') ? '&' : '?';
-          // Start muted so autoplay works on mobile
           iframe.src = base + sep + 'autoplay=1&mute=1';
         }
       }
 
       function closeModal(id) {
         const modal = document.getElementById(id);
+        if (!modal) return;
         modal.style.display = 'none';
 
-        // Stop YouTube: reset to base src (no autoplay)
         const iframe = modal.querySelector('iframe[data-src]');
         if (iframe) {
           iframe.src = '';
@@ -845,14 +975,13 @@
         }
       }
 
-      // Click outside to close
       window.onclick = function (event) {
         document.querySelectorAll('.custom-modal').forEach(modal => {
           if (event.target === modal) {
             closeModal(modal.id);
           }
         });
-      }
+      };
     </script>
   </body>
 </html>
