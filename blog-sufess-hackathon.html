@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SUF'ESS: Hackathon in 24h — What We Built | Achref Lajmi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <meta
+      name="description"
+      content="A practical breakdown of how we built SUF'ESS in 24 hours: scope decisions, MVP architecture, demo strategy, and what I’d do again."
+    />
+    <meta name="robots" content="index,follow" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/icomoon.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Achref Lajmi</a>
+        <button
+          class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav nav ml-auto">
+            <li class="nav-item"><a href="index.html#home-section" class="nav-link"><span>Home</span></a></li>
+            <li class="nav-item"><a href="index.html#projects-section" class="nav-link"><span>Projects</span></a></li>
+            <li class="nav-item"><a href="index.html#blog-section" class="nav-link"><span>Blog</span></a></li>
+            <li class="nav-item"><a href="index.html#contact-section" class="nav-link"><span>Contact</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+          <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
+            <h1 class="mb-3 bread">Blog Post</h1>
+            <p class="breadcrumbs">
+              <span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span>
+              <span class="mr-2"><a href="index.html#blog-section">Blog <i class="ion-ios-arrow-forward"></i></a></span>
+              <span>SUF'ESS <i class="ion-ios-arrow-forward"></i></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+            <h2 class="mb-3">SUF'ESS: Hackathon in 24h — What We Built and What I’d Do Again</h2>
+
+            <div class="d-flex align-items-center mb-4 meta">
+              <p class="mb-0">
+                <span class="mr-2">Jan 10, 2025</span>
+                <span class="mr-2">•</span>
+                <span class="mr-2">Achref Lajmi</span>
+                <span class="mr-2">•</span>
+                <span>Hackathon / Product Execution</span>
+              </p>
+            </div>
+
+            <p>
+              SUF’ESS was built during a 24-hour hackathon. The goal was to ship a credible MVP under extreme time pressure:
+              a cultural exploration experience that feels modern, guided, and interactive — not just a static list of places.
+            </p>
+
+            <p>
+              <img src="images/sufess.jpg" alt="SUF'ESS preview" class="img-fluid" />
+            </p>
+
+            <h3 class="mt-5">1) The Problem We Chose</h3>
+            <p>
+              In many cities, cultural discovery is either overwhelming (too much info) or boring (no narrative).
+              We wanted a user to open the app and immediately get a guided experience: where to go, what to see, and why it matters.
+            </p>
+
+            <h3 class="mt-4">2) Scope Control (The Real Hackathon Skill)</h3>
+            <ul>
+              <li><strong>One core user journey:</strong> open → pick a theme → get a guided route → consume story cards.</li>
+              <li><strong>One strong demo:</strong> show a complete experience end-to-end, even if the dataset is small.</li>
+              <li><strong>Defer “nice-to-haves”:</strong> login, complex profiles, large content library.</li>
+            </ul>
+
+            <h3 class="mt-4">3) MVP Architecture</h3>
+            <p>
+              We kept it simple and demo-friendly: a mobile-first experience with a lightweight backend.
+              The system was designed to be extensible: locations + story cards + optional AI-driven guidance.
+            </p>
+            <ul>
+              <li>Mobile UI built quickly with <strong>FlutterFlow</strong> to speed up iteration.</li>
+              <li>Backend endpoints to serve points of interest, routes, and narrative content.</li>
+              <li>Prototype “AI guidance” concept (RAG-ready): structured content that can later power a guided assistant.</li>
+            </ul>
+
+            <h3 class="mt-4">4) Demo Strategy (Why People Believe It’s Real)</h3>
+            <ul>
+              <li><strong>Start with a story:</strong> what the user wants in 10 seconds.</li>
+              <li><strong>Show the full loop:</strong> selection → route → narrative → next step.</li>
+              <li><strong>Make it visual:</strong> clean screens, consistent design, minimal text overload.</li>
+            </ul>
+
+            <h3 class="mt-4">5) What I’d Do Again</h3>
+            <ul>
+              <li>Design the MVP around a single “wow” moment.</li>
+              <li>Keep the system modular so improvements are easy after the hackathon.</li>
+              <li>Prioritize a demo that runs smoothly over adding extra features.</li>
+            </ul>
+
+            <h3 class="mt-4">Tech Stack</h3>
+            <p>
+              FlutterFlow • Backend API • Geo concepts • Narrative content • RAG-ready structure • Git
+            </p>
+
+            <div class="mt-5">
+              <a href="index.html#projects-section" class="btn btn-primary py-3 px-4">Back to Projects</a>
+              <a href="index.html#blog-section" class="btn btn-white btn-outline-white py-3 px-4">More Posts</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <h3 class="heading-sidebar">About the Author</h3>
+              <p>
+                Achref is a final-year Software Engineering student building full-stack products and applied GenAI features (LLMs/RAG).
+                Seeking a 6-month internship starting Feb 2026.
+              </p>
+              <p>
+                <a href="index.html#contact-section" class="btn btn-primary py-2 px-3">Get in touch</a>
+              </p>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading-sidebar">Quick Links</h3>
+              <ul class="categories">
+                <li><a href="index.html#projects-section">Projects</a></li>
+                <li><a href="index.html#skills-section">Skills</a></li>
+                <li><a href="cv/Achref_Lajmi_FullStack.pdf" target="_blank" rel="noopener">Download CV</a></li>
+                <li><a href="https://github.com/achreflajmi" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/achref-lajmi" target="_blank" rel="noopener">LinkedIn</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading-sidebar">Tags</h3>
+              <div class="tagcloud">
+                <a href="#" class="tag-cloud-link">Hackathon</a>
+                <a href="#" class="tag-cloud-link">MVP</a>
+                <a href="#" class="tag-cloud-link">Product</a>
+                <a href="#" class="tag-cloud-link">FlutterFlow</a>
+                <a href="#" class="tag-cloud-link">RAG</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Achref Lajmi</h2>
+              <p>Full-Stack Engineering + Applied GenAI (LLMs/RAG). Internship from Feb 2026 (6 months).</p>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Contact</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><a href="tel:+4915565848284"><span class="icon icon-phone"></span><span class="text">+49 15565848284</span></a></li>
+                  <li><a href="mailto:achreflajmi1@gmail.com"><span class="icon icon-envelope"></span><span class="text">achreflajmi1@gmail.com</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+      </svg>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

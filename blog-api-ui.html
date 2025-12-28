@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>From API to UI: Shipping Real-Time AI Features with NestJS + React (SSE) | Achref Lajmi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="How MASMEDIA AIDITOR ships real-time AI features end-to-end: NestJS pipelines, SSE streaming to React, and a review-first dashboard to control AI output."
+    />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Fonts & CSS (match your template) -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/icomoon.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      /* Keep small page-level enhancements minimal so you stay consistent with your theme */
+      .post-meta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        opacity: 0.95;
+      }
+      .post-meta-pill .dot {
+        opacity: 0.55;
+      }
+      .callout {
+        border-left: 4px solid #fbbf24;
+        background: rgba(251, 191, 36, 0.06);
+        padding: 16px 18px;
+        border-radius: 10px;
+      }
+      .code-note {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 14px 16px;
+        border-radius: 12px;
+      }
+      .tagcloud a.tag-cloud-link {
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+      .post-cover {
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .post-cover img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Achref Lajmi</a>
+        <button
+          class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav nav ml-auto">
+            <li class="nav-item"><a href="index.html#home-section" class="nav-link"><span>Home</span></a></li>
+            <li class="nav-item"><a href="index.html#projects-section" class="nav-link"><span>Projects</span></a></li>
+            <li class="nav-item"><a href="index.html#blog-section" class="nav-link"><span>Blog</span></a></li>
+            <li class="nav-item"><a href="index.html#contact-section" class="nav-link"><span>Contact</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+          <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
+            <h1 class="mb-3 bread">Blog Post</h1>
+            <p class="breadcrumbs">
+              <span class="mr-2"
+                ><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a
+              ></span>
+              <span class="mr-2"
+                ><a href="index.html#blog-section">Blog <i class="ion-ios-arrow-forward"></i></a
+              ></span>
+              <span>MASMEDIA AIDITOR <i class="ion-ios-arrow-forward"></i></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POST -->
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <!-- MAIN -->
+          <div class="col-lg-8 ftco-animate">
+            <h2 class="mb-3">From API to UI: Shipping Real-Time AI Features with NestJS + React (SSE)</h2>
+
+            <div class="d-flex align-items-center mb-4 meta">
+              <p class="mb-0 post-meta-pill">
+                <span class="mr-2">Feb 20, 2025</span>
+                <span class="dot">•</span>
+                <span class="mr-2">Achref Lajmi</span>
+                <span class="dot">•</span>
+                <span>Full-Stack / Real-Time Systems / Applied AI</span>
+              </p>
+            </div>
+
+            <div class="callout mb-4">
+              <strong>What this post covers:</strong>
+              how MASMEDIA AIDITOR ships real-time AI features end-to-end: a NestJS pipeline that processes content, a React dashboard that streams
+              updates via SSE, and a review-first UX that keeps AI output controllable.
+            </div>
+
+            <p>
+              MASMEDIA AIDITOR was built to reduce the time between “a source appears” and “a publishable draft exists.”
+              The goal wasn’t to “add AI”, but to ship a reliable product system:
+              <strong>ingestion → processing → AI enrichment → real-time updates → human validation</strong>.
+            </p>
+
+            <div class="post-cover mt-4 mb-5">
+              <img src="images/massmedia.jpg" alt="MASMEDIA AIDITOR dashboard preview" class="img-fluid" />
+            </div>
+
+            <h3 class="mt-5">1) What the product does (in one sentence)</h3>
+            <p>
+              MASMEDIA AIDITOR turns raw incoming sources (links, feeds, media references) into structured items:
+              normalized metadata, AI summaries/drafts, tags/categories, and a dashboard flow to review and publish.
+            </p>
+
+            <h3 class="mt-5">2) Backend: the pipeline that makes “real-time” possible (NestJS)</h3>
+            <p>
+              The backend is designed around a pipeline mindset. Each item moves through stages, and each stage can
+              report progress, store intermediate results, and fail gracefully without breaking the dashboard.
+            </p>
+
+            <h4 class="mt-4">Ingestion</h4>
+            <ul>
+              <li>Accept a content request (URL, text, or media reference).</li>
+              <li>Validate, deduplicate, store the initial record.</li>
+              <li>Create a processing job and mark the item as <em>queued</em>.</li>
+            </ul>
+
+            <h4 class="mt-4">Processing stages</h4>
+            <p class="mb-2">A pragmatic multi-stage flow:</p>
+            <ol>
+              <li><strong>Fetch / parse:</strong> retrieve content, extract usable text and metadata.</li>
+              <li><strong>Clean / normalize:</strong> remove noise, standardize fields, produce consistent structure.</li>
+              <li><strong>AI enrichment:</strong> summaries, key points, tagging/classification, optional rewrite.</li>
+              <li><strong>Persist + notify:</strong> store results and push live updates to the frontend.</li>
+            </ol>
+
+            <div class="code-note mt-4 mb-4">
+              <strong>Data model (simple & scalable):</strong>
+              <ul class="mb-0">
+                <li><code>ContentItem</code>: source, status, timestamps, derived fields</li>
+                <li><code>ProcessingJob</code>: stage, progress, errors, correlation id</li>
+                <li><code>Draft</code>: summary, key points, suggested title, tags, category</li>
+              </ul>
+            </div>
+
+            <h4 class="mt-4">Why SSE (not polling)</h4>
+            <p>
+              Polling makes the UI feel delayed and wastes requests. WebSockets are powerful but add complexity if you
+              only need server → client updates. For this product, <strong>Server-Sent Events (SSE)</strong> were ideal:
+              the server streams lightweight job events and the UI updates instantly.
+            </p>
+
+            <p class="mb-2"><strong>Typical event types:</strong></p>
+            <ul>
+              <li><code>job.created</code> — show the item immediately</li>
+              <li><code>job.progress</code> — update stage + progress badge</li>
+              <li><code>job.completed</code> — enable review actions</li>
+              <li><code>job.failed</code> — show error + retry</li>
+            </ul>
+
+            <h3 class="mt-5">3) Frontend: making the dashboard feel “alive” (React)</h3>
+            <p>
+              The UI isn’t just “showing data.” It’s the control surface for the pipeline. The key was designing a
+              dashboard that stays responsive while jobs run in the background, and that communicates trust via
+              clear states.
+            </p>
+
+            <h4 class="mt-4">Streaming updates (SSE client)</h4>
+            <ul>
+              <li>Open an SSE stream when the dashboard loads.</li>
+              <li>Handle events incrementally (update a single item instead of re-fetching everything).</li>
+              <li>Recover from disconnects (retry/backoff + visible “reconnecting” indicator if needed).</li>
+            </ul>
+
+            <h4 class="mt-4">State and UI patterns that feel production-ready</h4>
+            <ul>
+              <li><strong>Optimistic UX:</strong> new item appears instantly with <em>Processing…</em>.</li>
+              <li><strong>Explicit states:</strong> queued → extracting → summarizing → ready.</li>
+              <li><strong>Failure states:</strong> “failed” with a clear reason + retry action.</li>
+              <li><strong>Fast rendering:</strong> update by id; avoid full list refresh.</li>
+              <li><strong>Quality UX:</strong> skeleton loaders, empty states, filters (status/category).</li>
+            </ul>
+
+            <div class="callout mt-4 mb-4">
+              <strong>Recruiter signal:</strong> Real-time systems are not only backend engineering. The user trusts the product
+              when the UI explains what is happening, what failed, and what they can do next.
+            </div>
+
+            <h3 class="mt-5">4) The AI layer: useful, controllable, and review-first</h3>
+            <p>
+              The AI layer is a pipeline stage — not the entire product. That design choice is important because AI calls can fail,
+              vary in quality, and should never block the user from progressing.
+            </p>
+
+            <h4 class="mt-4">What AI generates</h4>
+            <ul>
+              <li><strong>Summary</strong> in an editor-friendly structure</li>
+              <li><strong>Key points</strong> for quick review</li>
+              <li><strong>Tags / category</strong> to support filtering and routing</li>
+              <li><strong>Optional rewrite</strong> to match a tone or format</li>
+            </ul>
+
+            <h4 class="mt-4">Guardrails that keep quality high</h4>
+            <ul>
+              <li><strong>Review-first UI:</strong> AI output is always validated by a human in the dashboard.</li>
+              <li><strong>Traceability:</strong> show the source next to the generated draft.</li>
+              <li><strong>Resilience:</strong> if AI fails, mark the item failed and allow retry.</li>
+              <li><strong>Cache intermediate results:</strong> avoid regenerating when not needed.</li>
+            </ul>
+
+            <h3 class="mt-5">5) Lessons learned (what I’d repeat)</h3>
+            <ul>
+              <li><strong>Real-time UX is a product feature:</strong> progress events increase trust and reduce confusion.</li>
+              <li><strong>SSE is the simplest real-time tool</strong> when you only need server → client updates.</li>
+              <li><strong>Pipelines must be resumable:</strong> treat external calls (including AI) as unreliable.</li>
+              <li><strong>Small events beat big payloads:</strong> push what changed, keep the UI fast.</li>
+              <li><strong>Quality comes from workflow:</strong> AI becomes valuable when it’s editable, reviewable, and traceable.</li>
+            </ul>
+
+            <h3 class="mt-5">6) What I’d build next (scaling direction)</h3>
+            <ul>
+              <li>Add a job queue (e.g., BullMQ + Redis) for higher load and better scheduling.</li>
+              <li>Introduce correlation ids and tracing to follow one item across stages.</li>
+              <li>Improve retry/backoff and add a dead-letter strategy for repeated failures.</li>
+              <li>Rate-limit and cache AI operations to control cost and latency.</li>
+            </ul>
+
+            <h3 class="mt-5">Tech Stack</h3>
+            <p>
+              NestJS • React • MongoDB • SSE • RxJS • Docker • LLM APIs / OpenAI • FFmpeg (when media processing applies)
+            </p>
+
+            <div class="mt-5">
+              <a href="index.html#projects-section" class="btn btn-primary py-3 px-4">Back to Projects</a>
+              <a href="index.html#blog-section" class="btn btn-white btn-outline-white py-3 px-4">Back to Blog</a>
+              <a href="index.html#contact-section" class="btn btn-white btn-outline-white py-3 px-4">Contact</a>
+            </div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <h3 class="heading-sidebar">About the Author</h3>
+              <p>
+                Achref is a final-year Software Engineering student building full-stack products and applied GenAI features (LLMs/RAG).
+                Seeking a 6-month internship starting Feb 2026.
+              </p>
+              <p>
+                <a href="index.html#contact-section" class="btn btn-primary py-2 px-3">Get in touch</a>
+              </p>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading-sidebar">Quick Links</h3>
+              <ul class="categories">
+                <li><a href="index.html#projects-section">Projects</a></li>
+                <li><a href="index.html#skills-section">Skills</a></li>
+                <li><a href="cv/Achref_Lajmi_FullStack.pdf" target="_blank" rel="noopener">Full-Stack CV</a></li>
+                <li><a href="https://github.com/achreflajmi" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/achref-lajmi" target="_blank" rel="noopener">LinkedIn</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading-sidebar">Tags</h3>
+              <div class="tagcloud">
+                <a href="#" class="tag-cloud-link">NestJS</a>
+                <a href="#" class="tag-cloud-link">React</a>
+                <a href="#" class="tag-cloud-link">SSE</a>
+                <a href="#" class="tag-cloud-link">Streaming</a>
+                <a href="#" class="tag-cloud-link">Pipelines</a>
+                <a href="#" class="tag-cloud-link">RxJS</a>
+                <a href="#" class="tag-cloud-link">AI</a>
+                <a href="#" class="tag-cloud-link">Product</a>
+              </div>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading-sidebar">Related Posts</h3>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/blog-thumb-rag-education.png);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="blog-kiddoai.html">KiddoAI: Building a RAG-based Learning Companion</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Mar 15, 2025</a></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/blog-thumb-hackathon-24h.png);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="blog-sufess.html">Hackathon in 24h: What I’d Do Again (SUF'ESS)</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Jan 10, 2025</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /SIDEBAR -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Achref Lajmi</h2>
+              <p>Full-Stack Engineering + Applied GenAI (LLMs/RAG). Internship from Feb 2026 (6 months).</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate">
+                  <a href="https://linkedin.com/in/achref-lajmi" target="_blank" rel="noopener"><span class="icon-linkedin"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://github.com/achreflajmi" target="_blank" rel="noopener"><span class="icon-github"></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Contact</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li>
+                    <a href="tel:+4915565848284"><span class="icon icon-phone"></span><span class="text">+49 15565848284</span></a>
+                  </li>
+                  <li>
+                    <a href="mailto:achreflajmi1@gmail.com"><span class="icon icon-envelope"></span><span class="text">achreflajmi1@gmail.com</span></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p style="opacity: 0.75;">
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | Achref Lajmi
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+      </svg>
+    </div>
+
+    <!-- Vendor JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
