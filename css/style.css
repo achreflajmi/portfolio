@@ -9290,23 +9290,29 @@ textarea.form-control {
   text-transform: uppercase;
   letter-spacing: .1em; }
 
-.block-20 {
-  overflow: hidden;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 350px; }
-.blog-entry .block-20{
+.block-20{
   display:block;
   width:100%;
-  height:300px; /* adjust if needed */
+  height:300px;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 }
+.blog-entry .block-20{
+  display:block;
+  width:100%;
+  height:300px;
+  overflow:hidden;
+  border-radius: 0; /* optional */
+}
+
+.blog-entry .block-20 img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
 .blog-entry {
   position: relative; }
   @media (min-width: 768px) {
