@@ -9,7 +9,8 @@
       content="Achref Lajmi is a software engineer in Berlin working on backend, full-stack and applied AI. Built the AI layer at recash in Munich: an autonomous deal engine that scores inventory, negotiates prices and learns from the outcome, gated on a human decision."
     />
     <link rel="canonical" href="https://achreflajmi.netlify.app/" />
-    <meta name="theme-color" content="#e9ebe4" />
+    <meta name="theme-color" content="#09090b" />
+    <meta name="color-scheme" content="dark" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Achref Lajmi — Backend, full-stack and applied AI engineer" />
@@ -24,8 +25,8 @@
     <meta property="og:image:alt" content="Achref Lajmi, backend, full-stack and applied AI engineer, Berlin." />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="assets/fonts/sourceserif.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/geistmono.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="assets/css/site.css" />
 
     <link rel="icon" href="favicon.ico" sizes="any" />
@@ -37,90 +38,83 @@
   <body>
     <a class="skip" href="#main">Skip to content</a>
 
-    <header class="topbar">
-      <a class="topbar__name" href="#main">Achref Lajmi</a>
-      <nav class="topbar__links" aria-label="Quick links">
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <header class="bar">
+      <div class="bar__inner">
+        <a class="bar__name" href="#main">
+          <span class="bar__mark" aria-hidden="true"></span>
+          Achref Lajmi
+        </a>
+
+        <nav class="bar__nav" aria-label="Sections">
+          <a href="#work">Work</a>
+          <a href="#smartpilot">SmartPilot</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="bar__cv" href="cv/Achref_Lajmi_CV.pdf">Download CV</a>
+      </div>
     </header>
 
-    <div class="frame">
-      <aside class="rail">
-        <a class="rail__name" href="#main">Achref<br />Lajmi</a>
-        <nav class="rail__nav" aria-label="Sections">
-          <a class="rail__tick" href="#main">Opening</a>
-          <a class="rail__tick" href="#work">Work</a>
-          <a class="rail__tick" href="#smartpilot">SmartPilot</a>
-          <a class="rail__tick" href="#projects">Projects</a>
-          <a class="rail__tick" href="#skills">Skills</a>
-          <a class="rail__tick" href="#education">Education</a>
-          <a class="rail__tick" href="#contact">Contact</a>
-        </nav>
-      </aside>
+    <main id="main">
+      <section class="hero">
+        <span class="hero__light" aria-hidden="true"></span>
 
-      <main id="main">
-        <section class="hero band">
-          <div class="hero__inner">
-            <div class="hero__intro">
-              <p class="hero__role">Backend, full-stack and applied AI</p>
+        <div class="hero__inner shell">
+          <div>
+            <p class="hero__status">
+              <span class="hero__dot" aria-hidden="true"></span>
+              Available now &middot; Berlin &middot; open to relocation across Europe
+            </p>
 
-              <h1>I build systems that decide on their own, inside limits a human sets.</h1>
+            <h1>I build systems that decide on their own, inside limits a human sets.</h1>
 
-              <p class="hero__lede">
-                Most recently at <b>recash</b> in Munich, as the only engineer on the platform&rsquo;s
-                AI layer. I shipped SmartPilot: a deal engine that scores inventory nightly,
-                negotiates prices, distributes deals, and adjusts its own matching weights from what
-                comes back.
-              </p>
+            <p class="hero__sub">
+              Backend, full-stack and applied AI. Most recently at <b>recash</b> in Munich, as the
+              only engineer on the platform&rsquo;s AI layer, where I shipped an autonomous deal
+              engine end to end.
+            </p>
+
+            <div class="hero__facts">
+              <span><b>24</b> sprints, continuous deployment</span>
+              <span><b>9</b>-person startup</span>
+              <span><b>Tr&egrave;s Bien</b>, ESPRIT 2026</span>
             </div>
 
-            <div class="hero__meta">
-              <dl class="record">
-                <div class="record__row">
-                  <dt>Based in</dt>
-                  <dd>Berlin, Germany</dd>
-                </div>
-                <div class="record__row">
-                  <dt>Available</dt>
-                  <dd>Now, full-time</dd>
-                </div>
-                <div class="record__row">
-                  <dt>Open to</dt>
-                  <dd>Relocation across Europe</dd>
-                </div>
-                <div class="record__row">
-                  <dt>Degree</dt>
-                  <dd>Dipl&ocirc;me d&rsquo;Ing&eacute;nieur, ESPRIT, 2026. Mention Tr&egrave;s Bien</dd>
-                </div>
-              </dl>
-
-              <div class="actions">
-                <a class="btn btn--primary" href="cv/Achref_Lajmi_CV.pdf">Download CV</a>
-                <a class="btn" href="cv/Achref_Lajmi_CV_FR.pdf" lang="fr">CV en fran&ccedil;ais</a>
-                <a class="btn" href="mailto:achreflajmi1@gmail.com">Email me</a>
-              </div>
+            <div class="actions">
+              <a class="btn btn--solid" href="cv/Achref_Lajmi_CV.pdf">Download CV</a>
+              <a class="btn btn--ghost" href="cv/Achref_Lajmi_CV_FR.pdf" lang="fr">CV en fran&ccedil;ais</a>
+              <a class="btn btn--ghost" href="mailto:achreflajmi1@gmail.com">Email me</a>
             </div>
+          </div>
+
+          <div class="stage">
+            <!-- Drop images/achref.jpg in and this appears. Nothing else changes. -->
+            <div class="portrait"></div>
 
             <figure class="loop">
-              <figcaption class="loop__caption">SmartPilot, one nightly cycle</figcaption>
+              <figcaption class="loop__caption">
+                <span>SmartPilot</span>
+                <b>one nightly cycle</b>
+              </figcaption>
 
               <div class="loop__circuit">
                 <ol class="loop__list">
                   <li class="loop__stage">
                     <span class="loop__marker" aria-hidden="true">1</span>
                     <p class="loop__label">Score inventory</p>
-                    <p class="loop__fact">200 products scored nightly for inventory health.</p>
+                    <p class="loop__fact"><b>200</b> products scored nightly for inventory health.</p>
                   </li>
 
                   <li class="loop__stage">
                     <span class="loop__marker" aria-hidden="true">2</span>
                     <p class="loop__label">Negotiate price</p>
-                    <p class="loop__fact">61 pricing opportunities queued, none manually initiated.</p>
+                    <p class="loop__fact"><b>61</b> pricing opportunities queued, none manually initiated.</p>
                   </li>
 
                   <li class="loop__stage loop__stage--gate">
-                    <span class="loop__marker" aria-hidden="true">&#9635;</span>
+                    <span class="loop__marker" aria-hidden="true">&#9632;</span>
                     <p class="loop__label">A human decides</p>
                     <p class="loop__fact">
                       The loop halts. Nothing reaches the catalogue until a person has decided, and
@@ -138,8 +132,8 @@
                     <span class="loop__marker" aria-hidden="true">4</span>
                     <p class="loop__label">Learn from the outcome</p>
                     <p class="loop__fact">
-                      Matching weights adjust nightly inside fixed safety bounds. The size-fit weight
-                      moved from 0.10 to 0.42 on its own, and never overwrote a value a person set.
+                      Weights adjust nightly inside fixed safety bounds. Size-fit moved
+                      <b>0.10 &rarr; 0.42</b> on its own, and never overwrote a value a person set.
                     </p>
                   </li>
                 </ol>
@@ -147,45 +141,45 @@
                 <span class="loop__return" aria-hidden="true"></span>
               </div>
 
-              <p class="loop__footnote">
-                Teal marks what the system does unattended. Red marks what a person decided. That
-                distinction is the point of the design, and it holds everywhere on this site.
-              </p>
+              <div class="loop__key">
+                <span><i class="loop__swatch loop__swatch--machine" aria-hidden="true"></i>runs unattended</span>
+                <span><i class="loop__swatch loop__swatch--human" aria-hidden="true"></i>a person decided</span>
+              </div>
             </figure>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section band" id="work">
-          <h2>Work</h2>
-          <p class="section__stub">Next section, pending your review of the hero.</p>
-        </section>
+      <section class="section shell" id="work">
+        <p class="section__head"><span class="section__n">01</span> <span>/</span> <span>Work</span></p>
+        <h2>Where I have shipped</h2>
+        <p class="section__stub">Next section, pending your sign-off on this hero.</p>
+      </section>
 
-        <section class="section band" id="smartpilot">
-          <h2>SmartPilot</h2>
-          <p class="section__stub">Case study page to follow.</p>
-        </section>
+      <section class="section shell" id="smartpilot">
+        <p class="section__head"><span class="section__n">02</span> <span>/</span> <span>SmartPilot</span></p>
+        <h2>An autonomous deal engine</h2>
+        <p class="section__stub">Case study page to follow.</p>
+      </section>
 
-        <section class="section band" id="projects">
-          <h2>Projects</h2>
-          <p class="section__stub">Pending.</p>
-        </section>
+      <section class="section shell" id="projects">
+        <p class="section__head"><span class="section__n">03</span> <span>/</span> <span>Projects</span></p>
+        <h2>Things I built</h2>
+        <p class="section__stub">Pending.</p>
+      </section>
 
-        <section class="section band" id="skills">
-          <h2>Skills</h2>
-          <p class="section__stub">Pending.</p>
-        </section>
+      <section class="section shell" id="skills">
+        <p class="section__head"><span class="section__n">04</span> <span>/</span> <span>Skills</span></p>
+        <h2>What I work in</h2>
+        <p class="section__stub">Pending.</p>
+      </section>
 
-        <section class="section band" id="education">
-          <h2>Education</h2>
-          <p class="section__stub">Pending.</p>
-        </section>
-
-        <section class="section band" id="contact">
-          <h2>Contact</h2>
-          <p class="section__stub">Pending.</p>
-        </section>
-      </main>
-    </div>
+      <section class="section shell" id="contact">
+        <p class="section__head"><span class="section__n">05</span> <span>/</span> <span>Contact</span></p>
+        <h2>Get in touch</h2>
+        <p class="section__stub">Pending.</p>
+      </section>
+    </main>
 
     <script src="assets/js/site.js" defer></script>
   </body>
