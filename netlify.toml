@@ -80,17 +80,21 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Images are stable but not fingerprinted — a day, then revalidate.
+# Images are not fingerprinted either, and the article covers get replaced.
+# An hour of caching, then revalidate, keeps a swap visible the same day.
 [[headers]]
   for = "/img/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400, must-revalidate"
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
-# Cover animations are replaced by name, so give them the same day-long window.
+# Cover animations are replaced in place, keeping their filenames, so a long
+# max-age strands viewers on an old copy until it expires — must-revalidate
+# does not help, since it only forbids serving stale content after expiry.
+# Revalidate every time: an unchanged file costs a 304, not a re-download.
 [[headers]]
   for = "/video/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400, must-revalidate"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # The CV changes without the filename changing, so it must always revalidate.
 [[headers]]
