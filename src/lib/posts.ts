@@ -18,6 +18,9 @@ export type Post = {
   category: string;
   excerpt: string;
   cover: string;
+  /** Animated version of the cover. The still above remains the poster,
+   *  the reduced-motion fallback and the og:image. */
+  coverVideo: string;
   coverAlt: string;
   stack: string;
   blocks: PostBlock[];
@@ -36,6 +39,7 @@ export const POSTS: Post[] = [
     excerpt:
       'How MASMEDIA AIDITOR ships real-time AI end to end: a NestJS pipeline, a React dashboard streaming over SSE, and a review-first UX that keeps AI output controllable.',
     cover: '/img/blog-thumb-api-ui.png',
+    coverVideo: '/video/api-ui.mp4',
     coverAlt: 'A NestJS pipeline streaming over Server-Sent Events into a React dashboard, where an AI draft waits on approve, edit or reject.',
     stack: 'NestJS • React • MongoDB • SSE • RxJS • Docker • LLM APIs • FFmpeg',
     fr: {
@@ -115,6 +119,7 @@ export const POSTS: Post[] = [
     excerpt:
       'A practical breakdown of how KiddoAI uses RAG over curriculum PDFs, structured tutoring flows, and voice interaction to personalise learning for children.',
     cover: '/img/blog-thumb-rag-education.png',
+    coverVideo: '/video/rag-education.mp4',
     coverAlt: 'KiddoAI ranking curriculum PDFs to answer a spoken question, with the source page cited beneath the tutor’s reply.',
     stack: 'Flutter • Spring Boot • MongoDB • OpenAI • RAG • STT/TTS',
     fr: {
@@ -164,6 +169,7 @@ export const POSTS: Post[] = [
     excerpt:
       'Scope decisions, MVP architecture and demo strategy under extreme time pressure — and the parts of that approach worth repeating.',
     cover: '/img/blog-thumb-hackathon-24h.png',
+    coverVideo: '/video/hackathon-24h.mp4',
     coverAlt: 'A 24-hour hackathon sprint board: three must-haves kept, two features cut, and a timeline counting down to the demo.',
     stack: 'FlutterFlow • Backend API • Geolocation • RAG-ready structure',
     fr: {

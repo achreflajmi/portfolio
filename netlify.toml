@@ -86,6 +86,12 @@
   [headers.values]
     Cache-Control = "public, max-age=86400, must-revalidate"
 
+# Cover animations are replaced by name, so give them the same day-long window.
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
 # The CV changes without the filename changing, so it must always revalidate.
 [[headers]]
   for = "/cv/*"
