@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'wouter';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
-import { getPost, POSTS } from '@/lib/posts';
+import { coverWebp, getPost, POSTS } from '@/lib/posts';
 import NotFound from '@/pages/not-found';
 
 export default function Article() {
@@ -81,13 +81,18 @@ export default function Article() {
         {/* Cover */}
         <div className="max-w-4xl mx-auto px-6 md:px-12 -mt-2 pt-14">
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] bg-neutral-950/80 p-2 md:p-3">
-            <img
-              src={post.cover}
-              alt={post.coverAlt}
-              loading="eager"
-              decoding="async"
-              className="w-full h-auto rounded-xl"
-            />
+            <picture>
+              <source srcSet={coverWebp(post.cover)} type="image/webp" />
+              <img
+                src={post.cover}
+                alt={post.coverAlt}
+                width={1200}
+                height={675}
+                loading="eager"
+                decoding="async"
+                className="w-full h-auto rounded-xl"
+              />
+            </picture>
           </div>
         </div>
 

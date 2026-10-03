@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import { useSectionInView } from '@/lib/use-section-in-view';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Watermark } from '@/components/ui/watermark';
-import { POSTS, type Post } from '@/lib/posts';
+import { coverWebp, POSTS, type Post } from '@/lib/posts';
 import { cn } from '@/lib/utils';
 import { useCopy, useLang, type Lang } from '@/lib/i18n';
 
@@ -100,13 +100,18 @@ function PostItem({ post, index, ui }: { post: Post; index: number; ui: (typeof 
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0,transparent_100%)] pointer-events-none z-10" />
 
           <motion.div style={{ y: imageY }} className="w-full h-full flex items-center justify-center">
-            <img
-              src={post.cover}
-              alt={post.coverAlt}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            />
+            <picture>
+              <source srcSet={coverWebp(post.cover)} type="image/webp" />
+              <img
+                src={post.cover}
+                alt={post.coverAlt}
+                width={1200}
+                height={675}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            </picture>
           </motion.div>
         </div>
 

@@ -36,7 +36,7 @@ export const POSTS: Post[] = [
     excerpt:
       'How MASMEDIA AIDITOR ships real-time AI end to end: a NestJS pipeline, a React dashboard streaming over SSE, and a review-first UX that keeps AI output controllable.',
     cover: '/img/blog-thumb-api-ui.png',
-    coverAlt: 'Cover graphic for the NestJS and React real-time AI article.',
+    coverAlt: 'A NestJS pipeline streaming over Server-Sent Events into a React dashboard, where an AI draft waits on approve, edit or reject.',
     stack: 'NestJS • React • MongoDB • SSE • RxJS • Docker • LLM APIs • FFmpeg',
     fr: {
       cardTitle: 'De l’API à l’interface',
@@ -115,7 +115,7 @@ export const POSTS: Post[] = [
     excerpt:
       'A practical breakdown of how KiddoAI uses RAG over curriculum PDFs, structured tutoring flows, and voice interaction to personalise learning for children.',
     cover: '/img/blog-thumb-rag-education.png',
-    coverAlt: 'Cover graphic for the KiddoAI RAG article.',
+    coverAlt: 'KiddoAI ranking curriculum PDFs to answer a spoken question, with the source page cited beneath the tutor’s reply.',
     stack: 'Flutter • Spring Boot • MongoDB • OpenAI • RAG • STT/TTS',
     fr: {
       cardTitle: 'Construire KiddoAI',
@@ -164,7 +164,7 @@ export const POSTS: Post[] = [
     excerpt:
       'Scope decisions, MVP architecture and demo strategy under extreme time pressure — and the parts of that approach worth repeating.',
     cover: '/img/blog-thumb-hackathon-24h.png',
-    coverAlt: 'Cover graphic for the 24-hour hackathon article.',
+    coverAlt: 'A 24-hour hackathon sprint board: three must-haves kept, two features cut, and a timeline counting down to the demo.',
     stack: 'FlutterFlow • Backend API • Geolocation • RAG-ready structure',
     fr: {
       cardTitle: '24 heures pour une démo',
@@ -218,6 +218,12 @@ export const POSTS: Post[] = [
     ],
   },
 ];
+
+/** Display variant of a cover. The PNG stays for og:image, since not every
+ *  social crawler handles WebP. */
+export function coverWebp(cover: string) {
+  return cover.replace(/\.png$/, '.webp');
+}
 
 export function getPost(slug: string) {
   return POSTS.find((p) => p.slug === slug);
