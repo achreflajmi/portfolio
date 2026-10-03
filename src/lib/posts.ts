@@ -21,6 +21,8 @@ export type Post = {
   coverAlt: string;
   stack: string;
   blocks: PostBlock[];
+  /** Card-facing copy for the French site. The article body stays English. */
+  fr: { cardTitle: string; date: string; category: string; excerpt: string };
 };
 
 export const POSTS: Post[] = [
@@ -36,6 +38,13 @@ export const POSTS: Post[] = [
     cover: '/img/blog-thumb-api-ui.png',
     coverAlt: 'Cover graphic for the NestJS and React real-time AI article.',
     stack: 'NestJS • React • MongoDB • SSE • RxJS • Docker • LLM APIs • FFmpeg',
+    fr: {
+      cardTitle: 'De l’API à l’interface',
+      date: 'févr. 2025',
+      category: 'Full-stack · Temps réel · IA appliquée',
+      excerpt:
+        'Comment MASMEDIA AIDITOR livre de l’IA en temps réel de bout en bout : un pipeline NestJS, un tableau de bord React alimenté en SSE, et une UX de relecture qui garde la sortie du modèle sous contrôle.',
+    },
     blocks: [
       {
         kind: 'p',
@@ -107,7 +116,14 @@ export const POSTS: Post[] = [
       'A practical breakdown of how KiddoAI uses RAG over curriculum PDFs, structured tutoring flows, and voice interaction to personalise learning for children.',
     cover: '/img/blog-thumb-rag-education.png',
     coverAlt: 'Cover graphic for the KiddoAI RAG article.',
-    stack: 'Flutter • Spring Boot • PostgreSQL • LLM APIs • RAG • TTS/STT',
+    stack: 'Flutter • Spring Boot • MongoDB • OpenAI • RAG • STT/TTS',
+    fr: {
+      cardTitle: 'Construire KiddoAI',
+      date: 'mars 2025',
+      category: 'IA générative appliquée · Ingénierie produit',
+      excerpt:
+        'Comment KiddoAI s’appuie sur le RAG au-dessus des PDF du programme scolaire, des parcours de tutorat structurés et l’interaction vocale pour personnaliser l’apprentissage des enfants.',
+    },
     blocks: [
       {
         kind: 'p',
@@ -150,6 +166,13 @@ export const POSTS: Post[] = [
     cover: '/img/blog-thumb-hackathon-24h.png',
     coverAlt: 'Cover graphic for the 24-hour hackathon article.',
     stack: 'FlutterFlow • Backend API • Geolocation • RAG-ready structure',
+    fr: {
+      cardTitle: '24 heures pour une démo',
+      date: 'janv. 2025',
+      category: 'Hackathon · Exécution produit',
+      excerpt:
+        'Choix de périmètre, architecture du MVP et stratégie de démo sous forte contrainte de temps — et ce qui mérite d’être refait.',
+    },
     blocks: [
       {
         kind: 'p',

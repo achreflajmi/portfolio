@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'wouter';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { ArrowLeft, Terminal } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { getPost, POSTS } from '@/lib/posts';
 import NotFound from '@/pages/not-found';
 
@@ -38,7 +38,13 @@ export default function Article() {
           href="/"
           className="flex items-center gap-2 font-display text-lg tracking-widest text-white uppercase hover:text-primary transition-colors"
         >
-          <Terminal className="w-4 h-4 text-primary" aria-hidden="true" />
+          <img
+            src="/img/avatar-96.png"
+            alt=""
+            width={96}
+            height={96}
+            className="w-7 h-7 rounded-full shrink-0 ring-1 ring-primary/30"
+          />
           Achref Lajmi
         </Link>
 
@@ -167,7 +173,7 @@ export default function Article() {
 
       <footer className="border-t border-white/10 py-10 px-6 md:px-12">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 font-sans text-xs tracking-widest uppercase text-white/40">
-          <p>© {new Date().getFullYear()} Achref Lajmi · Berlin</p>
+          <p>© {new Date().getFullYear()} Achref Lajmi. All rights reserved.</p>
           <a href="mailto:achreflajmi1@gmail.com" className="hover:text-primary transition-colors">
             achreflajmi1@gmail.com
           </a>

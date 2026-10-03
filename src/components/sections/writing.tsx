@@ -5,32 +5,56 @@ import { SectionHeader } from '@/components/ui/section-header';
 import { Watermark } from '@/components/ui/watermark';
 import { POSTS, type Post } from '@/lib/posts';
 import { cn } from '@/lib/utils';
+import { useCopy, useLang, type Lang } from '@/lib/i18n';
+
+const UI: Record<Lang, { watermark: string; kicker: string; title: string; accent: string; read: string; inEnglish: string | null }> = {
+  en: {
+    watermark: 'WRITING',
+    kicker:
+      'Write-ups on the systems behind the projects \u2014 architecture decisions, trade-offs, and what held up in production.',
+    title: 'Notes from',
+    accent: 'the build',
+    read: 'Read the write-up',
+    inEnglish: null,
+  },
+  fr: {
+    watermark: 'ARTICLES',
+    kicker:
+      'Des articles sur les syst\u00e8mes derri\u00e8re les projets \u2014 choix d\u2019architecture, compromis, et ce qui a tenu en production.',
+    title: 'Notes de',
+    accent: 'chantier',
+    read: 'Lire l\u2019article',
+    inEnglish: 'en anglais',
+  },
+};
 
 export function WritingSection() {
   const ref = useSectionInView(5);
+  const ui = useCopy(UI);
+  const watermark = ui.watermark;
 
   return (
     <section
       id="writing"
       ref={ref as React.RefObject<HTMLElement>}
-      className="min-h-screen py-32 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden"
+      className="min-h-screen min-h-[100dvh] py-32 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden"
     >
-      <Watermark text="WRITING" className="text-[15vw] md:text-[20vw]" />
+      <Watermark text={watermark} className="text-[15vw] md:text-[20vw]" />
 
       <div className="max-w-[90rem] mx-auto w-full relative z-10">
         <SectionHeader
-          subtitle="Write-ups on the systems behind the projects — architecture decisions, trade-offs, and what held up in production."
+          subtitle={ui.kicker}
           title={
             <span>
-              Notes from <br />
-              <span className="text-primary">the build</span>
+              {ui.title} <br />
+              <span className="text-primary">{ui.accent}</span>
             </span>
           }
         />
 
         <div className="flex flex-col gap-32 md:gap-48 mt-12 md:mt-0">
           {POSTS.map((post, i) => (
-            <PostItem key={post.slug} post={post} index={i} />
+            <PostItem key={post.slug} post={post} index={i} ui={ui} />
           ))}
         </div>
       </div>
@@ -38,7 +62,9 @@ export function WritingSection() {
   );
 }
 
-function PostItem({ post, index }: { post: Post; index: number }) {
+function PostItem({ post, index, ui }: { post: Post; index: number; ui: (typeof UI)['en'] }) {
+  const lang = useLang();
+  const card = lang === 'fr' ? post.fr : post;
   const ref = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -105,31 +131,32 @@ function PostItem({ post, index }: { post: Post; index: number }) {
             <span className="text-primary font-sans font-light text-4xl leading-none">{post.num}</span>
             <div className="h-px flex-1 bg-white/10" />
             <span className="text-xs font-sans tracking-widest text-primary/80 font-medium uppercase">
-              {post.date}
+              {card.date}
             </span>
           </div>
 
           <div className="flex flex-col gap-2">
-            <a href={href}>
+            <a href={href} className="inline-block py-1.5">
               <h3 className="text-3xl md:text-4xl font-sans font-light leading-tight text-white group-hover:text-primary transition-colors duration-500">
-                {post.cardTitle}
+                {card.cardTitle}
               </h3>
             </a>
             <div className="text-xs font-sans tracking-widest text-white/60 uppercase mt-2">
-              {post.category}
+              {card.category}
+              {ui.inEnglish && <span className="text-white/35">{' · '}{ui.inEnglish}</span>}
             </div>
           </div>
 
           <p className="font-sans text-white/70 text-sm md:text-base leading-relaxed mt-2">
-            {post.excerpt}
+            {card.excerpt}
           </p>
 
           <div className="mt-6">
             <a
               href={href}
-              className="inline-flex items-center gap-4 font-sans text-xs tracking-widest uppercase text-white/60 hover:text-primary transition-colors"
+              className="inline-flex items-center gap-4 min-h-[44px] font-sans text-xs tracking-widest uppercase text-white/60 hover:text-primary transition-colors"
             >
-              Read the write-up
+              {ui.read}
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white/50 group-hover:bg-primary group-hover:border-primary group-hover:text-background transition-all duration-300">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path

@@ -1,30 +1,20 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { MapPin, GraduationCap, Award } from 'lucide-react';
+import { GraduationCap, Award } from 'lucide-react';
 import { useSectionInView } from '@/lib/use-section-in-view';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Watermark } from '@/components/ui/watermark';
+import { useCopy, type Lang } from '@/lib/i18n';
 
-const EDUCATION = [
-  {
-    year: '2021 — 2026',
-    school: 'ESPRIT — Private Higher School of Engineering and Technology',
-    degree: 'Diplôme d’Ingénieur, Computer Science',
-    honors: 'Mention Très Bien',
-    gpa: 'Master level · EQF 7',
-    location: 'TUNIS, TUNISIA',
-    focus: ['Web & Mobile', 'Software Engineering', 'Applied AI'],
-  },
-  {
-    year: '2025 — 2026',
-    school: 'Philipps-Universität Marburg',
-    degree: 'Exchange Semester, Computer Science',
-    honors: 'Erasmus exchange',
-    gpa: 'Oct 2025 — Mar 2026',
-    location: 'MARBURG, GERMANY',
-    focus: ['Distributed Systems', 'Machine Learning', 'German language'],
-  },
-];
+/**
+ * `degree` is the qualification spelled out in full, `meta` the institution,
+ * place, years and honours beneath it.
+ *
+ * Never abbreviate the ESPRIT degree to "Dipl.-Ing." \u2014 that is a protected
+ * German engineering title awarded under German law, and it does not apply to
+ * a Tunisian Dipl\u00f4me d'Ing\u00e9nieur. Write it out, with the EQF equivalence.
+ */
+type Degree = { year: string; degree: string; meta: string; focus: string[] };
 
 const CERTS = [
   'AWS Academy Cloud Foundations',
@@ -32,30 +22,75 @@ const CERTS = [
   'NVIDIA Applications of AI for Predictive Maintenance',
 ];
 
+const COPY: Record<Lang, { watermark: string; kicker: string; title: string; certs: string; entries: Degree[] }> = {
+  en: {
+    watermark: 'EDUCATION',
+    kicker: 'Academic foundation',
+    title: 'Where I studied',
+    certs: 'Certifications',
+    entries: [
+      {
+        year: '2021 \u2014 2026',
+        degree: 'Dipl\u00f4me d\u2019Ing\u00e9nieur, Computer Science \u2014 equivalent to a German M.Sc. (EQF level 7)',
+        meta: 'ESPRIT, Tunis \u00b7 2021\u20132026 \u00b7 mention Tr\u00e8s Bien (highest honours)',
+        focus: ['Web & Mobile', 'Software Engineering', 'Applied AI'],
+      },
+      {
+        year: '2025 \u2014 2026',
+        degree: 'Exchange Semester, Computer Science',
+        meta: 'Philipps-Universit\u00e4t Marburg, Germany \u00b7 Oct 2025 \u2013 Mar 2026 \u00b7 Erasmus exchange',
+        focus: ['Distributed Systems', 'Machine Learning', 'German language'],
+      },
+    ],
+  },
+  fr: {
+    watermark: 'FORMATION',
+    kicker: 'Parcours acad\u00e9mique',
+    title: 'O\u00f9 j\u2019ai \u00e9tudi\u00e9',
+    certs: 'Certifications',
+    entries: [
+      {
+        year: '2021 \u2014 2026',
+        degree: 'Dipl\u00f4me d\u2019ing\u00e9nieur en informatique, option d\u00e9veloppement web et mobile \u2014 \u00e9quivalent \u00e0 un M.Sc. allemand (niveau Master, CEC 7)',
+        meta: 'ESPRIT, Tunis \u00b7 2021\u20132026 \u00b7 mention Tr\u00e8s Bien',
+        focus: ['Web & mobile', 'G\u00e9nie logiciel', 'IA appliqu\u00e9e'],
+      },
+      {
+        year: '2025 \u2014 2026',
+        degree: 'Semestre d\u2019\u00e9change, informatique',
+        meta: 'Philipps-Universit\u00e4t Marburg, Allemagne \u00b7 oct. 2025 \u2013 mars 2026 \u00b7 \u00e9change Erasmus',
+        focus: ['Syst\u00e8mes distribu\u00e9s', 'Apprentissage automatique', 'Allemand'],
+      },
+    ],
+  },
+};
+
 export function EducationSection() {
   const ref = useSectionInView(4);
+  const t = useCopy(COPY);
+  const watermark = t.watermark;
 
   return (
     <section
       id="education"
       ref={ref as React.RefObject<HTMLElement>}
-      className="min-h-screen py-32 px-6 md:px-12 lg:px-24 bg-background flex flex-col justify-center relative overflow-hidden"
+      className="min-h-screen min-h-[100dvh] py-32 px-6 md:px-12 lg:px-24 bg-background flex flex-col justify-center relative overflow-hidden"
     >
-      <Watermark text="EDUCATION" className="text-[14vw] md:text-[18vw]" />
+      <Watermark text={watermark} className="text-[14vw] md:text-[18vw]" />
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        <SectionHeader subtitle="Academic foundation" title="Where I studied" />
+        <SectionHeader subtitle={t.kicker} title={t.title} />
 
         <div className="flex flex-col gap-16 md:gap-24">
-          {EDUCATION.map((edu) => (
-            <EduItem key={edu.school} edu={edu} />
+          {t.entries.map((edu) => (
+            <EduItem key={edu.degree} edu={edu} />
           ))}
         </div>
 
         {/* Certifications */}
         <div className="mt-20 pt-10 border-t border-white/10">
           <p className="font-sans text-xs tracking-widest uppercase text-white/35 mb-6">
-            Certifications
+            {t.certs}
           </p>
           <ul className="flex flex-wrap gap-3">
             {CERTS.map((c) => (
@@ -73,7 +108,7 @@ export function EducationSection() {
   );
 }
 
-function EduItem({ edu }: { edu: (typeof EDUCATION)[0] }) {
+function EduItem({ edu }: { edu: Degree }) {
   const itemRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -102,34 +137,26 @@ function EduItem({ edu }: { edu: (typeof EDUCATION)[0] }) {
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
-            <h3 className="text-2xl md:text-3xl font-sans font-light leading-tight text-white">
-              {edu.school}
+          {/* The qualification, written out in full — see the note on EDUCATION. */}
+          <div className="flex items-start gap-3 border-b border-white/10 pb-6">
+            <GraduationCap className="w-5 h-5 text-primary shrink-0 mt-1.5" aria-hidden="true" />
+            <h3 className="text-xl md:text-2xl font-sans font-light leading-snug text-white">
+              {edu.degree}
             </h3>
-            <div className="flex items-center gap-2 text-primary font-sans text-xs tracking-widest uppercase shrink-0 pb-1">
-              <MapPin className="w-3 h-3" aria-hidden="true" />
-              {edu.location}
-            </div>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3 text-white/90 font-sans text-sm md:text-base tracking-wide">
-              <GraduationCap className="w-4 h-4 text-primary shrink-0" aria-hidden="true" />
-              <span className="leading-snug">{edu.degree}</span>
-            </div>
-            <div className="flex items-center gap-3 text-white/50 font-sans text-xs tracking-widest uppercase">
-              <Award className="w-4 h-4 text-primary/60 shrink-0" aria-hidden="true" />
-              <span>
-                {edu.honors} <span className="mx-2 text-white/20">•</span> {edu.gpa}
-              </span>
-            </div>
+          {/* Institution, place, years, honours. Deliberately not uppercased —
+              it would wreck the casing of "mention Très Bien". */}
+          <div className="flex items-start gap-3 text-white/55 font-sans text-sm leading-relaxed">
+            <Award className="w-4 h-4 text-primary/60 shrink-0 mt-0.5" aria-hidden="true" />
+            <p>{edu.meta}</p>
           </div>
 
           <div className="mt-2 flex flex-wrap gap-2">
             {edu.focus.map((f) => (
               <span
                 key={f}
-                className="px-3 py-1.5 rounded-full bg-background/50 border border-white/5 text-[10px] font-sans tracking-widest uppercase text-white/60"
+                className="px-3 py-1.5 rounded-full bg-background/50 border border-white/5 text-[12px] lg:text-[10px] font-sans tracking-widest uppercase text-white/60"
               >
                 {f}
               </span>

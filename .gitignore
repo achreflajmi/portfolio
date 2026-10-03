@@ -16,3 +16,6 @@ pnpm-debug.log*
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local screenshot output from scripts/shoot.mjs
+shots/

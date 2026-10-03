@@ -1,16 +1,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useSection } from '@/lib/section-context';
+import { useCopy, type Lang } from '@/lib/i18n';
 
-export const sectionsData = [
-  { id: 'manifesto', title: 'Manifesto', show: false },
-  { id: 'experience', title: 'Experience', show: true },
-  { id: 'expertise', title: 'Expertise', show: true },
-  { id: 'projects', title: 'Projects', show: true },
-  { id: 'education', title: 'Education', show: true },
-  { id: 'writing', title: 'Writing', show: true },
-  { id: 'contact', title: 'Contact', show: true },
-];
+const TITLES: Record<Lang, string[]> = {
+  en: ['Manifesto', 'Experience', 'Expertise', 'Projects', 'Education', 'Writing', 'Contact'],
+  fr: ['Manifeste', 'Parcours', 'Expertise', 'Projets', 'Formation', 'Articles', 'Contact'],
+};
+
+/* The manifesto is deliberately hidden \u2014 the readout starts at Experience. */
+const SHOW = [false, true, true, true, true, true, true];
 
 export function SectionIndicator() {
   const { activeIndex } = useSection();
@@ -22,8 +21,9 @@ export function SectionIndicator() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const currentSection = sectionsData[activeIndex] || sectionsData[0];
-  const shouldShow = isScrolled && currentSection.show;
+  const titles = useCopy(TITLES);
+  const title = titles[activeIndex] ?? titles[0];
+  const shouldShow = isScrolled && (SHOW[activeIndex] ?? false);
 
   return (
     <motion.div
@@ -63,7 +63,7 @@ export function SectionIndicator() {
               transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="h-[1.2em] leading-none absolute inset-0 flex items-center whitespace-nowrap font-medium sm:font-normal text-white/90"
             >
-              {currentSection.title}
+              {title}
             </motion.div>
           </AnimatePresence>
         </div>

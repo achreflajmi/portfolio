@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
   motion,
   useScroll,
@@ -11,6 +11,7 @@ import { useSectionInView } from '@/lib/use-section-in-view';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Watermark } from '@/components/ui/watermark';
 import { cn } from '@/lib/utils';
+import { useCopy, type Lang } from '@/lib/i18n';
 
 type Feature = { text: string; highlight: string[] };
 
@@ -29,7 +30,7 @@ type Project = {
   note?: string;
 };
 
-const PROJECTS: Project[] = [
+const PROJECTS_EN: Project[] = [
   {
     title: 'SmartPilot',
     tag: 'Flagship · recash',
@@ -59,12 +60,16 @@ const PROJECTS: Project[] = [
         highlight: ['Claude', 'Vercel AI SDK'],
       },
       {
-        text: 'Production eBay connector; code-complete Shopify Admin and Amazon SP-API integrations.',
+        text: 'Production eBay connector (REST and Trading APIs) plus code-complete Shopify Admin and Amazon SP-API integrations; rebuilt order management to handle all four financial edit scenarios correctly.',
         highlight: ['eBay', 'Shopify Admin', 'Amazon SP-API'],
       },
+      {
+        text: 'Enforced human-in-the-loop guarantees and auditability: no price reaches the catalogue without an administrator decision stamped on the record it concerns, backed by append-only ledgers and row-level access scoping.',
+        highlight: ['append-only ledgers', 'row-level access scoping'],
+      },
     ],
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Supabase', 'Drizzle ORM', 'pgvector', 'Trigger.dev', 'Claude API', 'Vercel'],
-    featureGroups: [2, 2, 2],
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Supabase', 'Drizzle ORM', 'pgvector', 'Trigger.dev', 'Claude API via OpenRouter', 'Vercel'],
+    featureGroups: [2, 2, 3],
     note: 'Company code, not public. I can walk through it in an interview.',
   },
   {
@@ -91,16 +96,16 @@ const PROJECTS: Project[] = [
         highlight: ['4h30', '1h20', '12 minutes'],
       },
       {
-        text: 'Social publishing over OAuth 2.0 with encrypted token storage; a response cache cut GPT-4 spend 35%.',
+        text: 'Automated publishing to Facebook, Instagram and Twitter over OAuth 2.0 with encrypted token storage and pre-expiry refresh; exponential-backoff retries and a response cache cut GPT-4 API spend by 35%.',
         highlight: ['OAuth 2.0', '35%'],
       },
       {
-        text: '95 tests at 88% coverage with Jest, Supertest and in-memory MongoDB.',
-        highlight: ['95', '88%', 'Jest'],
+        text: 'Streamed live transcripts and detected moments to the UI over Server-Sent Events; shipped 95 unit and integration tests at 88% coverage with Jest, Supertest and in-memory MongoDB.',
+        highlight: ['Server-Sent Events', '95', '88%'],
       },
     ],
-    tech: ['NestJS', 'TypeScript', 'MongoDB', 'GPT-4', 'AssemblyAI', 'FFmpeg', 'Docker'],
-    featureGroups: [3, 3],
+    tech: ['NestJS', 'TypeScript', 'MongoDB', 'GPT-4', 'AssemblyAI', 'FFmpeg', 'Streamlink', 'Cheerio', 'Jest', 'Docker'],
+    featureGroups: [2, 2, 2],
     videoId: 'aoA7SMIzSG4',
     poster: {
       src: '/img/masmedia-800.jpg',
@@ -114,7 +119,7 @@ const PROJECTS: Project[] = [
     title: 'Kiddo AI',
     tag: 'Education',
     descA:
-      'An educational app for six-year-olds: an AI tutor speaking Tunisian Arabic, with cloned voice synthesis and avatar personalisation.',
+      'An educational app for Tunisian first-year primary pupils (age 6), with an AI tutor speaking Tunisian Arabic, cloned-voice synthesis and avatar-based personalisation.',
     descB: '',
     features: [
       {
@@ -126,12 +131,12 @@ const PROJECTS: Project[] = [
         highlight: ['MVVM'],
       },
       {
-        text: 'Built the voice pipeline end to end: cloned speech synthesis in Tunisian Arabic, plus avatar personalisation the child picks.',
-        highlight: ['Tunisian Arabic'],
+        text: 'Integrated the voice loop across three runtimes — Flutter client, Spring Boot API, external inference service — including the decode chain that keeps Arabic text intact through transcription, generation and speech synthesis.',
+        highlight: ['three runtimes', 'decode chain'],
       },
     ],
-    tech: ['Flutter', 'Dart', 'RAG', 'Voice cloning', 'MVVM'],
-    featureGroups: [3],
+    tech: ['Flutter', 'Spring Boot', 'MongoDB', 'OpenAI', 'STT / TTS', 'MVVM'],
+    featureGroups: [2, 1],
     videoId: 'NfDOhjPF7VM',
     poster: {
       src: '/img/kiddoai-290.jpg',
@@ -151,20 +156,24 @@ const PROJECTS: Project[] = [
     descB: '',
     features: [
       {
-        text: 'Hand-built RFC 2388 multipart image upload for server-side emotion detection, without pulling in a networking dependency.',
-        highlight: ['RFC 2388'],
+        text: 'Built the emotion-capture pipeline: hand-assembled RFC 2388 multipart uploads over URLSession with JPEG re-compression and a five-branch error taxonomy, feeding a server-side facial-emotion model.',
+        highlight: ['RFC 2388', 'URLSession'],
       },
       {
-        text: 'Camera and photo-library permission bridging, with concurrent home-screen loading through withTaskGroup.',
+        text: 'Bridged camera and photo-library permissions across AVFoundation and PhotosUI — two permission systems with different state vocabularies — into SwiftUI through a UIViewControllerRepresentable coordinator.',
+        highlight: ['AVFoundation', 'PhotosUI', 'UIViewControllerRepresentable'],
+      },
+      {
+        text: 'Parallelised the home screen with withTaskGroup, loading profile, mood statistics, recommendations, notifications and a daily quote concurrently with independent failure handling.',
         highlight: ['withTaskGroup'],
       },
       {
-        text: 'LLM study-plan prose parsed into a checkable task list, so the model’s output becomes something the student can actually tick off.',
+        text: 'Turned unstructured LLM study-plan prose into an interactive, checkable task list — consuming non-deterministic model output with no schema.',
         highlight: ['LLM'],
       },
     ],
-    tech: ['SwiftUI', 'Swift Concurrency', 'REST', 'Emotion detection'],
-    featureGroups: [3],
+    tech: ['SwiftUI', 'MVVM', 'async/await', 'Swift Charts', 'URLSession'],
+    featureGroups: [2, 2],
     videoId: 'S_biZwKb0QQ',
     poster: {
       src: '/img/moodymap-240.jpg',
@@ -184,12 +193,16 @@ const PROJECTS: Project[] = [
     descB: '',
     features: [
       {
-        text: 'Built in FlutterFlow with RAG, 3D assets and geolocation — scoped hard so a working demo existed before the clock ran out.',
-        highlight: ['FlutterFlow', 'RAG', '3D', 'geolocation'],
+        text: 'Shipped a working location-based storytelling MVP with prototype AI guided-tour features in a single 24-hour build.',
+        highlight: ['24-hour'],
+      },
+      {
+        text: 'Scoped the build to a demonstrable core under a hard deadline, trading breadth for a path that ran end to end on stage.',
+        highlight: [],
       },
     ],
     tech: ['FlutterFlow', 'RAG', 'Geolocation', '3D'],
-    featureGroups: [1],
+    featureGroups: [2],
     videoId: 'NwJ0WE14vEM',
     poster: {
       src: '/img/sufess-800.jpg',
@@ -201,11 +214,189 @@ const PROJECTS: Project[] = [
   },
 ];
 
+const UI: Record<Lang, {
+  kicker: string;
+  title: string;
+  cont: string;
+  locked: string;
+  figures: { k: string; v: string }[];
+}> = {
+  en: {
+    kicker: 'Selected works',
+    title: 'Things I built',
+    cont: 'cont.',
+    locked: 'Company code, not public. I can walk through it in an interview.',
+    figures: [
+      { k: 'Scored nightly', v: '200' },
+      { k: 'Deals queued', v: '61' },
+      { k: 'Weight moved', v: '0.10→0.42' },
+    ],
+  },
+  fr: {
+    kicker: 'Travaux s\u00e9lectionn\u00e9s',
+    title: 'Ce que j\u2019ai construit',
+    cont: 'suite',
+    locked: 'Code propri\u00e9taire, non public. Je peux le pr\u00e9senter en entretien.',
+    figures: [
+      { k: '\u00c9valu\u00e9s chaque nuit', v: '200' },
+      { k: 'Deals g\u00e9n\u00e9r\u00e9s', v: '61' },
+      { k: 'Pond\u00e9ration ajust\u00e9e', v: '0,10\u21920,42' },
+    ],
+  },
+};
+
+
+/* French copy, taken from the French master CV rather than translated from the
+   English site, so both read in Achref's own words. Media, tech chips and
+   metrics are shared from the English entries above. */
+type Localised = Pick<Project, 'tag' | 'descA' | 'descB' | 'features'> &
+  Partial<Pick<Project, 'featureGroups' | 'note'>>;
+
+const FR_TEXT: Localised[] = [
+  {
+    tag: 'Projet phare \u00b7 recash',
+    /* French runs longer than English, so SmartPilot needs one extra page
+       to keep every bullet inside the pinned frame. */
+    featureGroups: [2, 2, 2, 1],
+    descA:
+      'Un moteur de deals autonome en boucle ferm\u00e9e : scoring nocturne des stocks, n\u00e9gociation de prix assist\u00e9e par IA, diffusion cibl\u00e9e et boucle d\u2019apprentissage.',
+    descB:
+      'L\u2019autonomie et le contr\u00f4le humain restent deux sujets distincts : aucun prix n\u2019atteint le catalogue sans une d\u00e9cision d\u2019administrateur inscrite sur la fiche concern\u00e9e.',
+    note: 'Code propri\u00e9taire, non public. Je peux le pr\u00e9senter en entretien.',
+    features: [
+      {
+        text: '200 produits \u00e9valu\u00e9s chaque nuit et 61 opportunit\u00e9s de prix g\u00e9n\u00e9r\u00e9es sans aucune intervention manuelle.',
+        highlight: ['200', '61'],
+      },
+      {
+        text: 'Remplacement de la recherche par mots-cl\u00e9s par un moteur de recherche hybride \u00e0 trois signaux \u2014 embeddings pgvector, plein texte PostgreSQL et mots-cl\u00e9s \u2014 mis en production.',
+        highlight: ['pgvector', 'PostgreSQL'],
+      },
+      {
+        text: 'Moteur de recommandation comportemental avec un vecteur de go\u00fbt par acheteur et 25\u201335 % de d\u00e9couverte sous contrainte de diversit\u00e9 des marques ; invers\u00e9 ensuite pour relier les deals aux acheteurs les plus susceptibles de les vouloir.',
+        highlight: ['25\u201335 %'],
+      },
+      {
+        text: 'Boucle d\u2019apprentissage ajustant chaque nuit les pond\u00e9rations dans des bornes de s\u00e9curit\u00e9 fixes \u2014 le poids de la taille est pass\u00e9 de 0,10 \u00e0 0,42 de lui-m\u00eame, sans jamais \u00e9craser une valeur d\u00e9finie par un humain.',
+        highlight: ['0,10', '0,42'],
+      },
+      {
+        text: 'Assistant IA agentique (Claude via le SDK IA de Vercel) ancr\u00e9 dans les donn\u00e9es de la marketplace par un menu d\u2019outils fixe, limit\u00e9 au p\u00e9rim\u00e8tre de l\u2019utilisateur.',
+        highlight: ['Claude'],
+      },
+      {
+        text: 'Connecteur eBay en production (API REST et Trading) et int\u00e9grations Shopify Admin et Amazon SP-API termin\u00e9es ; refonte de la gestion des commandes pour traiter correctement les quatre sc\u00e9narios d\u2019\u00e9dition financi\u00e8re.',
+        highlight: ['eBay', 'Shopify Admin', 'Amazon SP-API'],
+      },
+      {
+        text: 'Garanties de contr\u00f4le humain et tra\u00e7abilit\u00e9 : aucun prix n\u2019atteint le catalogue sans d\u00e9cision d\u2019administrateur, adoss\u00e9e \u00e0 des journaux en ajout seul et \u00e0 un cloisonnement des acc\u00e8s par ligne.',
+        highlight: ['journaux en ajout seul'],
+      },
+    ],
+  },
+  {
+    tag: 'Journalisme IA',
+    descA:
+      'Une plateforme de journalisme assist\u00e9 par IA pour une r\u00e9daction tech, livr\u00e9e seul sur deux modules : couverture de livestreams en temps r\u00e9el et scraper configurable sur 30 sources.',
+    descB: '',
+    features: [
+      {
+        text: 'PARROT couvre les livestreams de bout en bout : audio Streamlink, transcription en streaming AssemblyAI, d\u00e9tection des moments cl\u00e9s par GPT-4, puis g\u00e9n\u00e9ration multi-plateforme. Latence de 3,2 s, pr\u00e9cision de 84 %.',
+        highlight: ['AssemblyAI', 'GPT-4', '3,2 s', '84 %'],
+      },
+      {
+        text: 'Valid\u00e9 en direct : 8 annonces sur 8 d\u00e9tect\u00e9es sur une keynote Apple, avec 73 % de temps de couverture en moins, et 15 sur 16 sur Google I/O.',
+        highlight: ['8 annonces sur 8', '73 %', '15 sur 16'],
+      },
+      {
+        text: 'SWALLO parcourt 30 sources tech avec un filtrage de pertinence GPT-4 : 1 247 articles trait\u00e9s sur sept jours \u00e0 84 % de pr\u00e9cision.',
+        highlight: ['1 247', '84 %'],
+      },
+      {
+        text: 'Temps de couverture d\u2019un \u00e9v\u00e9nement r\u00e9duit de 4h30 \u00e0 1h20, veille quotidienne de 4 heures \u00e0 12 minutes, et \u00e9quipe par direct ramen\u00e9e de trois personnes \u00e0 une.',
+        highlight: ['4h30', '1h20', '12 minutes'],
+      },
+      {
+        text: 'Publication automatis\u00e9e sur Facebook, Instagram et Twitter via OAuth 2.0, avec stockage chiffr\u00e9 des jetons et renouvellement avant expiration ; les relances exponentielles et un cache ont r\u00e9duit de 35 % les co\u00fbts d\u2019API GPT-4.',
+        highlight: ['OAuth 2.0', '35 %'],
+      },
+      {
+        text: 'Transcriptions et moments d\u00e9tect\u00e9s diffus\u00e9s vers l\u2019interface en Server-Sent Events ; 95 tests unitaires et d\u2019int\u00e9gration \u00e0 88 % de couverture avec Jest, Supertest et MongoDB en m\u00e9moire.',
+        highlight: ['Server-Sent Events', '95', '88 %'],
+      },
+    ],
+  },
+  {
+    tag: '\u00c9ducation',
+    descA:
+      'Une application \u00e9ducative pour des enfants de 6 ans, avec un tuteur IA parlant l\u2019arabe tunisien, une voix clon\u00e9e et un avatar personnalisable.',
+    descB: '',
+    features: [
+      {
+        text: '\u00c9quipe acad\u00e9mique de cinq personnes ; auteur principal de la seconde version du client Flutter \u2014 environ 3 100 de ses 4 400 lignes.',
+        highlight: ['3 100', '4 400'],
+      },
+      {
+        text: 'Refonte du client en MVVM avec une couche de services d\u00e9di\u00e9e, en remplacement de l\u2019\u00e9tat et des appels r\u00e9seau log\u00e9s dans les vues.',
+        highlight: ['MVVM'],
+      },
+      {
+        text: 'Int\u00e9gration de la boucle vocale sur trois environnements \u2014 client Flutter, API Spring Boot, service d\u2019inf\u00e9rence externe \u2014 dont la cha\u00eene de d\u00e9codage qui pr\u00e9serve le texte arabe de la transcription \u00e0 la synth\u00e8se vocale.',
+        highlight: ['trois environnements', 'cha\u00eene de d\u00e9codage'],
+      },
+    ],
+  },
+  {
+    tag: 'iOS \u00b7 SwiftUI',
+    descA:
+      'Un planificateur d\u2019\u00e9tudes SwiftUI qui tient compte du d\u00e9roulement r\u00e9el de la journ\u00e9e. 10 \u00e9crans, 18 endpoints, environ 5 000 lignes de Swift.',
+    descB: '',
+    features: [
+      {
+        text: 'Pipeline de capture d\u2019\u00e9motion : envoi multipart RFC 2388 assembl\u00e9 \u00e0 la main sur URLSession, avec recompression JPEG et une taxonomie d\u2019erreurs \u00e0 cinq branches, alimentant un mod\u00e8le d\u2019\u00e9motion faciale c\u00f4t\u00e9 serveur.',
+        highlight: ['RFC 2388', 'URLSession'],
+      },
+      {
+        text: 'Passerelle entre les permissions cam\u00e9ra et phototh\u00e8que d\u2019AVFoundation et PhotosUI \u2014 deux syst\u00e8mes aux vocabulaires d\u2019\u00e9tat diff\u00e9rents \u2014 vers SwiftUI via un coordinateur UIViewControllerRepresentable.',
+        highlight: ['AVFoundation', 'PhotosUI', 'UIViewControllerRepresentable'],
+      },
+      {
+        text: 'Parall\u00e9lisation de l\u2019\u00e9cran d\u2019accueil avec withTaskGroup : profil, statistiques d\u2019humeur, recommandations, notifications et citation du jour charg\u00e9s simultan\u00e9ment, chacun avec sa propre gestion d\u2019erreur.',
+        highlight: ['withTaskGroup'],
+      },
+      {
+        text: 'Transformation de plans d\u2019\u00e9tudes g\u00e9n\u00e9r\u00e9s par LLM en listes de t\u00e2ches cochables \u2014 exploiter une sortie non d\u00e9terministe sans aucun sch\u00e9ma.',
+        highlight: ['LLM'],
+      },
+    ],
+  },
+  {
+    tag: 'Hackathon \u00b7 24h',
+    descA:
+      'Un MVP de hackathon en 24 heures : narration culturelle g\u00e9olocalis\u00e9e avec des visites guid\u00e9es par IA \u00e0 l\u2019\u00e9tat de prototype.',
+    descB: '',
+    features: [
+      {
+        text: 'MVP fonctionnel de narration g\u00e9olocalis\u00e9e, visites guid\u00e9es par IA comprises, livr\u00e9 en une seule session de 24 heures.',
+        highlight: ['24 heures'],
+      },
+      {
+        text: 'P\u00e9rim\u00e8tre resserr\u00e9 autour d\u2019un c\u0153ur d\u00e9montrable sous contrainte de temps, en \u00e9changeant l\u2019\u00e9tendue contre un parcours qui tournait de bout en bout sur sc\u00e8ne.',
+        highlight: [],
+      },
+    ],
+  },
+];
+
+const PROJECTS: Record<Lang, Project[]> = {
+  en: PROJECTS_EN,
+  fr: PROJECTS_EN.map((proj, i) => ({ ...proj, ...FR_TEXT[i] })),
+};
+
 /* Slots are generated from each project's featureGroups configuration. */
-const SCROLL_SLOTS = PROJECTS.flatMap((proj, projIdx) =>
-  proj.featureGroups.map((_, page) => ({ projIdx, page })),
-);
-const TOTAL_SLOTS = SCROLL_SLOTS.length;
+function buildSlots(projects: Project[]) {
+  return projects.flatMap((proj, projIdx) => proj.featureGroups.map((_, page) => ({ projIdx, page })));
+}
 
 /* ─── Feature text renderer (highlights keywords in cyan) ─────── */
 function FeatureText({ text, highlight }: Feature) {
@@ -233,6 +424,7 @@ function FeatureText({ text, highlight }: Feature) {
 /* ─── Media panel: poster until clicked, then the real embed ──── */
 function ProjectMedia({ proj, compact }: { proj: Project; compact?: boolean }) {
   const [playing, setPlaying] = useState(false);
+  const ui = useCopy(UI);
 
   return (
     <div
@@ -247,16 +439,12 @@ function ProjectMedia({ proj, compact }: { proj: Project; compact?: boolean }) {
           <div className="w-16 h-16 rounded-full border border-gate/40 bg-gate/5 flex items-center justify-center text-gate">
             <Lock className="w-6 h-6" aria-hidden="true" />
           </div>
-          <p className="font-sans text-sm text-white/55 max-w-xs leading-relaxed">{proj.note}</p>
+          <p className="font-sans text-sm text-white/55 max-w-xs leading-relaxed">{ui.locked}</p>
           <dl className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 pt-4 border-t border-white/10">
-            {[
-              { k: 'Scored nightly', v: '200' },
-              { k: 'Deals queued', v: '61' },
-              { k: 'Weight moved', v: '0.10→0.42' },
-            ].map((f) => (
+            {ui.figures.map((f) => (
               <div key={f.k} className="flex flex-col gap-1">
                 <dd className="font-sans font-light text-xl text-primary leading-none">{f.v}</dd>
-                <dt className="font-sans text-[9px] tracking-widest uppercase text-white/35">{f.k}</dt>
+                <dt className="font-sans text-[11px] lg:text-[9px] tracking-widest uppercase text-white/35">{f.k}</dt>
               </div>
             ))}
           </dl>
@@ -313,11 +501,13 @@ function DesktopCard({
   page,
   transitionSpec,
   shouldReduceMotion,
+  cont,
 }: {
   proj: Project;
   page: number;
   transitionSpec: object;
   shouldReduceMotion: boolean | null;
+  cont: string;
 }) {
   const startIndex = proj.featureGroups.slice(0, page).reduce((sum, count) => sum + count, 0);
   const visibleCount = proj.featureGroups[page] ?? proj.features.length;
@@ -334,7 +524,7 @@ function DesktopCard({
     >
       {page === 0 ? (
         <div className="flex flex-col gap-2 mb-4">
-          <p className="font-sans text-[10px] tracking-widest uppercase text-primary">{proj.tag}</p>
+          <p className="font-sans text-[12px] lg:text-[10px] tracking-widest uppercase text-primary">{proj.tag}</p>
           <h3
             className="font-sans font-light text-3xl md:text-4xl lg:text-5xl leading-tight text-white"
             translate="no"
@@ -345,7 +535,7 @@ function DesktopCard({
       ) : (
         <h3 className="font-sans font-light text-2xl leading-tight text-white/60 mb-3" translate="no">
           {proj.title}
-          <span className="text-primary text-sm font-sans tracking-widest uppercase ml-3">cont.</span>
+          <span className="text-primary text-sm font-sans tracking-widest uppercase ml-3">{cont}</span>
         </h3>
       )}
 
@@ -368,7 +558,7 @@ function DesktopCard({
         {proj.tech.map((t) => (
           <span
             key={t}
-            className="px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 font-mono text-[11px] text-primary/90 leading-none"
+            className="px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 font-mono text-[12px] lg:text-[11px] text-primary/90 leading-none"
           >
             {t}
           </span>
@@ -383,7 +573,7 @@ function DesktopCard({
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-xs tracking-widest uppercase text-white/70 underline underline-offset-4 decoration-white/25 hover:text-primary hover:decoration-primary transition-colors"
+              className="inline-flex items-center min-h-[44px] py-2 font-sans text-xs tracking-widest uppercase text-white/70 underline underline-offset-4 decoration-white/25 hover:text-primary hover:decoration-primary transition-colors"
             >
               {l.label}
             </a>
@@ -399,6 +589,10 @@ export function ProjectsSection() {
   const ref = useSectionInView(3);
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const ui = useCopy(UI);
+  const projects = useCopy(PROJECTS);
+  const slots = useMemo(() => buildSlots(projects), [projects]);
+  const totalSlots = slots.length;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -408,7 +602,7 @@ export function ProjectsSection() {
   const [activeSlot, setActiveSlot] = useState(0);
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    const slot = Math.min(TOTAL_SLOTS - 1, Math.floor(latest * TOTAL_SLOTS * 0.999));
+    const slot = Math.min(totalSlots - 1, Math.floor(latest * totalSlots * 0.999));
     if (slot !== activeSlot) setActiveSlot(slot);
   });
 
@@ -417,18 +611,18 @@ export function ProjectsSection() {
     ease: [0.22, 1, 0.36, 1] as const,
   };
 
-  const { projIdx, page } = SCROLL_SLOTS[activeSlot];
-  const activeProj = PROJECTS[projIdx];
+  const { projIdx, page } = slots[Math.min(activeSlot, totalSlots - 1)];
+  const activeProj = projects[projIdx];
 
   return (
     <section id="projects" ref={ref as React.RefObject<HTMLElement>} className="relative bg-background">
       {/* ── DESKTOP: pinned scroll ── */}
       <div
         ref={containerRef}
-        style={{ height: `${TOTAL_SLOTS * 90}vh` }}
+        style={{ height: `${totalSlots * 90}vh` }}
         className="hidden lg:block relative"
       >
-        <div className="sticky top-0 h-screen w-full flex items-start justify-center overflow-hidden pt-14 pb-10">
+        <div className="sticky top-0 h-screen h-[100dvh] w-full flex items-start justify-center overflow-hidden pt-14 pb-10">
           {/* Giant background odometer */}
           <Watermark className="text-[35vw] md:text-[40vw] text-transparent">
             <span className="text-white/[0.04]">0</span>
@@ -438,7 +632,7 @@ export function ProjectsSection() {
                 transition={transitionSpec}
                 className="flex flex-col"
               >
-                {Array.from({ length: PROJECTS.length }, (_, i) => i + 1).map((num) => (
+                {Array.from({ length: projects.length }, (_, i) => i + 1).map((num) => (
                   <div key={num} className="h-[0.8em] flex items-center justify-center pb-2">
                     {num}
                   </div>
@@ -463,6 +657,7 @@ export function ProjectsSection() {
                     page={page}
                     transitionSpec={transitionSpec}
                     shouldReduceMotion={shouldReduceMotion}
+                    cont={ui.cont}
                   />
                 </AnimatePresence>
               </div>
@@ -473,10 +668,10 @@ export function ProjectsSection() {
 
       {/* ── MOBILE: stacked ── */}
       <div className="block lg:hidden py-32 px-6 md:px-12 relative z-10 w-full max-w-3xl mx-auto">
-        <SectionHeader subtitle="Selected works" title="Things I built" />
+        <SectionHeader subtitle={ui.kicker} title={ui.title} />
 
         <div className="flex flex-col gap-28">
-          {PROJECTS.map((proj, idx) => (
+          {projects.map((proj, idx) => (
             <div key={proj.title} className="flex flex-col gap-7">
               <div className="flex flex-col gap-1">
                 <div className="flex items-baseline gap-3">
@@ -490,7 +685,7 @@ export function ProjectsSection() {
                     {proj.title}
                   </h3>
                 </div>
-                <p className="font-sans text-[10px] tracking-widest uppercase text-primary mt-2">
+                <p className="font-sans text-[12px] lg:text-[10px] tracking-widest uppercase text-primary mt-2">
                   {proj.tag}
                 </p>
                 <p className="text-white/55 font-sans text-sm leading-relaxed mt-2">{proj.descA}</p>
@@ -505,7 +700,7 @@ export function ProjectsSection() {
                 {proj.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 font-mono text-[11px] text-primary/90 leading-none"
+                    className="px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 font-mono text-[12px] lg:text-[11px] text-primary/90 leading-none"
                   >
                     {t}
                   </span>
@@ -534,7 +729,7 @@ export function ProjectsSection() {
                       href={l.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-sans text-xs tracking-widest uppercase text-white/70 underline underline-offset-4 decoration-white/25 hover:text-primary transition-colors"
+                      className="inline-flex items-center min-h-[44px] py-2 font-sans text-xs tracking-widest uppercase text-white/70 underline underline-offset-4 decoration-white/25 hover:text-primary transition-colors"
                     >
                       {l.label}
                     </a>

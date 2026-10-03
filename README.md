@@ -27,6 +27,7 @@ Vite · React 19 · TypeScript · Tailwind CSS v4 · Framer Motion · wouter · 
 | `src/pages/home.tsx` | Section order for the single page. |
 | `src/components/sections/` | One file per section; content is a `const` array at the top of each. |
 | `src/lib/posts.ts` | The three write-ups, as structured blocks. |
+| `src/lib/i18n.tsx` | Language context, `useCopy()`, and the `/fr` path + CV helpers. |
 | `src/lib/use-section-in-view.ts` | Drives the pinned `01 / Section` readout. |
 | `public/` | CVs, images, favicons, robots, sitemap — copied to `dist/` verbatim. |
 
@@ -61,6 +62,33 @@ section — they have to agree for the readout to track correctly.
 Every scroll-linked component reads `useReducedMotion()` and collapses to a static layout, and
 `index.css` cuts animation durations under `prefers-reduced-motion`. Preserve both when adding
 animation.
+
+## Languages
+
+English lives at `/`, French at `/fr`. Both are real routes, so a French link
+is shareable and indexable; `index.html` carries the `hreflang` alternates. A
+returning visitor who last chose French is sent to `/fr`, but only from the bare
+root — a shared link always lands where it points.
+
+Each section keeps its own `COPY` object keyed by language, next to the markup
+it feeds, so the French is read in context rather than in one giant dictionary:
+
+```ts
+const COPY: Record<Lang, { ... }> = { en: { ... }, fr: { ... } };
+// inside the component:
+const t = useCopy(COPY);
+```
+
+The long-form write-ups stay in English by design; the French Writing cards
+label them "en anglais". Feature bullets, tech chips and metrics are not
+translated — they come from the CV and read the same in both languages.
+
+Run `node scripts/check-i18n.mjs` after touching copy. It checks both routes for
+the `html lang` attribute, horizontal overflow, that the headline still occupies
+exactly three single-line rows at 390/768/1440, that the nav CV link follows the
+language, and that no English string leaks onto the French page. The leak check
+is case-insensitive on purpose — `innerText` returns CSS-uppercased text, and a
+case-sensitive match once let an untranslated uppercase pill through.
 
 ## Deploying
 
