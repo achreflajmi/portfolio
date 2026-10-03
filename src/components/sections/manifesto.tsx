@@ -9,19 +9,19 @@ const COPY: Record<Lang, { watermark: string; text: string; byline: string; cv: 
   en: {
     watermark: 'MANIFESTO',
     text:
-      'A system can run all night on its own. It still stops at a person before anything is final. That is the line I design to. SmartPilot scores, negotiates and learns without supervision \u2014 and writes nothing to the catalogue until someone has decided, on the record it concerns. Autonomy and oversight are separate problems, and treating them that way is what makes either one safe to ship.',
-    byline: 'Achref Lajmi, on building SmartPilot at recash',
+      'A system can run all night on its own. It still stops at a person before anything is final. That is the line I design to. The deal engine scores, negotiates and learns without supervision \u2014 and writes nothing to the catalogue until someone has decided, on the record it concerns. Autonomy and oversight are separate problems, and treating them that way is what makes either one safe to ship.',
+    byline: 'Achref Lajmi, on building the deal engine at recash',
     cv: 'Download CV',
-    run: ['autonomy', 'learns', 'negotiates', 'scores', 'smartpilot', 'supervision', 'unattended'],
+    run: ['autonomy', 'learns', 'negotiates', 'scores', 'supervision', 'unattended'],
     gate: ['person', 'someone', 'decided', 'oversight', 'final', 'stops'],
   },
   fr: {
     watermark: 'MANIFESTE',
     text:
-      'Un syst\u00e8me peut tourner toute la nuit seul. Il s\u2019arr\u00eate quand m\u00eame devant une personne avant que quoi que ce soit ne devienne d\u00e9finitif. C\u2019est la ligne que je vise. SmartPilot \u00e9value, n\u00e9gocie et apprend sans supervision \u2014 et n\u2019\u00e9crit rien au catalogue tant que quelqu\u2019un n\u2019a pas tranch\u00e9, sur la fiche concern\u00e9e. L\u2019autonomie et le contr\u00f4le sont deux probl\u00e8mes distincts, et les traiter ainsi est ce qui rend l\u2019un comme l\u2019autre s\u00fbr \u00e0 livrer.',
-    byline: 'Achref Lajmi, \u00e0 propos de SmartPilot chez recash',
+      'Un syst\u00e8me peut tourner toute la nuit seul. Il s\u2019arr\u00eate quand m\u00eame devant une personne avant que quoi que ce soit ne devienne d\u00e9finitif. C\u2019est la ligne que je vise. Le moteur de deals \u00e9value, n\u00e9gocie et apprend sans supervision \u2014 et n\u2019\u00e9crit rien au catalogue tant que quelqu\u2019un n\u2019a pas tranch\u00e9, sur la fiche concern\u00e9e. L\u2019autonomie et le contr\u00f4le sont deux probl\u00e8mes distincts, et les traiter ainsi est ce qui rend l\u2019un comme l\u2019autre s\u00fbr \u00e0 livrer.',
+    byline: 'Achref Lajmi, \u00e0 propos du moteur de deals chez recash',
     cv: 'T\u00e9l\u00e9charger le CV',
-    run: ['autonomie', 'apprend', 'n\u00e9gocie', '\u00e9value', 'smartpilot', 'supervision'],
+    run: ['autonomie', 'apprend', 'n\u00e9gocie', '\u00e9value', 'supervision'],
     gate: ['personne', 'quelqu\u2019un', 'tranch\u00e9', 'contr\u00f4le', 'd\u00e9finitif', 's\u2019arr\u00eate'],
   },
 };

@@ -32,7 +32,7 @@ type Project = {
 
 const PROJECTS_EN: Project[] = [
   {
-    title: 'SmartPilot',
+    title: 'AI-Powered Multichannel E-Commerce Platform with an autonomous AI Deal Engine',
     tag: 'Flagship · recash',
     descA:
       'An autonomous deal engine closing a four-stage loop: nightly inventory health scoring, AI-mediated price negotiation, targeted deal distribution, and a feedback-driven learning loop.',
@@ -255,7 +255,7 @@ type Localised = Pick<Project, 'tag' | 'descA' | 'descB' | 'features'> &
 const FR_TEXT: Localised[] = [
   {
     tag: 'Projet phare \u00b7 recash',
-    /* French runs longer than English, so SmartPilot needs one extra page
+    /* French runs longer than English, so this project needs one extra page
        to keep every bullet inside the pinned frame. */
     featureGroups: [2, 2, 2, 1],
     descA:
@@ -394,6 +394,12 @@ const PROJECTS: Record<Lang, Project[]> = {
 };
 
 /* Slots are generated from each project's featureGroups configuration. */
+/** Descriptive titles need a smaller scale than short product names, or they
+ *  push the rest of the card out of its fixed-height frame. */
+function isLongTitle(title: string) {
+  return title.length > 28;
+}
+
 function buildSlots(projects: Project[]) {
   return projects.flatMap((proj, projIdx) => proj.featureGroups.map((_, page) => ({ projIdx, page })));
 }
@@ -526,14 +532,25 @@ function DesktopCard({
         <div className="flex flex-col gap-2 mb-4">
           <p className="font-sans text-[12px] lg:text-[10px] tracking-widest uppercase text-primary">{proj.tag}</p>
           <h3
-            className="font-sans font-light text-3xl md:text-4xl lg:text-5xl leading-tight text-white"
+            className={cn(
+              'font-sans font-light leading-tight text-white',
+              isLongTitle(proj.title)
+                ? 'text-xl md:text-2xl lg:text-[1.7rem]'
+                : 'text-3xl md:text-4xl lg:text-5xl',
+            )}
             translate="no"
           >
             {proj.title}
           </h3>
         </div>
       ) : (
-        <h3 className="font-sans font-light text-2xl leading-tight text-white/60 mb-3" translate="no">
+        <h3
+          className={cn(
+            'font-sans font-light leading-tight text-white/60 mb-3',
+            isLongTitle(proj.title) ? 'text-base md:text-lg' : 'text-2xl',
+          )}
+          translate="no"
+        >
           {proj.title}
           <span className="text-primary text-sm font-sans tracking-widest uppercase ml-3">{cont}</span>
         </h3>
@@ -679,7 +696,10 @@ export function ProjectsSection() {
                     0{idx + 1}
                   </span>
                   <h3
-                    className="font-sans font-light text-3xl md:text-4xl leading-tight text-white"
+                    className={cn(
+                      'font-sans font-light leading-tight text-white',
+                      isLongTitle(proj.title) ? 'text-xl md:text-2xl' : 'text-3xl md:text-4xl',
+                    )}
                     translate="no"
                   >
                     {proj.title}

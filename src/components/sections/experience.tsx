@@ -34,7 +34,7 @@ const COPY: Record<Lang, { watermark: string; heading: string; headingAccent: st
         location: 'CIRCULAR SERVICE GMBH \u00b7 MUNICH',
         title: 'SOFTWARE ENGINEERING INTERN',
         date: 'FEB \u2014 JUL 2026',
-        desc: 'Sole developer of the AI layer in a nine-person startup \u2014 24 sprints, continuous deployment, CTO code review. Shipped SmartPilot: an autonomous deal engine closing a four-stage loop, plus a three-signal hybrid semantic search and a behavioural recommendation engine.',
+        desc: 'Sole developer of the AI layer in a nine-person startup \u2014 24 sprints, continuous deployment, CTO code review. Shipped an autonomous deal engine closing a four-stage loop, plus a three-signal hybrid semantic search and a behavioural recommendation engine.',
         stack: STACKS[0],
       },
       {
@@ -74,7 +74,7 @@ const COPY: Record<Lang, { watermark: string; heading: string; headingAccent: st
         location: 'CIRCULAR SERVICE GMBH \u00b7 MUNICH',
         title: 'STAGE D\u2019ING\u00c9NIEUR LOGICIEL',
         date: 'F\u00c9V. \u2014 JUIL. 2026',
-        desc: 'Seul d\u00e9veloppeur de la couche IA dans une startup de neuf personnes ; conception et livraison sur 24 sprints en d\u00e9ploiement continu, sous revue de code du CTO. J\u2019ai con\u00e7u SmartPilot, un moteur de deals autonome en boucle ferm\u00e9e, un moteur de recherche hybride \u00e0 trois signaux et un moteur de recommandation comportemental.',
+        desc: 'Seul d\u00e9veloppeur de la couche IA dans une startup de neuf personnes ; conception et livraison sur 24 sprints en d\u00e9ploiement continu, sous revue de code du CTO. J\u2019ai con\u00e7u un moteur de deals autonome en boucle ferm\u00e9e, un moteur de recherche hybride \u00e0 trois signaux et un moteur de recommandation comportemental.',
         stack: STACKS[0],
       },
       {
