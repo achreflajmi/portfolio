@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Terminal } from 'lucide-react';
-import { cn } from '@/lib/utils';
+
+/** Drop your cut-out photo at public/portrait.png and it appears here.
+ *  Until it exists the hero composes fine without it. */
+const PORTRAIT_SRC = '/portrait.png';
 
 /* ─── Scroll Indicator ────────────────────────────────────────── */
 function ScrollIndicator() {
@@ -38,126 +42,10 @@ function ScrollIndicator() {
   );
 }
 
-/* ─── SmartPilot loop — the hero's visual anchor ──────────────── */
-const LOOP_STAGES = [
-  {
-    marker: '1',
-    label: 'Score inventory',
-    fact: '200 products scored nightly for inventory health.',
-    gate: false,
-  },
-  {
-    marker: '2',
-    label: 'Negotiate price',
-    fact: '61 pricing opportunities queued, none manually initiated.',
-    gate: false,
-  },
-  {
-    marker: '■',
-    label: 'A human decides',
-    fact: 'The loop halts. Nothing reaches the catalogue until a person has decided.',
-    gate: true,
-  },
-  {
-    marker: '3',
-    label: 'Distribute deals',
-    fact: 'Live deals matched to the buyers most likely to want them.',
-    gate: false,
-  },
-  {
-    marker: '4',
-    label: 'Learn from the outcome',
-    fact: 'Weights adjust nightly inside fixed bounds. Size-fit moved 0.10 → 0.42 on its own.',
-    gate: false,
-  },
-];
-
-function SmartPilotLoop({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
-  return (
-    <div className="w-full rounded-3xl border border-white/10 bg-background/60 backdrop-blur-2xl p-6 sm:p-8 shadow-[0_8px_48px_rgba(0,0,0,0.6)] relative overflow-hidden">
-      {/* Ambient wash */}
-      <div className="absolute -top-20 -right-16 w-56 h-56 rounded-full bg-primary/15 blur-[80px] pointer-events-none" />
-
-      <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4 mb-6 relative">
-        <span className="font-sans text-sm tracking-widest uppercase text-white/90" translate="no">
-          SmartPilot
-        </span>
-        <span className="font-mono text-[10px] tracking-widest uppercase text-primary/80">
-          one nightly cycle
-        </span>
-      </div>
-
-      <ol className="flex flex-col relative">
-        {/* Track line behind the markers */}
-        <span className="absolute left-[13px] top-3 bottom-8 w-px bg-white/10" aria-hidden="true" />
-
-        {/* Travelling pulse — the system running unattended */}
-        {!shouldReduceMotion && (
-          <motion.span
-            aria-hidden="true"
-            className="absolute left-[11px] w-[5px] h-[5px] rounded-full bg-primary shadow-[0_0_10px_rgba(94,216,240,0.9)]"
-            animate={{ top: ['0.75rem', '92%'], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', times: [0, 0.1, 0.9, 1] }}
-          />
-        )}
-
-        {LOOP_STAGES.map((stage, i) => (
-          <motion.li
-            key={stage.label}
-            className="relative flex gap-4 pb-5 last:pb-0"
-            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: shouldReduceMotion ? 0 : 0.6,
-              delay: shouldReduceMotion ? 0 : 0.45 + i * 0.1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <span
-              aria-hidden="true"
-              className={cn(
-                'relative z-10 shrink-0 w-[27px] h-[27px] rounded-full border flex items-center justify-center font-mono text-[11px] bg-background',
-                stage.gate
-                  ? 'border-gate text-gate shadow-[0_0_14px_rgba(245,165,36,0.35)]'
-                  : 'border-primary/50 text-primary',
-              )}
-            >
-              {stage.marker}
-            </span>
-
-            <div className="flex flex-col gap-1 pt-0.5">
-              <p
-                className={cn(
-                  'font-sans text-sm tracking-wide',
-                  stage.gate ? 'text-gate' : 'text-white/90',
-                )}
-              >
-                {stage.label}
-              </p>
-              <p className="font-sans text-xs leading-relaxed text-white/45">{stage.fact}</p>
-            </div>
-          </motion.li>
-        ))}
-      </ol>
-
-      {/* Legend */}
-      <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center gap-x-6 gap-y-2 font-sans text-[10px] tracking-widest uppercase text-white/40">
-        <span className="flex items-center gap-2">
-          <i className="w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
-          Runs unattended
-        </span>
-        <span className="flex items-center gap-2">
-          <i className="w-2 h-2 rounded-full bg-gate" aria-hidden="true" />
-          A person decided
-        </span>
-      </div>
-    </div>
-  );
-}
-
 /* ─── Hero Section ────────────────────────────────────────────── */
 export function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
+  const [hasPortrait, setHasPortrait] = useState(true);
   const transitionSpec = {
     duration: shouldReduceMotion ? 0 : 0.8,
     ease: [0.22, 1, 0.36, 1] as const,
@@ -166,14 +54,13 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex flex-col overflow-hidden bg-background"
+      className="relative w-full h-screen min-h-[640px] flex flex-col overflow-hidden bg-background"
     >
-      {/* Cinematic background — built, not photographed */}
+      {/* Cinematic background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_0%,rgba(94,216,240,0.10),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_85%_30%,rgba(245,165,36,0.07),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_85%_30%,rgba(245,165,36,0.06),transparent_60%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.6)_100%)]" />
-        {/* Faint engineering grid */}
         <div
           className="absolute inset-0 opacity-[0.17]"
           style={{
@@ -218,11 +105,11 @@ export function HeroSection() {
         </a>
       </nav>
 
-      {/* Body */}
-      <div className="relative z-20 flex-1 w-full max-w-[90rem] mx-auto px-6 md:px-12 flex items-center lg:pb-28">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 lg:gap-16 w-full">
+      {/* Body — text anchored top-left, portrait fills the right */}
+      <div className="relative z-20 flex-1 w-full max-w-[90rem] mx-auto px-6 md:px-12 flex">
+        <div className="flex flex-col lg:flex-row items-start justify-between w-full h-full">
           {/* ── Left column ── */}
-          <div className="w-full lg:w-[52%] flex flex-col pt-12 md:pt-16 pb-10 lg:pb-16 z-20">
+          <div className="w-full lg:w-[58%] xl:w-[55%] flex flex-col justify-between h-full pt-10 md:pt-14 pb-10 md:pb-14 z-20">
             <motion.div
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 28 }}
               animate={{ opacity: 1, y: 0 }}
@@ -234,25 +121,22 @@ export function HeroSection() {
                   <span className="absolute inline-flex w-full h-full rounded-full bg-primary opacity-60 animate-ping" />
                   <span className="relative inline-flex w-2 h-2 rounded-full bg-primary" />
                 </span>
-                Available now · Berlin · open to relocation across Europe
+                Available now · Berlin
               </p>
 
-              <h1 className="font-sans font-light tracking-tight text-[2.6rem] sm:text-5xl lg:text-[3.9rem] xl:text-[4.4rem] leading-[1.07] text-white mb-7">
+              <h1 className="font-sans font-light tracking-tight text-4xl md:text-5xl lg:text-[4rem] xl:text-[4.5rem] leading-[1.06] text-white mb-6">
                 I build systems <br />
                 that decide{' '}
-                <span className="text-primary italic font-display tracking-normal">
-                  on their own
-                </span>
-                , <br />
+                <span className="text-primary italic font-serif tracking-normal">on their own</span>,{' '}
+                <br />
                 inside limits{' '}
-                <span className="text-gate italic font-display tracking-normal">a human</span> sets.
+                <span className="text-gate italic font-serif tracking-normal">a human</span> sets.
               </h1>
 
-              <p className="font-sans text-white/55 text-sm md:text-base max-w-md leading-relaxed">
+              <p className="font-sans text-white/55 text-sm max-w-sm leading-relaxed">
                 Backend, full-stack and applied AI. Most recently at{' '}
                 <b className="text-white/80 font-medium" translate="no">recash</b> in Munich, as the
-                only engineer on the platform&rsquo;s AI layer, where I shipped an autonomous deal
-                engine end to end.
+                only engineer on the platform&rsquo;s AI layer.
               </p>
 
               {/* Hard numbers */}
@@ -273,23 +157,33 @@ export function HeroSection() {
                 ))}
               </dl>
             </motion.div>
+
+            {/* Scroll indicator — bottom-anchored */}
+            <div className="hidden md:flex items-end gap-5">
+              <ScrollIndicator />
+            </div>
           </div>
 
-          {/* ── Right column: the loop ── */}
-          <motion.div
-            className="w-full lg:w-[44%] flex items-center lg:self-center pb-16 lg:pb-0"
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30, scale: shouldReduceMotion ? 1 : 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          >
-            <SmartPilotLoop shouldReduceMotion={shouldReduceMotion} />
-          </motion.div>
+          {/* ── Portrait ── */}
+          {hasPortrait && (
+            <motion.div
+              className="absolute lg:relative bottom-0 right-0 w-[95%] sm:w-[70%] lg:w-[53%] h-[88%] lg:h-full flex items-end justify-end pointer-events-none z-10 opacity-40 lg:opacity-100"
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30, scale: shouldReduceMotion ? 1 : 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img
+                src={PORTRAIT_SRC}
+                alt="Achref Lajmi"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                onError={() => setHasPortrait(false)}
+                className="w-auto h-full object-contain object-bottom origin-bottom"
+              />
+            </motion.div>
+          )}
         </div>
-      </div>
-
-      {/* Scroll cue — anchored to the hero's bottom edge, clear of both columns */}
-      <div className="hidden lg:block absolute bottom-10 left-6 md:left-12 z-30">
-        <ScrollIndicator />
       </div>
     </section>
   );
