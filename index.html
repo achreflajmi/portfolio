@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Achref Lajmi — Backend, full-stack and applied AI engineer</title>
+    <title>Achref Lajmi — Backend, Full-Stack &amp; Applied AI Engineer</title>
     <meta
       name="description"
-      content="Achref Lajmi is a software engineer in Berlin working on backend, full-stack and applied AI. Built the AI layer at recash in Munich: an autonomous deal engine that scores inventory, negotiates prices and learns from the outcome, gated on a human decision."
+      content="Achref Lajmi is a software engineer in Berlin working on backend, full-stack and applied AI. At recash in Munich he built SmartPilot, an autonomous deal engine that scores inventory nightly, negotiates prices and learns from the outcome — and halts for a human before anything reaches the catalogue."
     />
     <link rel="canonical" href="https://achreflajmi.netlify.app/" />
-    <meta name="theme-color" content="#09090b" />
+    <meta name="theme-color" content="#0b0c10" />
     <meta name="color-scheme" content="dark" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Achref Lajmi — Backend, full-stack and applied AI engineer" />
+    <meta property="og:title" content="Achref Lajmi — Backend, Full-Stack &amp; Applied AI Engineer" />
     <meta
       property="og:description"
       content="I build systems that decide on their own, inside limits a human sets. Berlin, available now."
@@ -22,9 +22,13 @@
     <meta property="og:image" content="https://achreflajmi.netlify.app/assets/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Achref Lajmi, backend, full-stack and applied AI engineer, Berlin." />
+    <meta
+      property="og:image:alt"
+      content="Achref Lajmi, backend, full-stack and applied AI engineer, Berlin."
+    />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <link rel="preload" href="assets/fonts/clash-display.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/geistmono.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="assets/css/site.css" />
@@ -40,146 +44,429 @@
 
     <header class="bar">
       <div class="bar__inner">
-        <a class="bar__name" href="#main">
+        <a class="bar__name" href="#main" translate="no">
           <span class="bar__mark" aria-hidden="true"></span>
           Achref Lajmi
         </a>
 
         <nav class="bar__nav" aria-label="Sections">
           <a href="#work">Work</a>
-          <a href="#smartpilot">SmartPilot</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
           <a href="#contact">Contact</a>
         </nav>
 
-        <a class="bar__cv" href="cv/Achref_Lajmi_CV.pdf">Download CV</a>
+        <a class="bar__cv" href="cv/Achref_Lajmi_CV.pdf">
+          <span class="bar__cv-long">Download CV</span>
+          <span class="bar__cv-short" aria-hidden="true">CV</span>
+        </a>
       </div>
     </header>
 
+    <!-- the run line: one hairline down the whole page, cyan until the gate -->
+    <div class="spine" aria-hidden="true">
+      <div class="spine__fill"></div>
+      <div class="spine__tick"></div>
+    </div>
+
     <main id="main">
+      <!-- ============================================================ hero -->
       <section class="hero">
-        <span class="hero__light" aria-hidden="true"></span>
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__grain" aria-hidden="true"></div>
 
         <div class="hero__inner shell">
           <div>
-            <p class="hero__status">
-              <span class="hero__dot" aria-hidden="true"></span>
-              Available now &middot; Berlin &middot; open to relocation across Europe
+            <p class="status">
+              <span class="status__dot" aria-hidden="true"></span>
+              Available now · Berlin · open to relocation across Europe
             </p>
 
             <h1>I build systems that decide on their own, inside limits a human sets.</h1>
 
-            <p class="hero__sub">
+            <p class="hero__lead">
               Backend, full-stack and applied AI. Most recently at <b>recash</b> in Munich, as the
               only engineer on the platform&rsquo;s AI layer, where I shipped an autonomous deal
               engine end to end.
             </p>
 
-            <div class="hero__facts">
+            <p class="hero__meta">
               <span><b>24</b> sprints, continuous deployment</span>
               <span><b>9</b>-person startup</span>
-              <span><b>Tr&egrave;s Bien</b>, ESPRIT 2026</span>
-            </div>
+              <span><b>Très Bien</b>, ESPRIT 2026</span>
+            </p>
 
             <div class="actions">
               <a class="btn btn--solid" href="cv/Achref_Lajmi_CV.pdf">Download CV</a>
-              <a class="btn btn--ghost" href="cv/Achref_Lajmi_CV_FR.pdf" lang="fr">CV en fran&ccedil;ais</a>
-              <a class="btn btn--ghost" href="mailto:achreflajmi1@gmail.com">Email me</a>
+              <a class="btn btn--ghost" href="cv/Achref_Lajmi_CV_FR.pdf" lang="fr">CV en français</a>
+              <a class="btn btn--ghost" href="mailto:achreflajmi1@gmail.com">Email Me</a>
             </div>
           </div>
 
-          <div class="stage">
-            <!-- Drop images/achref.jpg in and this appears. Nothing else changes. -->
-            <div class="portrait"></div>
+          <figure class="loop">
+            <figcaption class="loop__head">
+              <span translate="no">SmartPilot</span>
+              <b>one nightly cycle</b>
+            </figcaption>
 
-            <figure class="loop">
-              <figcaption class="loop__caption">
-                <span>SmartPilot</span>
-                <b>one nightly cycle</b>
-              </figcaption>
+            <div class="loop__circuit">
+              <ol class="loop__list">
+                <li class="loop__stage">
+                  <span class="loop__marker" aria-hidden="true">1</span>
+                  <p class="loop__label">Score inventory</p>
+                  <p class="loop__fact"><b>200</b> products scored nightly for inventory health.</p>
+                </li>
 
-              <div class="loop__circuit">
-                <ol class="loop__list">
-                  <li class="loop__stage">
-                    <span class="loop__marker" aria-hidden="true">1</span>
-                    <p class="loop__label">Score inventory</p>
-                    <p class="loop__fact"><b>200</b> products scored nightly for inventory health.</p>
-                  </li>
+                <li class="loop__stage">
+                  <span class="loop__marker" aria-hidden="true">2</span>
+                  <p class="loop__label">Negotiate price</p>
+                  <p class="loop__fact">
+                    <b>61</b> pricing opportunities queued, none manually initiated.
+                  </p>
+                </li>
 
-                  <li class="loop__stage">
-                    <span class="loop__marker" aria-hidden="true">2</span>
-                    <p class="loop__label">Negotiate price</p>
-                    <p class="loop__fact"><b>61</b> pricing opportunities queued, none manually initiated.</p>
-                  </li>
+                <li class="loop__stage loop__stage--gate">
+                  <span class="loop__marker" aria-hidden="true">■</span>
+                  <p class="loop__label">A human decides</p>
+                  <p class="loop__fact">
+                    The loop halts. Nothing reaches the catalogue until a person has decided, and
+                    the decision is written onto the record it concerns.
+                  </p>
+                </li>
 
-                  <li class="loop__stage loop__stage--gate">
-                    <span class="loop__marker" aria-hidden="true">&#9632;</span>
-                    <p class="loop__label">A human decides</p>
-                    <p class="loop__fact">
-                      The loop halts. Nothing reaches the catalogue until a person has decided, and
-                      the decision is written onto the record it concerns.
-                    </p>
-                  </li>
+                <li class="loop__stage">
+                  <span class="loop__marker" aria-hidden="true">3</span>
+                  <p class="loop__label">Distribute deals</p>
+                  <p class="loop__fact">Live deals matched to the buyers most likely to want them.</p>
+                </li>
 
-                  <li class="loop__stage">
-                    <span class="loop__marker" aria-hidden="true">3</span>
-                    <p class="loop__label">Distribute deals</p>
-                    <p class="loop__fact">Live deals matched to the buyers most likely to want them.</p>
-                  </li>
+                <li class="loop__stage">
+                  <span class="loop__marker" aria-hidden="true">4</span>
+                  <p class="loop__label">Learn from the outcome</p>
+                  <p class="loop__fact">
+                    Weights adjust nightly inside fixed safety bounds. Size-fit moved
+                    <b>0.10 → 0.42</b> on its own, and never overwrote a value a person set.
+                  </p>
+                </li>
+              </ol>
 
-                  <li class="loop__stage">
-                    <span class="loop__marker" aria-hidden="true">4</span>
-                    <p class="loop__label">Learn from the outcome</p>
-                    <p class="loop__fact">
-                      Weights adjust nightly inside fixed safety bounds. Size-fit moved
-                      <b>0.10 &rarr; 0.42</b> on its own, and never overwrote a value a person set.
-                    </p>
-                  </li>
-                </ol>
+              <span class="loop__return" aria-hidden="true"></span>
+            </div>
 
-                <span class="loop__return" aria-hidden="true"></span>
-              </div>
+            <p class="loop__key">
+              <span><i class="loop__sw" aria-hidden="true"></i>Runs unattended</span>
+              <span><i class="loop__sw loop__sw--gate" aria-hidden="true"></i>A person decided</span>
+            </p>
+          </figure>
+        </div>
+      </section>
 
-              <div class="loop__key">
-                <span><i class="loop__swatch loop__swatch--machine" aria-hidden="true"></i>runs unattended</span>
-                <span><i class="loop__swatch loop__swatch--human" aria-hidden="true"></i>a person decided</span>
-              </div>
-            </figure>
+      <!-- ============================================================ work -->
+      <section class="sec sec--work shell" id="work">
+        <p class="sec__head">
+          <span class="sec__n">01</span> <span>Work</span>
+          <span class="sec__rule" aria-hidden="true"></span>
+        </p>
+        <h2>Where I Have Shipped</h2>
+        <p class="sec__intro">
+          Four roles, each one building something that went into use rather than a prototype that
+          stopped at a demo.
+        </p>
+
+        <ol>
+          <li class="role">
+            <p class="role__when">Feb — Jul 2026</p>
+            <div class="role__who">
+              <h3 translate="no">recash</h3>
+              <p class="role__what">Software Engineering Intern, end-of-studies project</p>
+              <p class="role__where">Circular Service GmbH · Munich</p>
+            </div>
+            <div class="role__body">
+              <p>
+                Sole developer of the platform&rsquo;s AI layer in a nine-person startup. 24 sprints,
+                continuous deployment, CTO code review. I shipped SmartPilot: an autonomous deal
+                engine closing a four-stage loop.
+              </p>
+              <ul class="role__list">
+                <li><b>200</b> products scored nightly; <b>61</b> pricing opportunities queued with no manual initiation.</li>
+                <li>Three-signal hybrid semantic search — pgvector embeddings, PostgreSQL full-text and keyword ranking — shipped to production, returning relevant results for queries sharing no literal words with the listing.</li>
+                <li>Behavioural recommendation engine with a per-buyer taste vector and a <b>25–35%</b> discovery fraction under an enforced brand-diversity floor; later inverted to match live deals to the buyers most likely to want them.</li>
+                <li>Learning loop adjusting matching weights nightly within fixed safety bounds — moved the size-fit weight from <b>0.10</b> to <b>0.42</b> autonomously, never overwriting a human-set value.</li>
+                <li>Agentic AI assistant, Claude via the Vercel AI SDK, grounded in live data through a fixed, user-scoped tool menu.</li>
+                <li>Production eBay connector; code-complete Shopify Admin and Amazon SP-API integrations.</li>
+              </ul>
+              <ul class="stack" aria-label="Stack">
+                <li>Next.js</li><li>TypeScript</li><li>PostgreSQL</li><li>Supabase</li>
+                <li>Drizzle ORM</li><li>pgvector</li><li>Trigger.dev</li><li>Claude API</li><li>Vercel</li>
+              </ul>
+              <p class="card__note">Company code, not on my GitHub. I can walk through it in an interview.</p>
+            </div>
+          </li>
+
+          <li class="role">
+            <p class="role__when">Jul — Sep 2025</p>
+            <div class="role__who">
+              <h3 translate="no">MASMEDIA</h3>
+              <p class="role__what">AI Software Developer Intern</p>
+              <p class="role__where">ESPRIT Tech · Tunis</p>
+            </div>
+            <div class="role__body">
+              <p>
+                Sole developer of MASMEDIA AIDITOR, an AI journalism platform, across two modules.
+              </p>
+              <ul class="role__list">
+                <li>PARROT, real-time livestream coverage: Streamlink audio to AssemblyAI streaming transcription to GPT-4 key-moment detection to multi-platform content generation. <b>3.2 s</b> transcription latency, <b>84%</b> detection precision.</li>
+                <li>Validated live: <b>8 of 8</b> announcements on an Apple keynote, a <b>73%</b> cut in coverage time, and <b>15 of 16</b> on Google I/O.</li>
+                <li>SWALLO, a configurable scraper over <b>30</b> tech sources with GPT-4 relevance filtering: <b>1,247</b> articles in a seven-day run at <b>84%</b> precision.</li>
+                <li>Event coverage dropped from <b>4h30</b> to <b>1h20</b>; daily monitoring from <b>4 hours</b> to <b>12 minutes</b>; three people per live event to one.</li>
+                <li>Social publishing over OAuth 2.0 with encrypted token storage; a response cache cut GPT-4 spend <b>35%</b>.</li>
+                <li><b>95</b> tests, <b>88%</b> coverage with Jest, Supertest and in-memory MongoDB.</li>
+              </ul>
+              <ul class="stack" aria-label="Stack">
+                <li>NestJS</li><li>TypeScript</li><li>MongoDB</li><li>GPT-4</li>
+                <li>AssemblyAI</li><li>FFmpeg</li><li>Docker</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="role">
+            <p class="role__when">Jun — Jul 2024</p>
+            <div class="role__who">
+              <h3 translate="no">FinConnect</h3>
+              <p class="role__what">Full-Stack Developer Intern</p>
+              <p class="role__where">Financial Solutions · Tunis</p>
+            </div>
+            <div class="role__body">
+              <p>
+                Internal ticketing platform: JWT auth, role-based access control across agent,
+                manager and admin, filtering, reporting, PDF export and in-app chat. Scrum, peer
+                review.
+              </p>
+              <ul class="stack" aria-label="Stack">
+                <li>Angular</li><li>Spring Boot</li><li>PostgreSQL</li>
+              </ul>
+              <p class="card__note">Private company repository.</p>
+            </div>
+          </li>
+
+          <li class="role">
+            <p class="role__when">Jun — Jul 2022</p>
+            <div class="role__who">
+              <h3 translate="no">SOFTParadigm</h3>
+              <p class="role__what">Web Development Intern</p>
+              <p class="role__where">Tunis</p>
+            </div>
+            <div class="role__body">
+              <p>
+                Backend REST endpoints and Angular UI components; refactored existing modules. First
+                professional role.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ======================================================== projects -->
+      <section class="sec sec--projects shell" id="projects">
+        <p class="sec__head">
+          <span class="sec__n">02</span> <span>Projects</span>
+          <span class="sec__rule" aria-hidden="true"></span>
+        </p>
+        <h2>Things I Built</h2>
+
+        <ul class="bento">
+          <li class="card card--gate">
+            <p class="card__tag">Flagship</p>
+            <h3 translate="no">SmartPilot</h3>
+            <p>
+              An autonomous deal engine at recash closing a four-stage loop: nightly inventory
+              health scoring, AI-mediated price negotiation, targeted deal distribution, and a
+              feedback-driven learning loop. Autonomy and human oversight are kept as separable
+              concerns — no price reaches the catalogue without a human decision stamped on the
+              record it concerns.
+            </p>
+            <p>
+              Three-signal hybrid semantic search over pgvector, a behavioural recommender with an
+              enforced brand-diversity floor, and a nightly learning loop bounded by fixed safety
+              limits.
+            </p>
+            <ul class="stack" aria-label="Stack">
+              <li>Next.js</li><li>pgvector</li><li>Drizzle</li><li>Trigger.dev</li><li>Claude API</li>
+            </ul>
+            <p class="card__note">Company code. Not public — I can walk through it in an interview.</p>
+          </li>
+
+          <li class="card">
+            <p class="card__tag">AI Journalism</p>
+            <h3 translate="no">MASMEDIA AIDITOR</h3>
+            <p>
+              Real-time livestream coverage and a configurable scraper over 30 tech sources.
+              3.2 s transcription latency at 84% detection precision; 1,247 articles in a seven-day
+              run.
+            </p>
+            <p class="card__links">
+              <a class="lk" href="https://www.youtube.com/watch?v=aoA7SMIzSG4">Watch the demo</a>
+            </p>
+          </li>
+
+          <li class="card">
+            <p class="card__tag">Education</p>
+            <h3 translate="no">Kiddo AI</h3>
+            <p>
+              An educational app for six-year-olds: an AI tutor speaking Tunisian Arabic, cloned
+              voice synthesis and avatar personalisation. Five-person academic team; I was principal
+              author of the Flutter client&rsquo;s second version — MVVM restructure, service layer
+              and voice pipeline, roughly 3,100 of its 4,400 lines.
+            </p>
+            <p class="card__links">
+              <a class="lk" href="https://github.com/achreflajmi/KiddoAI-Front">Flutter client</a>
+              <a class="lk" href="https://www.youtube.com/watch?v=NfDOhjPF7VM">Demo</a>
+            </p>
+          </li>
+
+          <li class="card">
+            <p class="card__tag">iOS</p>
+            <h3 translate="no">MoodyMap</h3>
+            <p>
+              A SwiftUI study planner: hand-built RFC 2388 multipart image upload for server-side
+              emotion detection, camera and photo-library permission bridging, concurrent home-screen
+              loading with <code translate="no">withTaskGroup</code>, and LLM study-plan prose parsed
+              into a checkable task list. 10 screens, 18 endpoints, about 5,000 lines of Swift.
+            </p>
+            <p class="card__links">
+              <a class="lk" href="https://github.com/achreflajmi/FrontIOSMoodyMap">iOS app</a>
+              <a class="lk" href="https://www.youtube.com/watch?v=S_biZwKb0QQ">Demo</a>
+            </p>
+          </li>
+
+          <li class="card">
+            <p class="card__tag">Hackathon</p>
+            <h3 translate="no">SUF&rsquo;ESS</h3>
+            <p>
+              A 24-hour hackathon MVP: location-based cultural storytelling with prototype AI guided
+              tours, built in FlutterFlow with RAG, 3D and geolocation.
+            </p>
+            <p class="card__links">
+              <a class="lk" href="https://www.youtube.com/watch?v=NwJ0WE14vEM">Watch the demo</a>
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ========================================================== skills -->
+      <section class="sec sec--skills shell" id="skills">
+        <p class="sec__head">
+          <span class="sec__n">03</span> <span>Skills</span>
+          <span class="sec__rule" aria-hidden="true"></span>
+        </p>
+        <h2>What I Work In</h2>
+
+        <div class="skills">
+          <div>
+            <h3>Backend</h3>
+            <p>TypeScript, Node.js, NestJS, Next.js server actions &amp; API routes, Java, Spring Boot, REST, Zod, JWT/RBAC</p>
+          </div>
+          <div>
+            <h3>Data</h3>
+            <p>PostgreSQL, pgvector, Supabase, Drizzle ORM, Prisma, MongoDB, Row-Level Security</p>
+          </div>
+          <div>
+            <h3>Frontend</h3>
+            <p>React, Next.js, Angular, Tailwind, Flutter, SwiftUI</p>
+          </div>
+          <div>
+            <h3>Applied AI</h3>
+            <p>LLM integration, RAG, tool-calling agents, embeddings, hybrid semantic search, recommender systems, STT/TTS</p>
+          </div>
+          <div>
+            <h3>Infrastructure</h3>
+            <p>Docker, Git/GitHub, CI/CD, Turborepo + pnpm monorepos, Trigger.dev, Vercel, Sentry, PostHog, Jest</p>
+          </div>
+          <div>
+            <h3>Languages</h3>
+            <p>Arabic (native), French (C1), English (C1, TOEFL iBT), German (A1, learning)</p>
           </div>
         </div>
       </section>
 
-      <section class="section shell" id="work">
-        <p class="section__head"><span class="section__n">01</span> <span>/</span> <span>Work</span></p>
-        <h2>Where I have shipped</h2>
-        <p class="section__stub">Next section, pending your sign-off on this hero.</p>
+      <!-- ======================================================= education -->
+      <section class="sec sec--edu shell" id="education">
+        <p class="sec__head">
+          <span class="sec__n">04</span> <span>Education</span>
+          <span class="sec__rule" aria-hidden="true"></span>
+        </p>
+
+        <div class="edu">
+          <div class="edu__item">
+            <h3>Diplôme d&rsquo;Ingénieur, Computer Science</h3>
+            <p class="edu__when">Sep 2021 — Sep 2026 · ESPRIT, Tunis</p>
+            <p>Web &amp; mobile. Mention Très Bien. Master level, EQF 7.</p>
+          </div>
+          <div class="edu__item">
+            <h3>Exchange Semester, Computer Science</h3>
+            <p class="edu__when">Oct 2025 — Mar 2026 · Philipps-Universität Marburg</p>
+            <p>Germany.</p>
+          </div>
+        </div>
+
+        <ul class="certs" aria-label="Certifications">
+          <li>AWS Academy Cloud Foundations</li>
+          <li>NVIDIA Generative AI with Diffusion Models</li>
+          <li>NVIDIA Applications of AI for Predictive Maintenance</li>
+        </ul>
       </section>
 
-      <section class="section shell" id="smartpilot">
-        <p class="section__head"><span class="section__n">02</span> <span>/</span> <span>SmartPilot</span></p>
-        <h2>An autonomous deal engine</h2>
-        <p class="section__stub">Case study page to follow.</p>
-      </section>
+      <!-- ========================================================= contact -->
+      <section class="sec sec--contact contact shell" id="contact">
+        <p class="sec__head">
+          <span class="sec__n">05</span> <span>Contact</span>
+          <span class="sec__rule" aria-hidden="true"></span>
+        </p>
+        <h2>Let&rsquo;s Talk</h2>
 
-      <section class="section shell" id="projects">
-        <p class="section__head"><span class="section__n">03</span> <span>/</span> <span>Projects</span></p>
-        <h2>Things I built</h2>
-        <p class="section__stub">Pending.</p>
-      </section>
+        <div class="contact__grid">
+          <div>
+            <p class="sec__intro">
+              I&rsquo;m looking for full-time backend, full-stack or applied-AI work, and I&rsquo;m
+              available now.
+            </p>
+            <div class="actions">
+              <a class="btn btn--solid" href="mailto:achreflajmi1@gmail.com">Email Me</a>
+              <a class="btn btn--ghost" href="cv/Achref_Lajmi_CV.pdf">Download CV</a>
+            </div>
+          </div>
 
-      <section class="section shell" id="skills">
-        <p class="section__head"><span class="section__n">04</span> <span>/</span> <span>Skills</span></p>
-        <h2>What I work in</h2>
-        <p class="section__stub">Pending.</p>
-      </section>
-
-      <section class="section shell" id="contact">
-        <p class="section__head"><span class="section__n">05</span> <span>/</span> <span>Contact</span></p>
-        <h2>Get in touch</h2>
-        <p class="section__stub">Pending.</p>
+          <dl class="dl">
+            <div>
+              <dt>Email</dt>
+              <dd><a class="lk" href="mailto:achreflajmi1@gmail.com">achreflajmi1@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd><a class="lk" href="tel:+4915565848284">+49&nbsp;155&nbsp;6584&nbsp;8284</a></dd>
+            </div>
+            <div>
+              <dt>GitHub</dt>
+              <dd><a class="lk" href="https://github.com/achreflajmi">github.com/achreflajmi</a></dd>
+            </div>
+            <div>
+              <dt>Based in</dt>
+              <dd>Berlin, Germany</dd>
+            </div>
+            <div>
+              <dt>Open to</dt>
+              <dd>Relocation across Europe</dd>
+            </div>
+          </dl>
+        </div>
       </section>
     </main>
+
+    <footer class="foot shell">
+      <p>Achref Lajmi · Berlin</p>
+      <p>Built as a static site. No trackers.</p>
+    </footer>
 
     <script src="assets/js/site.js" defer></script>
   </body>
