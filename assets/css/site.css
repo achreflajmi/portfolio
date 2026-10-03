@@ -473,8 +473,18 @@ ol {
   font-weight: 500;
   line-height: 0.88;
   letter-spacing: -0.042em;
-  max-width: 17ch;
+  max-width: none;
+  text-wrap: nowrap;
   margin-bottom: 2rem;
+}
+
+/* Above 64rem the hero splits into two columns, so the headline is sized
+   against its column rather than the viewport — at ~1024px the viewport-based
+   value overflowed and was being silently clipped by the hero's overflow. */
+@media (min-width: 64rem) {
+  .hero h1 {
+    font-size: clamp(2.5rem, 5.1vw, 4.75rem);
+  }
 }
 
 .hero__lead {
@@ -937,7 +947,6 @@ ol {
 
   .bento > :first-child {
     grid-column: span 2;
-    grid-row: span 2;
   }
 }
 
@@ -1285,5 +1294,326 @@ ol {
 
   .spine__tick {
     transition: none;
+  }
+}
+
+/* ==========================================================================
+   Project cards with real imagery
+   ========================================================================== */
+
+.bento {
+  grid-auto-rows: auto;
+}
+
+@media (min-width: 64rem) {
+  .bento > .card--lead {
+    grid-column: span 2;
+  }
+}
+
+.card--shot {
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+
+.card__media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #0e1014;
+  aspect-ratio: 16 / 9;
+  text-decoration: none;
+}
+
+.card__media--portrait {
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(70% 70% at 50% 0%, rgb(94 216 240 / 0.08), transparent 70%),
+    #0e1014;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform: scale(1.01);
+  transition: transform 620ms var(--ease), filter 420ms var(--ease);
+  filter: saturate(0.92) contrast(1.02);
+}
+
+/* phone screenshots show whole, letterboxed on the panel ground.
+   Must follow .card__media img — equal specificity, so source order decides. */
+.card__media--portrait img {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* the image sits under a wash so white UI screenshots do not fight the page */
+.card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(11 12 16 / 0.58) 0%, transparent 52%);
+  transition: opacity 420ms var(--ease);
+}
+
+.card--shot:hover .card__media img,
+.card__media:focus-visible img {
+  transform: scale(1.05);
+  filter: saturate(1) contrast(1.04);
+}
+
+.card--shot:hover .card__media::after {
+  opacity: 0.45;
+}
+
+/* play affordance, since every image links to a demo video */
+.card__play {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgb(244 245 248 / 0.28);
+  background: rgb(11 12 16 / 0.55);
+  backdrop-filter: blur(8px);
+  transition: transform 420ms var(--ease), border-color 420ms var(--ease),
+    background-color 420ms var(--ease);
+}
+
+.card__play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -0.3rem 0 0 -0.18rem;
+  border-style: solid;
+  border-width: 0.3rem 0 0.3rem 0.5rem;
+  border-color: transparent transparent transparent var(--chalk);
+}
+
+.card--shot:hover .card__play,
+.card__media:focus-visible .card__play {
+  transform: scale(1.1);
+  border-color: var(--run);
+  background: rgb(94 216 240 / 0.2);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.25rem;
+}
+
+/* --- the flagship card ---------------------------------------------------- */
+
+.card--lead {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 70% at 12% 0%, rgb(94 216 240 / 0.07), transparent 60%),
+    radial-gradient(70% 60% at 95% 100%, rgb(245 165 36 / 0.06), transparent 62%),
+    rgb(20 22 28 / 0.5);
+}
+
+.card__glyph {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2.5rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  width: clamp(60px, 9vw, 108px);
+  height: auto;
+  fill: none;
+  stroke: var(--run);
+  stroke-width: 2;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.card__glyph .g {
+  fill: var(--gate);
+  stroke: var(--gate);
+  opacity: 0.9;
+}
+
+.card__glyph .r {
+  stroke-dasharray: 3 5;
+  opacity: 0.6;
+}
+
+.card__tag--gate {
+  color: var(--gate);
+}
+
+/* figures: the numbers get to be big, because they are the evidence */
+.figs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.25rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.figs > div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.15rem;
+}
+
+.figs dt {
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+.figs dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--chalk);
+  font-variant-numeric: tabular-nums;
+}
+
+.figs dd span {
+  color: var(--gate);
+  margin-inline: 0.15em;
+}
+
+.lk--static {
+  color: var(--smoke);
+  min-height: 0;
+}
+
+/* ==========================================================================
+   Motion layer
+   Load: the hero headline rises line by line, then the run arms.
+   Scroll: a slight lift as sections enter. Content is never below 0.55
+   opacity, so nothing is hidden if a reveal never fires.
+   ========================================================================== */
+
+.hero h1 .ln {
+  display: block;
+  overflow: hidden;
+}
+
+.hero h1 .ln > span {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes lineUp {
+    from {
+      transform: translateY(105%);
+    }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+
+  .hero h1 .ln > span {
+    animation: lineUp 900ms var(--ease) both;
+  }
+
+  .hero h1 .ln:nth-child(1) > span { animation-delay: 0.05s; }
+  .hero h1 .ln:nth-child(2) > span { animation-delay: 0.12s; }
+  .hero h1 .ln:nth-child(3) > span { animation-delay: 0.19s; }
+  .hero h1 .ln:nth-child(4) > span { animation-delay: 0.26s; }
+  .hero h1 .ln:nth-child(5) > span { animation-delay: 0.33s; }
+
+  .status,
+  .hero__lead,
+  .hero__meta,
+  .hero .actions,
+  .loop {
+    animation: fadeUp 700ms var(--ease) both;
+  }
+
+  .status { animation-delay: 0.02s; }
+  .hero__lead { animation-delay: 0.34s; }
+  .hero__meta { animation-delay: 0.42s; }
+  .hero .actions { animation-delay: 0.5s; }
+  .loop { animation-delay: 0.3s; }
+}
+
+/* Scroll choreography via native scroll-driven animations: no JS, no library,
+   and it simply does not apply where unsupported. Opacity floors at 0.55 so
+   text stays readable even mid-reveal. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes enter {
+      from {
+        opacity: 0.55;
+        transform: translateY(22px);
+      }
+    }
+
+    .reveal,
+    .role,
+    .skills > div,
+    .edu__item {
+      animation: enter linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 26%;
+    }
+  }
+}
+
+/* ==========================================================================
+   Depth: each section carries a faint light of its own, so the page is not
+   one flat plane behind the hero.
+   ========================================================================== */
+
+.sec--projects,
+.sec--contact {
+  isolation: isolate;
+}
+
+.sec--projects::before,
+.sec--contact::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset-inline: -10%;
+}
+
+.sec--projects::before {
+  top: 4%;
+  height: 60%;
+  background: radial-gradient(50% 50% at 78% 20%, rgb(94 216 240 / 0.07), transparent 70%);
+}
+
+.sec--contact::before {
+  top: 0;
+  height: 100%;
+  background: radial-gradient(55% 60% at 18% 60%, rgb(245 165 36 / 0.07), transparent 72%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card__media img,
+  .card__play,
+  .card__media::after {
+    transition: none;
+  }
+
+  .card--shot:hover .card__media img,
+  .card__media:focus-visible img {
+    transform: scale(1.01);
+  }
+
+  .card--shot:hover .card__play,
+  .card__media:focus-visible .card__play {
+    transform: none;
   }
 }

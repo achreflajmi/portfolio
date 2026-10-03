@@ -83,7 +83,13 @@
               Available now · Berlin · open to relocation across Europe
             </p>
 
-            <h1>I build systems that decide on their own, inside limits a human sets.</h1>
+            <h1>
+              <span class="ln"><span>I build systems</span></span>
+              <span class="ln"><span>that decide</span></span>
+              <span class="ln"><span>on their own,</span></span>
+              <span class="ln"><span>inside limits</span></span>
+              <span class="ln"><span>a human sets.</span></span>
+            </h1>
 
             <p class="hero__lead">
               Backend, full-stack and applied AI. Most recently at <b>recash</b> in Munich, as the
@@ -163,12 +169,12 @@
       </section>
 
       <!-- ============================================================ work -->
-      <section class="sec sec--work shell" id="work">
+      <section class="sec sec--work shell" id="work" aria-labelledby="h-work">
         <p class="sec__head">
           <span class="sec__n">01</span> <span>Work</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
-        <h2>Where I Have Shipped</h2>
+        <h2 id="h-work">Where I Have Shipped</h2>
         <p class="sec__intro">
           Four roles, each one building something that went into use rather than a prototype that
           stopped at a demo.
@@ -268,99 +274,188 @@
       </section>
 
       <!-- ======================================================== projects -->
-      <section class="sec sec--projects shell" id="projects">
+      <section class="sec sec--projects shell" id="projects" aria-labelledby="h-projects">
         <p class="sec__head">
           <span class="sec__n">02</span> <span>Projects</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
-        <h2>Things I Built</h2>
+        <h2 id="h-projects">Things I Built</h2>
 
         <ul class="bento">
-          <li class="card card--gate">
-            <p class="card__tag">Flagship</p>
+          <li class="card card--lead reveal">
+            <svg class="card__glyph" viewBox="0 0 120 200" aria-hidden="true" focusable="false">
+              <path d="M24 18 V80" />
+              <path d="M24 100 V182" />
+              <circle cx="24" cy="12" r="6" />
+              <circle cx="24" cy="54" r="6" />
+              <rect class="g" x="17" y="83" width="14" height="14" rx="2" />
+              <circle cx="24" cy="128" r="6" />
+              <circle cx="24" cy="188" r="6" />
+              <path class="r" d="M24 188 H84 V12 H30" />
+            </svg>
+
+            <p class="card__tag card__tag--gate">Flagship</p>
             <h3 translate="no">SmartPilot</h3>
             <p>
               An autonomous deal engine at recash closing a four-stage loop: nightly inventory
               health scoring, AI-mediated price negotiation, targeted deal distribution, and a
-              feedback-driven learning loop. Autonomy and human oversight are kept as separable
-              concerns — no price reaches the catalogue without a human decision stamped on the
-              record it concerns.
+              feedback-driven learning loop. Autonomy and human oversight stay separable concerns —
+              no price reaches the catalogue without a human decision stamped on the record it
+              concerns.
             </p>
-            <p>
-              Three-signal hybrid semantic search over pgvector, a behavioural recommender with an
-              enforced brand-diversity floor, and a nightly learning loop bounded by fixed safety
-              limits.
-            </p>
+
+            <dl class="figs">
+              <div><dt>Scored nightly</dt><dd>200</dd></div>
+              <div><dt>Deals queued</dt><dd>61</dd></div>
+              <div><dt>Weight moved</dt><dd>0.10<span aria-hidden="true">→</span>0.42</dd></div>
+            </dl>
+
             <ul class="stack" aria-label="Stack">
               <li>Next.js</li><li>pgvector</li><li>Drizzle</li><li>Trigger.dev</li><li>Claude API</li>
             </ul>
             <p class="card__note">Company code. Not public — I can walk through it in an interview.</p>
           </li>
 
-          <li class="card">
-            <p class="card__tag">AI Journalism</p>
-            <h3 translate="no">MASMEDIA AIDITOR</h3>
-            <p>
-              Real-time livestream coverage and a configurable scraper over 30 tech sources.
-              3.2 s transcription latency at 84% detection precision; 1,247 articles in a seven-day
-              run.
-            </p>
-            <p class="card__links">
-              <a class="lk" href="https://www.youtube.com/watch?v=aoA7SMIzSG4">Watch the demo</a>
-            </p>
+          <li class="card card--shot reveal">
+            <a class="card__media" href="https://www.youtube.com/watch?v=aoA7SMIzSG4">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/masmedia-800.webp 800w, assets/img/masmedia-1600.webp 1600w"
+                  sizes="(min-width: 64rem) 30vw, (min-width: 48rem) 46vw, 92vw"
+                />
+                <img
+                  src="assets/img/masmedia-800.jpg"
+                  width="1280"
+                  height="634"
+                  loading="lazy"
+                  decoding="async"
+                  alt="The MASMEDIA AIDITOR dashboard: a generated article draft beside per-platform Twitter, Instagram and Facebook post panels."
+                />
+              </picture>
+              <span class="card__play" aria-hidden="true"></span>
+              <span class="vh">Watch the MASMEDIA AIDITOR demo on YouTube</span>
+            </a>
+            <div class="card__body">
+              <p class="card__tag">AI Journalism</p>
+              <h3 translate="no">MASMEDIA AIDITOR</h3>
+              <p>
+                Real-time livestream coverage and a configurable scraper over 30 tech sources.
+                3.2 s transcription latency at 84% detection precision; 1,247 articles in a
+                seven-day run.
+              </p>
+            </div>
           </li>
 
-          <li class="card">
-            <p class="card__tag">Education</p>
-            <h3 translate="no">Kiddo AI</h3>
-            <p>
-              An educational app for six-year-olds: an AI tutor speaking Tunisian Arabic, cloned
-              voice synthesis and avatar personalisation. Five-person academic team; I was principal
-              author of the Flutter client&rsquo;s second version — MVVM restructure, service layer
-              and voice pipeline, roughly 3,100 of its 4,400 lines.
-            </p>
-            <p class="card__links">
-              <a class="lk" href="https://github.com/achreflajmi/KiddoAI-Front">Flutter client</a>
-              <a class="lk" href="https://www.youtube.com/watch?v=NfDOhjPF7VM">Demo</a>
-            </p>
+          <li class="card card--shot card--tall reveal">
+            <a class="card__media card__media--portrait" href="https://www.youtube.com/watch?v=NfDOhjPF7VM">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/kiddoai-290.webp 290w"
+                  sizes="(min-width: 64rem) 30vw, (min-width: 48rem) 46vw, 92vw"
+                />
+                <img
+                  src="assets/img/kiddoai-290.jpg"
+                  width="290"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                  alt="The Kiddo AI writing board on a phone, with handwritten Arabic traced across ruled guidelines."
+                />
+              </picture>
+              <span class="card__play" aria-hidden="true"></span>
+              <span class="vh">Watch the Kiddo AI demo on YouTube</span>
+            </a>
+            <div class="card__body">
+              <p class="card__tag">Education</p>
+              <h3 translate="no">Kiddo AI</h3>
+              <p>
+                An educational app for six-year-olds: an AI tutor speaking Tunisian Arabic, cloned
+                voice synthesis and avatar personalisation. Five-person academic team; I was
+                principal author of the Flutter client&rsquo;s second version — MVVM restructure,
+                service layer and voice pipeline, roughly 3,100 of its 4,400 lines.
+              </p>
+              <p class="card__links">
+                <a class="lk" href="https://github.com/achreflajmi/KiddoAI-Front">Flutter client</a>
+              </p>
+            </div>
           </li>
 
-          <li class="card">
-            <p class="card__tag">iOS</p>
-            <h3 translate="no">MoodyMap</h3>
-            <p>
-              A SwiftUI study planner: hand-built RFC 2388 multipart image upload for server-side
-              emotion detection, camera and photo-library permission bridging, concurrent home-screen
-              loading with <code translate="no">withTaskGroup</code>, and LLM study-plan prose parsed
-              into a checkable task list. 10 screens, 18 endpoints, about 5,000 lines of Swift.
-            </p>
-            <p class="card__links">
-              <a class="lk" href="https://github.com/achreflajmi/FrontIOSMoodyMap">iOS app</a>
-              <a class="lk" href="https://www.youtube.com/watch?v=S_biZwKb0QQ">Demo</a>
-            </p>
+          <li class="card card--shot card--tall reveal">
+            <a class="card__media card__media--portrait" href="https://www.youtube.com/watch?v=S_biZwKb0QQ">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/moodymap-240.webp 240w"
+                  sizes="(min-width: 64rem) 30vw, (min-width: 48rem) 46vw, 92vw"
+                />
+                <img
+                  src="assets/img/moodymap-240.jpg"
+                  width="240"
+                  height="360"
+                  loading="lazy"
+                  decoding="async"
+                  alt="The MoodyMap check-in screen on an iPhone, asking how well the user could concentrate today with four graded answers."
+                />
+              </picture>
+              <span class="card__play" aria-hidden="true"></span>
+              <span class="vh">Watch the MoodyMap demo on YouTube</span>
+            </a>
+            <div class="card__body">
+              <p class="card__tag">iOS</p>
+              <h3 translate="no">MoodyMap</h3>
+              <p>
+                A SwiftUI study planner: hand-built RFC 2388 multipart image upload for server-side
+                emotion detection, camera and photo-library permission bridging, concurrent
+                home-screen loading with <code translate="no">withTaskGroup</code>, and LLM
+                study-plan prose parsed into a checkable task list. 10 screens, 18 endpoints, about
+                5,000 lines of Swift.
+              </p>
+              <p class="card__links">
+                <a class="lk" href="https://github.com/achreflajmi/FrontIOSMoodyMap">iOS app</a>
+              </p>
+            </div>
           </li>
 
-          <li class="card">
-            <p class="card__tag">Hackathon</p>
-            <h3 translate="no">SUF&rsquo;ESS</h3>
-            <p>
-              A 24-hour hackathon MVP: location-based cultural storytelling with prototype AI guided
-              tours, built in FlutterFlow with RAG, 3D and geolocation.
-            </p>
-            <p class="card__links">
-              <a class="lk" href="https://www.youtube.com/watch?v=NwJ0WE14vEM">Watch the demo</a>
-            </p>
+          <li class="card card--shot reveal">
+            <a class="card__media" href="https://www.youtube.com/watch?v=NwJ0WE14vEM">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/sufess-800.webp 800w, assets/img/sufess-1600.webp 1600w"
+                  sizes="(min-width: 64rem) 30vw, (min-width: 48rem) 46vw, 92vw"
+                />
+                <img
+                  src="assets/img/sufess-800.jpg"
+                  width="960"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                  alt="The SUF'ESS guided-tour screen on a phone, showing a Roman fountain beside an illustrated narrator."
+                />
+              </picture>
+              <span class="card__play" aria-hidden="true"></span>
+              <span class="vh">Watch the SUF'ESS demo on YouTube</span>
+            </a>
+            <div class="card__body">
+              <p class="card__tag">Hackathon</p>
+              <h3 translate="no">SUF&rsquo;ESS</h3>
+              <p>
+                A 24-hour hackathon MVP: location-based cultural storytelling with prototype AI
+                guided tours, built in FlutterFlow with RAG, 3D and geolocation.
+              </p>
+            </div>
           </li>
         </ul>
       </section>
-
       <!-- ========================================================== skills -->
-      <section class="sec sec--skills shell" id="skills">
+      <section class="sec sec--skills shell" id="skills" aria-labelledby="h-skills">
         <p class="sec__head">
           <span class="sec__n">03</span> <span>Skills</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
-        <h2>What I Work In</h2>
+        <h2 id="h-skills">What I Work In</h2>
 
         <div class="skills">
           <div>
@@ -391,11 +486,12 @@
       </section>
 
       <!-- ======================================================= education -->
-      <section class="sec sec--edu shell" id="education">
+      <section class="sec sec--edu shell" id="education" aria-labelledby="h-education">
         <p class="sec__head">
           <span class="sec__n">04</span> <span>Education</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
+        <h2 id="h-education">Where I Studied</h2>
 
         <div class="edu">
           <div class="edu__item">
@@ -418,12 +514,12 @@
       </section>
 
       <!-- ========================================================= contact -->
-      <section class="sec sec--contact contact shell" id="contact">
+      <section class="sec sec--contact contact shell" id="contact" aria-labelledby="h-contact">
         <p class="sec__head">
           <span class="sec__n">05</span> <span>Contact</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
-        <h2>Let&rsquo;s Talk</h2>
+        <h2 id="h-contact">Let&rsquo;s Talk</h2>
 
         <div class="contact__grid">
           <div>
