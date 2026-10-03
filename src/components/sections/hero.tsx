@@ -1,10 +1,5 @@
-import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Terminal } from 'lucide-react';
-
-/** Drop your cut-out photo at public/portrait.png and it appears here.
- *  Until it exists the hero composes fine without it. */
-const PORTRAIT_SRC = '/portrait.png';
 
 /* ─── Scroll Indicator ────────────────────────────────────────── */
 function ScrollIndicator() {
@@ -45,7 +40,6 @@ function ScrollIndicator() {
 /* ─── Hero Section ────────────────────────────────────────────── */
 export function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
-  const [hasPortrait, setHasPortrait] = useState(true);
   const transitionSpec = {
     duration: shouldReduceMotion ? 0 : 0.8,
     ease: [0.22, 1, 0.36, 1] as const,
@@ -56,20 +50,39 @@ export function HeroSection() {
       id="home"
       className="relative w-full h-screen min-h-[640px] flex flex-col overflow-hidden bg-background"
     >
-      {/* Cinematic background */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_0%,rgba(94,216,240,0.10),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_85%_30%,rgba(245,165,36,0.06),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.6)_100%)]" />
+      {/* Portrait, full-bleed. The subject sits right of centre with dark space
+          to the left, so the headline lands on the quiet half of the frame. */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <picture>
+          <source media="(min-width: 1536px)" srcSet="/img/hero-1812.webp" type="image/webp" />
+          <source media="(min-width: 768px)" srcSet="/img/hero-1400.webp" type="image/webp" />
+          <source srcSet="/img/hero-900.webp" type="image/webp" />
+          <img
+            src="/img/hero-1400.jpg"
+            alt=""
+            width={1812}
+            height={868}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-[64%_22%] lg:object-[62%_28%]"
+          />
+        </picture>
+
+        {/* Legibility scrims. On small screens text sits over the whole frame,
+            so the photo dims to texture. From lg the scrim falls off before it
+            reaches the face, keeping the subject bright under the headline. */}
+        <div className="absolute inset-0 bg-background/75 lg:hidden" />
         <div
-          className="absolute inset-0 opacity-[0.17]"
+          className="hidden lg:block absolute inset-0"
           style={{
-            backgroundImage:
-              'linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px)',
-            backgroundSize: '72px 72px',
-            maskImage: 'radial-gradient(ellipse 70% 60% at 50% 35%, black, transparent 75%)',
+            background:
+              'linear-gradient(to right, rgb(8 8 8 / 0.97) 0%, rgb(8 8 8 / 0.92) 30%, rgb(8 8 8 / 0.55) 50%, rgb(8 8 8 / 0.12) 66%, transparent 78%)',
           }}
         />
+
+        {/* Blend the bottom edge into the manifesto section below */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       {/* Nav */}
@@ -164,25 +177,6 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* ── Portrait ── */}
-          {hasPortrait && (
-            <motion.div
-              className="absolute lg:relative bottom-0 right-0 w-[95%] sm:w-[70%] lg:w-[53%] h-[88%] lg:h-full flex items-end justify-end pointer-events-none z-10 opacity-40 lg:opacity-100"
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30, scale: shouldReduceMotion ? 1 : 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <img
-                src={PORTRAIT_SRC}
-                alt="Achref Lajmi"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                onError={() => setHasPortrait(false)}
-                className="w-auto h-full object-contain object-bottom origin-bottom"
-              />
-            </motion.div>
-          )}
         </div>
       </div>
     </section>
