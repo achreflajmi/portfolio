@@ -64,6 +64,13 @@
       </div>
     </header>
 
+    <!-- section readout: 01 / WORK, pinned and blended over the page -->
+    <div class="ind" aria-hidden="true" data-ind>
+      <span class="ind__n" data-ind-n>01</span>
+      <span class="ind__slash">/</span>
+      <span class="ind__t" data-ind-t>Work</span>
+    </div>
+
     <!-- the run line: one hairline down the whole page, cyan until the gate -->
     <div class="spine" aria-hidden="true">
       <div class="spine__fill"></div>
@@ -110,7 +117,12 @@
             </div>
           </div>
 
-          <figure class="loop">
+          <div class="stage">
+            <!-- Drop images/achref.jpg in and the portrait appears. The hero is
+                 composed to stand without it. -->
+            <figure class="portrait" data-portrait></figure>
+
+            <figure class="loop">
             <figcaption class="loop__head">
               <span translate="no">SmartPilot</span>
               <b>one nightly cycle</b>
@@ -164,14 +176,40 @@
               <span><i class="loop__sw" aria-hidden="true"></i>Runs unattended</span>
               <span><i class="loop__sw loop__sw--gate" aria-hidden="true"></i>A person decided</span>
             </p>
-          </figure>
+            </figure>
+          </div>
+        </div>
+
+        <a class="cue" href="#manifesto">
+          <span class="cue__mouse" aria-hidden="true"><span class="cue__dot"></span></span>
+          <span class="cue__label">Scroll</span>
+        </a>
+      </section>
+
+      <!-- ====================================================== manifesto -->
+      <section class="sec sec--manifesto" id="manifesto" aria-labelledby="h-manifesto">
+        <span class="ghost" aria-hidden="true" data-ghost="01"></span>
+        <div class="manifesto shell">
+          <h2 id="h-manifesto">
+            A system can run all night on its own. It still stops at a person
+            before anything is final.
+          </h2>
+          <p>
+            That is the line I design to. SmartPilot scores, negotiates and learns
+            without supervision — and writes nothing to the catalogue until someone
+            has decided, on the record it concerns. Autonomy and oversight are
+            separate problems, and treating them that way is what makes either one
+            safe to ship.
+          </p>
+          <p class="manifesto__by">Achref Lajmi, on building SmartPilot at recash</p>
         </div>
       </section>
 
       <!-- ============================================================ work -->
       <section class="sec sec--work shell" id="work" aria-labelledby="h-work">
+        <span class="ghost" aria-hidden="true" data-ghost="02"></span>
         <p class="sec__head">
-          <span class="sec__n">01</span> <span>Work</span>
+          <span class="sec__n">02</span> <span>Work</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
         <h2 id="h-work">Where I Have Shipped</h2>
@@ -275,8 +313,9 @@
 
       <!-- ======================================================== projects -->
       <section class="sec sec--projects shell" id="projects" aria-labelledby="h-projects">
+        <span class="ghost" aria-hidden="true" data-ghost="03"></span>
         <p class="sec__head">
-          <span class="sec__n">02</span> <span>Projects</span>
+          <span class="sec__n">03</span> <span>Projects</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
         <h2 id="h-projects">Things I Built</h2>
@@ -451,8 +490,9 @@
       </section>
       <!-- ========================================================== skills -->
       <section class="sec sec--skills shell" id="skills" aria-labelledby="h-skills">
+        <span class="ghost" aria-hidden="true" data-ghost="04"></span>
         <p class="sec__head">
-          <span class="sec__n">03</span> <span>Skills</span>
+          <span class="sec__n">04</span> <span>Skills</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
         <h2 id="h-skills">What I Work In</h2>
@@ -487,8 +527,9 @@
 
       <!-- ======================================================= education -->
       <section class="sec sec--edu shell" id="education" aria-labelledby="h-education">
+        <span class="ghost" aria-hidden="true" data-ghost="05"></span>
         <p class="sec__head">
-          <span class="sec__n">04</span> <span>Education</span>
+          <span class="sec__n">05</span> <span>Education</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
         <h2 id="h-education">Where I Studied</h2>
@@ -515,8 +556,9 @@
 
       <!-- ========================================================= contact -->
       <section class="sec sec--contact contact shell" id="contact" aria-labelledby="h-contact">
+        <span class="ghost" aria-hidden="true" data-ghost="06"></span>
         <p class="sec__head">
-          <span class="sec__n">05</span> <span>Contact</span>
+          <span class="sec__n">06</span> <span>Contact</span>
           <span class="sec__rule" aria-hidden="true"></span>
         </p>
         <h2 id="h-contact">Let&rsquo;s Talk</h2>

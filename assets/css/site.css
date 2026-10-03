@@ -1617,3 +1617,237 @@ ol {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   Full-screen rhythm: section readout, scroll cue, manifesto, ghost numerals
+   ========================================================================== */
+
+/* --- the readout: 01 / WORK, pinned and blended over whatever is behind --- */
+
+.ind {
+  position: fixed;
+  top: calc(0.55rem + env(safe-area-inset-top, 0px));
+  left: var(--gutter);
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  font-family: var(--display);
+  font-size: clamp(0.75rem, 2.2vw, 1.5rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 420ms var(--ease);
+}
+
+.ind--on {
+  opacity: 1;
+}
+
+.ind__n {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--run);
+}
+
+.ind__slash {
+  opacity: 0.4;
+}
+
+/* the readout replaces the wordmark once you are past the hero */
+.bar--scrolled .bar__name {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms var(--ease);
+}
+
+@media (min-width: 60rem) {
+  .ind {
+    top: calc(1.1rem + env(safe-area-inset-top, 0px));
+  }
+}
+
+/* --- scroll cue, bottom of the hero ------------------------------------- */
+
+.cue {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 1.75rem;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--smoke);
+}
+
+@media (min-width: 64rem) {
+  .cue {
+    display: flex;
+    left: var(--gutter);
+    transform: none;
+  }
+}
+
+.cue__mouse {
+  display: flex;
+  justify-content: center;
+  width: 26px;
+  height: 42px;
+  padding-top: 7px;
+  border: 1.5px solid rgb(244 245 248 / 0.3);
+  border-radius: 999px;
+  transition: border-color 300ms var(--ease);
+}
+
+.cue:hover .cue__mouse,
+.cue:focus-visible .cue__mouse {
+  border-color: var(--run);
+}
+
+.cue__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--chalk);
+}
+
+.cue__label {
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes cueDrop {
+    0% { transform: translateY(0); opacity: 1; }
+    70% { transform: translateY(13px); opacity: 0.2; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  .cue__dot {
+    animation: cueDrop 1.9s var(--ease) infinite;
+  }
+}
+
+/* --- ghost numerals: section furniture, never content -------------------- */
+
+.ghost::before {
+  content: attr(data-ghost);
+}
+
+.ghost {
+  position: absolute;
+  z-index: 0;
+  right: 2vw;
+  top: 0;
+  font-family: var(--display);
+  font-size: clamp(7rem, 17vw, 18rem);
+  font-weight: 500;
+  line-height: 0.78;
+  letter-spacing: -0.05em;
+  color: rgb(244 245 248 / 0.028);
+  pointer-events: none;
+  user-select: none;
+}
+
+.sec--manifesto .ghost {
+  right: auto;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  font-size: clamp(10rem, 26vw, 30rem);
+  color: rgb(244 245 248 / 0.025);
+}
+
+/* --- manifesto: one full screen that says the thing out loud ------------- */
+
+.sec--manifesto {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 86svh;
+  padding-block: clamp(5rem, 14vw, 10rem);
+  overflow: hidden;
+  border-top: 1px solid var(--edge-soft);
+}
+
+.manifesto {
+  position: relative;
+  z-index: 1;
+  max-width: 54rem;
+  text-align: center;
+}
+
+.manifesto h2 {
+  font-size: clamp(1.6rem, 4.2vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.028em;
+  margin-bottom: 1.75rem;
+  text-wrap: balance;
+}
+
+.manifesto p {
+  max-width: 44rem;
+  margin-inline: auto;
+  font-size: var(--t-lead);
+  line-height: 1.68;
+  color: var(--ash);
+}
+
+.manifesto__by {
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+/* --- hero portrait slot -------------------------------------------------- */
+
+.stage {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.portrait {
+  display: none;
+  margin: 0;
+}
+
+/* appears the moment images/achref.jpg is dropped in */
+.portrait:has(img) {
+  display: block;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--edge);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(11 12 16 / 0.55), transparent 55%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cue__dot {
+    animation: none;
+  }
+}
