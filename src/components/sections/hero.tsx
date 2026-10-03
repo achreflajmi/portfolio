@@ -271,7 +271,7 @@ export function HeroSection() {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="w-full h-full object-cover object-[62%_18%] opacity-30 md:opacity-100"
+            className="w-full h-full object-cover object-[64%_12%] md:object-[62%_18%]"
             style={{
               maskImage:
                 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.25) 14%, rgba(0,0,0,0.85) 34%, black 52%)',
@@ -304,7 +304,13 @@ export function HeroSection() {
 
         {/* Darkening scrim so the text always lands on the darkest ground.
             Flat on small screens where the copy spans the whole frame. */}
-        <div className="absolute inset-0 bg-background/80 md:hidden" />
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgb(8 8 8 / 0.30) 0%, rgb(8 8 8 / 0.22) 26%, rgb(8 8 8 / 0.62) 48%, rgb(8 8 8 / 0.93) 66%, rgb(8 8 8 / 0.98) 100%)',
+          }}
+        />
         <div
           className="hidden md:block absolute inset-0"
           style={{
@@ -325,7 +331,7 @@ export function HeroSection() {
       >
         <a
           href="#home"
-          className="flex items-center gap-2 font-display text-base sm:text-xl tracking-[0.18em] sm:tracking-widest text-white uppercase min-w-0 min-h-[44px]"
+          className="flex items-center gap-2 font-display text-sm min-[400px]:text-base sm:text-xl tracking-[0.07em] min-[400px]:tracking-[0.18em] sm:tracking-widest text-white uppercase min-w-0 min-h-[44px]"
           translate="no"
         >
           <img
@@ -388,7 +394,7 @@ export function HeroSection() {
 
       {/* ── Body ── */}
       <div className="relative z-20 flex-1 w-full max-w-[90rem] mx-auto px-6 md:px-12 flex">
-        <div className="flex flex-col justify-center w-full min-w-0 pt-12 md:pt-10 pb-28 md:pb-32">
+        <div className="flex flex-col justify-end md:justify-center w-full min-w-0 pt-12 md:pt-10 pb-20 md:pb-32">
           <div className="min-w-0">
             {/* Headline — three lines, each break controlled. Fluid type keeps
                 every line on one line at any width. "survive" is the only
