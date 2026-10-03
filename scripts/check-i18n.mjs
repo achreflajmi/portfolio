@@ -23,6 +23,8 @@ const EN_LEAKS = [
   'Email me',
   'All rights reserved',
   'Academic foundation',
+  'September 2026',
+  'exchange semester',
 ];
 
 const browser = await puppeteer.launch({
